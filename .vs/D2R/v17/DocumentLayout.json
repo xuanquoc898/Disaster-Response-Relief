@@ -1,0 +1,72 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Desktop\\NHAP\\PBL3\\PBL3_PROJECT_main\\PBL3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\desktop\\nhap\\pbl3\\pbl3_project_main\\pbl3\\d2r\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\desktop\\nhap\\pbl3\\pbl3_project_main\\pbl3\\d2r\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\desktop\\nhap\\pbl3\\pbl3_project_main\\pbl3\\d2r\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\Desktop\\NHAP\\PBL3\\PBL3_PROJECT_main\\PBL3\\D2R\\App.xaml",
+              "RelativeDocumentMoniker": "D2R\\App.xaml",
+              "ToolTip": "D:\\Desktop\\NHAP\\PBL3\\PBL3_PROJECT_main\\PBL3\\D2R\\App.xaml",
+              "RelativeToolTip": "D2R\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-01T08:15:32.315Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\Desktop\\NHAP\\PBL3\\PBL3_PROJECT_main\\PBL3\\D2R\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "D2R\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\Desktop\\NHAP\\PBL3\\PBL3_PROJECT_main\\PBL3\\D2R\\MainWindow.xaml.cs",
+              "RelativeToolTip": "D2R\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAWwBkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-01T07:54:55.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\Desktop\\NHAP\\PBL3\\PBL3_PROJECT_main\\PBL3\\D2R\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "D2R\\MainWindow.xaml",
+              "ToolTip": "D:\\Desktop\\NHAP\\PBL3\\PBL3_PROJECT_main\\PBL3\\D2R\\MainWindow.xaml",
+              "RelativeToolTip": "D2R\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-01T07:54:48.486Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
