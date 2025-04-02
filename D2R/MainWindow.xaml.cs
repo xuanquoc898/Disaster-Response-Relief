@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using D2R.Views;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,10 +20,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-    }
-
-    private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-    {
-
+        MainFrame.Navigate(new Views.MenuPage(MainFrame));
+        //new DonorView().ShowDialog();
     }
 }

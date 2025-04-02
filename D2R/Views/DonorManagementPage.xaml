@@ -1,0 +1,74 @@
+﻿<Page x:Class="D2R.Views.DonorManagementPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      Background="White">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="270"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <StackPanel Grid.Column="0" Background="#B71C1C" >
+            <Button Content="🏠 Trang chủ" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="👥 Quản lí người dùng" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="🤝 Quản lí mạnh thường quân" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="🏪 Quản lí kho hàng cứu trợ" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="🚑 Quản lí chiến dịch cứu trợ" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="📈 Báo cáo và thống kê" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="30">
+                <TextBlock FontSize="20" FontWeight="Bold" Foreground="Black" Margin="0,0,0,20"><Run Text="MENU &gt; Quản lí mạnh thường quân"/><LineBreak/><Run/></TextBlock>
+
+                <WrapPanel HorizontalAlignment="Center" ItemWidth="220" ItemHeight="140" Margin="10">
+                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="AddDonation_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="➕" FontSize="36" TextAlignment="Center" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Add new donation" Margin="8" TextAlignment="Center"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="UpdateDonation_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="✏️" FontSize="36" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Update donation info" Margin="8" TextAlignment="Center"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="TrackStatus_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="📍" FontSize="36" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Track donation status" Margin="8" TextAlignment="Center"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="ShowDonors_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="👥" FontSize="36" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Show donor list" Margin="8" TextAlignment="Center"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="CheckHistory_Click">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="📜" FontSize="36" HorizontalAlignment="Center"/>
+                            <TextBlock Text="Check donation history" Margin="8" TextAlignment="Center"/>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </WrapPanel>
+
+                <TextBlock Text="Disaster Response and Relief System"
+                           FontStyle="Italic"
+                           FontWeight="Bold"
+                           Foreground="Gray"
+                           HorizontalAlignment="Right"
+                           Margin="0,30,10,0"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
