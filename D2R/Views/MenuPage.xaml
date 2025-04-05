@@ -12,12 +12,12 @@
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
-        <StackPanel Grid.Column="0" Background="#B71C1C" VerticalAlignment="Stretch">
+        <StackPanel Grid.Column="0" Background="#912D24" VerticalAlignment="Stretch">
             <TextBlock Text="MENU" FontSize="20" FontWeight="Bold" Foreground="White" Margin="16"/>
             <!-- Icons Menu -->
             <Button Content="🏠 Trang chủ" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="👥 Quản lí người dùng" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="🤝 Quản lí mạnh thường quân" Click="DonorManagement_Click" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="👥 Quản lí người dùng" Style="{StaticResource MaterialDesignFlatButton }" Margin="10"/>
+            <Button Content="🤝 Quản lí mạnh thường quân" Click="DonorManagement_Click"  Margin="10"/>
             <Button Content="🏪 Quản lí kho hàng cứu trợ" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
             <Button Content="🚑 Quản lí chiến dịch cứu trợ" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
             <Button Content="📈 Báo cáo và thống kê" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
@@ -26,11 +26,16 @@
         <!-- Content bên phải -->
         <Grid Grid.Column="1" Background="#FAFAFA">
             <StackPanel Margin="40">
-                <Border Background="#5D4037" CornerRadius="10" Padding="20">
+                <Border Background="#6E2F2C" CornerRadius="10" Padding="20">
                     <StackPanel>
                         <TextBlock Text="Add a task that you need to finish today!" Foreground="White" FontWeight="Bold" Margin="0,0,0,10"/>
                         <TextBox materialDesign:HintAssist.Hint="Title" Margin="0,0,0,10"/>
-                        <Button Content="Add Task" Style="{StaticResource MaterialDesignRaisedButton}" HorizontalAlignment="Right"/>
+                        <Button 
+                            materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                            materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                            materialDesign:ButtonProgressAssist.Value="-1"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Content="Add Task" Style="{StaticResource MaterialDesignRaisedButton}" HorizontalAlignment="Right"/>
                     </StackPanel>
                 </Border>
                 <TextBlock Text="Disaster Response and Relief System" FontSize="18" FontWeight="Bold" Foreground="Red"/>

@@ -12,12 +12,12 @@
 
         <!-- Sidebar -->
         <StackPanel Grid.Column="0" Background="#B71C1C" >
-            <Button Content="🏠 Trang chủ" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="👥 Quản lí người dùng" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="🤝 Quản lí mạnh thường quân" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="🏪 Quản lí kho hàng cứu trợ" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="🚑 Quản lí chiến dịch cứu trợ" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="📈 Báo cáo và thống kê" Style="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="🏠 Trang chủ" Style ="{StaticResource MaterialDesignFlatButton}"  Margin="10"/>
+            <Button Content="👥 Quản lí người dùng" Style ="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="🤝 Quản lí mạnh thường quân" Margin="10"/>
+            <Button Content="🏪 Quản lí kho hàng cứu trợ" Style ="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="🚑 Quản lí chiến dịch cứu trợ" Style ="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
+            <Button Content="📈 Báo cáo và thống kê" Style ="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
         </StackPanel>
 
         <!-- Main Content -->

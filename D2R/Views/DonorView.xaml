@@ -39,7 +39,7 @@
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Tên vật phẩm" DisplayMemberBinding="{Binding ItemName}" Width="250"/>
-                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Quantity}" Width="100"/>
+                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Quantity}" Width="150"/>
                                 <GridViewColumn Header="Ngày nhận" DisplayMemberBinding="{Binding DateReceived}" Width="200"/>
                             </GridView>
                         </ListView.View>
