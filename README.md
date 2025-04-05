@@ -16,7 +16,14 @@ Mở terminal, nhập: ``git --version``
 ## Bước 3: Tải project và Mở dự án
 - Vào folder vừa tạo trước đó
 - Click chuột phải chọn Open in terminal
-- Nhập lệnh ``git clone git@github.com:xuanquoc898/PBL3.git``
+
+LƯU Ý: Đối với LẦN ĐẦU clone project
+
+Nếu dùng SSH:
+- Nhập lệnh ``git clone --recurse-submodules git@github.com:xuanquoc898/PBL3.git``
+Nếu dùng HTTPS:
+- Nhập lệnh ``git clone --recurse-submodules https://github.com/xuanquoc898/PBL3.git``
+
 > Dưới đây là bước mở dự án
 - Sau khi tải xong, vào lại folder, Click chuột phải vào file D2R.sln chọn Open as... (Nếu chỉ dùng visual studio thì chỉ cần nháy đúp chuột) nếu sử dụng IDE khác như rider thì hãy chọn nó
 
@@ -26,15 +33,22 @@ Mở terminal, nhập: ``git --version``
 		Gõ lệnh sau:
 		``git config --global user.gmail "youremail@example.com"``
 		``git config --global user.name "your name"``
+
+- Sau khi đã thực hiện "lần đầu":
+	- Kiểm tra các folder/file đã chỉnh sửa: ``git status`` (Hiện màu đỏ là các folder/file chưa được đẩy lên Git)
 	- Thêm các file vào local repo: ``git add .``
+	- Kiểm tra lại các folder/file đã chỉnh sửa đã được đẩy lên Git chưa: ``git status`` (Nếu hiện màu xanh là đã thành công)
 	- Commit các file vừa thêm: ``git commit -m "your commit"``
 		nên đặt tên commit theo chức năng làm được hoặc sửa được gì
 	- Push lên repo trên github: ``git push pbl main``
 	- Nếu có conflict vui lòng báo ngay cho tui :)))
 > Sau này mỗi lần push chỉ cần làm từ bước "Thêm các file vào local repo" trở về sau
+
+
 ## Pull dự án sau mỗi lần mở dự án
 - Mở dự án như hướng dẫn trên.
 - Mở terminal của IDE
+LƯU Ý: Nếu không có update gì trong MaterialDesignToolKit thì thực hiện các bước sau:
 - gõ lệnh sau: ``git pull pbl main``
 - Sau đó vào code như bình thường
 - Nếu có conflict vui lòng liên hệ tui :)))
