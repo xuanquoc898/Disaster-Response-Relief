@@ -2,7 +2,7 @@ using D2R.Models;
 using D2R.Helpers;
 using System;
 using System.Collections.Generic;
-using Microsoft.Data.SqlClient;
+using MySql.Data.MySqlClient;
 
 
 namespace D2R.Repositories;
@@ -13,8 +13,8 @@ public class DonorRepository
     {
         DBHelper.ExecuteNonQuery(
             "INSERT INTO Donors (Name, Phone) VALUES (@Name, @Phone)",
-            new SqlParameter("@Name", donor.Name),
-            new SqlParameter("@Phone", donor.Phone)
+            new MySqlParameter("@Name", donor.Name),
+            new MySqlParameter("@Phone", donor.Phone)
         );
     }
 
@@ -40,7 +40,7 @@ public class DonorRepository
     {
         using var reader = DBHelper.ExecuteReader(
             "SELECT Id, Name, Phone FROM Donors WHERE Id = @Id",
-            new SqlParameter("@Id", id)
+            new MySqlParameter("@Id", id)
         );
 
         if (reader.Read())
