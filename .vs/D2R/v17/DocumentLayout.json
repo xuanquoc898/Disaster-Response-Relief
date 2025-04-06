@@ -1,18 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\XuanQuoc\\Desktop\\PBL3\\PBL3\\",
+  "WorkspaceRootPath": "D:\\HEAVY_DUTY\\PBL3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|c:\\users\\xuanquoc\\desktop\\pbl3\\pbl3\\d2r\\helper\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\helper\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|c:\\users\\xuanquoc\\desktop\\pbl3\\pbl3\\d2r\\repositories\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\repositories\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|c:\\users\\xuanquoc\\desktop\\pbl3\\pbl3\\d2r\\repositories\\donorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\repositories\\donorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\views\\donormanagementpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\views\\donormanagementpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,49 +14,18 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DBHelper.cs",
-              "DocumentMoniker": "C:\\Users\\XuanQuoc\\Desktop\\PBL3\\PBL3\\D2R\\Helper\\DBHelper.cs",
-              "RelativeDocumentMoniker": "D2R\\Helper\\DBHelper.cs",
-              "ToolTip": "C:\\Users\\XuanQuoc\\Desktop\\PBL3\\PBL3\\D2R\\Helper\\DBHelper.cs",
-              "RelativeToolTip": "D2R\\Helper\\DBHelper.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwA0AAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T13:56:08.709Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ItemRepository.cs",
-              "DocumentMoniker": "C:\\Users\\XuanQuoc\\Desktop\\PBL3\\PBL3\\D2R\\Repositories\\ItemRepository.cs",
-              "RelativeDocumentMoniker": "D2R\\Repositories\\ItemRepository.cs",
-              "ToolTip": "C:\\Users\\XuanQuoc\\Desktop\\PBL3\\PBL3\\D2R\\Repositories\\ItemRepository.cs",
-              "RelativeToolTip": "D2R\\Repositories\\ItemRepository.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAYwAsAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T14:03:53.234Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DonorRepository.cs",
-              "DocumentMoniker": "C:\\Users\\XuanQuoc\\Desktop\\PBL3\\PBL3\\D2R\\Repositories\\DonorRepository.cs",
-              "RelativeDocumentMoniker": "D2R\\Repositories\\DonorRepository.cs",
-              "ToolTip": "C:\\Users\\XuanQuoc\\Desktop\\PBL3\\PBL3\\D2R\\Repositories\\DonorRepository.cs",
-              "RelativeToolTip": "D2R\\Repositories\\DonorRepository.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAUwBsAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-06T14:03:34.637Z",
+              "Title": "DonorManagementPage.xaml",
+              "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\Views\\DonorManagementPage.xaml",
+              "RelativeDocumentMoniker": "D2R\\Views\\DonorManagementPage.xaml",
+              "ToolTip": "D:\\HEAVY_DUTY\\PBL3\\D2R\\Views\\DonorManagementPage.xaml",
+              "RelativeToolTip": "D2R\\Views\\DonorManagementPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-06T18:18:08.836Z",
               "EditorCaption": ""
             }
           ]
