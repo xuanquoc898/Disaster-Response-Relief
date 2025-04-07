@@ -7,11 +7,173 @@
         xmlns:local="clr-namespace:D2R"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1000">
+        Title="Hệ thống Quản Lý Cứu Trợ Thiên Tai" 
+        Height="1140" 
+        Width="1928"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" 
+        ResizeMode="CanResizeWithGrip">
+
     <Grid>
-        <!-- Frame để điều hướng giữa các trang -->
-        <Frame x:Name="MainFrame"
-               NavigationUIVisibility="Hidden"
-               materialDesign:ColorZoneAssist.Mode="PrimaryLight"/>
+        <!-- Background for the entire window -->
+        <Grid.Background>
+            <SolidColorBrush Color="#B71C1C"/>
+        </Grid.Background>
+
+        <!-- Custom Title Bar -->
+        <Grid Height="55" VerticalAlignment="Top" Background="#420000">
+            <!-- Đặt Grid.ColumnDefinitions lên đầu tiên -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <!-- For Logo -->
+                <ColumnDefinition Width="*"/>
+                <!-- For Title -->
+                <ColumnDefinition Width="Auto"/>
+                <!-- For Window Controls -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Window Control Buttons -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Width="16" Height="16" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Kind="WindowMaximize" Width="16" Height="16" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Kind="Close" Width="16" Height="16" />
+                </Button>
+            </StackPanel>
+
+            <!-- Logo -->
+            <Image Source="/D2R_Logo.png" Margin="-78,0,1723,0" Grid.ColumnSpan="2"/>
+
+            <!-- Title -->
+            <TextBlock Grid.Column="1" Text="HỆ THỐNG QUẢN LÝ VÀ CỨU TRỢ THIÊN TAI" 
+               VerticalAlignment="Center" HorizontalAlignment="Left"
+               FontSize="24" FontWeight="Bold" Foreground="White" FontFamily="Segoe UI" Width="656" Margin="70,0,0,0"/>
+        </Grid>
+
+        <!-- Main Content -->
+        <Grid Margin="7,46,-7,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <!-- Left side for text -->
+                <ColumnDefinition Width="2*"/>
+                <!-- Middle buffer -->
+                <ColumnDefinition Width="1*"/>
+                <!-- Right side for white content area -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Left Side: Text -->
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2">
+                <Viewbox Stretch="Uniform" MaxWidth="6000" Width="1076">
+                    <StackPanel Width="11393" Height="5355">
+                        <!-- Welcome Text -->
+                        <TextBlock Text="Chào mừng bạn đã đến với" 
+                                   FontSize="550" 
+                                   Foreground="White" 
+                                   FontWeight="Bold" 
+                                      FontStyle="Italic"
+                                   FontFamily="Segoe UI"
+                                   Margin="0,0,0,50"
+                                   TextWrapping="WrapWithOverflow"
+                                   TextAlignment="Center" RenderTransformOrigin="0.467,0.902" Height="1142" Width="7519">
+                            <TextBlock.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform AngleX="1.018"/>
+                                    <RotateTransform/>
+                                    <TranslateTransform X="102.362"/>
+                                </TransformGroup>
+                            </TextBlock.RenderTransform>
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <TextBlock Text="ACE OF SPADES" 
+                                   FontSize="699" 
+                                   Foreground="White" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Segoe UI"
+                                   Background="Black" 
+                                   Padding="985"
+                                   Margin="0,0,90,90"
+                                   TextAlignment="Center" Width="10508">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+                        <TextBlock Text="Hệ thống Quản Lý Cứu Trợ Thiên Tai" 
+                                   FontSize="500" 
+                                   FontStyle="Italic"
+                                   Foreground="White" 
+                                   FontWeight="Bold" 
+                                   FontFamily="Segoe UI"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center" Height="2104" Width="9577">
+                            <TextBlock.Effect>
+                                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
+                            </TextBlock.Effect>
+                        </TextBlock>
+
+                        <!-- Main Title -->
+
+                        <!-- Subtitle -->
+                    </StackPanel>
+                </Viewbox>
+            </StackPanel>
+
+            <!-- Right Side: White Content Area -->
+            <Border Grid.Column="1" Background="White" Margin="792,10,0,-8" CornerRadius="0" Grid.ColumnSpan="2">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="794">
+                    <!-- Logo -->
+
+                    <!-- Login Form -->
+                    <!-- Logo -->
+
+                    <!-- Login Form -->
+                    <!-- Logo -->
+                    <Image Source="/D2R_Logo.png" Width="430" Height="213"/>
+                    <Border Background="#FCCCCC" Padding="10" CornerRadius="10" Width="558" Height="385">
+                        <StackPanel>
+                            <Label Content="ĐĂNG NHẬP VÀO TÀI KHOẢN" FontSize="20" FontWeight="ExtraBold" 
+                             HorizontalAlignment="Center" Margin="50,15,0,50" FontFamily="Times New Roman"/>
+
+                            <Label Content ="Tên người dùng" FontSize="16" Margin="0,0,0,10" FontWeight="Medium" FontFamily="Times New Roman"/>
+                            <TextBox
+                                x:Name="UsernameTextBox"
+                              
+                                materialDesign:HintAssist.HelperText="Nhập tên người dùng của bạn"
+                                materialDesign:TextFieldAssist.HasClearButton="True"
+                                Width="255"
+                                Margin="0,0,0,20"
+                                FontFamily="Times New Roman" TextChanged="UsernameTextBox_TextChanged"/>
+
+                            <Label Content="Mật khẩu" FontSize="16" Margin="0,0,0,5" FontWeight="Medium"  FontFamily="Times New Roman"/>
+
+
+                            <PasswordBox
+                                          x:Name="PasswordBox"
+                                          materialDesign:HintAssist.HelperText="Ít nhất 8 ký tự"
+                                          materialDesign:TextFieldAssist.HasClearButton="True"
+                                          Width="250"
+                                          Margin="0,0,0,10"
+                                          FontFamily="Times New Roman"
+                                          PasswordChanged="PasswordBox_PasswordChanged"/>
+
+
+                            <Button x:Name="SignInButton" Content="Đăng nhập" Width="112" Margin="0,20,0,10" 
+                                    Style="{StaticResource MaterialDesignRaisedButton}" Click="SignInButton_Click"
+                                    FontFamily="Times New Roman"/>
+                            <Button Content="Quên mật khẩu?" FontSize="12" Foreground="Blue" 
+                                    Cursor="Hand" Click="ForgotPassword_Click"
+                                    FontFamily="Times New Roman" Background="Transparent" BorderBrush="Transparent" Height="23"/>
+
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

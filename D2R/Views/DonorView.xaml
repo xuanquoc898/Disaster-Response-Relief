@@ -7,10 +7,10 @@
         MinWidth="1024" MinHeight="700">
 
     <DockPanel LastChildFill="True">
+        
         <!-- Nội dung chính -->
         <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" Width="Auto">
-
                 <!-- Nhập Donor -->
                 <GroupBox Header="Thêm mạnh thường quân" Margin="0,0,0,20">
                     <StackPanel Margin="10">

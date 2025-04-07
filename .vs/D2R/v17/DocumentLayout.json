@@ -3,8 +3,40 @@
   "WorkspaceRootPath": "D:\\HEAVY_DUTY\\PBL3\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\d2r_logo.png||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\d2r_logo.png||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\views\\menupage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\views\\menupage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\views\\menupage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\views\\menupage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\views\\donorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\views\\donorview.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\views\\donormanagementpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\views\\donormanagementpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|d:\\heavy_duty\\pbl3\\d2r\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{314F6BCB-C255-4E24-A14F-6312FAF02C23}|D2R\\D2R.csproj|solutionrelative:d2r\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,11 +46,110 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "D2R_Logo.png - PNG [500x500, 24 bit, PNG]",
+              "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\D2R_Logo.png",
+              "RelativeDocumentMoniker": "D2R\\D2R_Logo.png",
+              "ToolTip": "D:\\HEAVY_DUTY\\PBL3\\D2R\\D2R_Logo.png - PNG [500x500, 24 bit, PNG]",
+              "RelativeToolTip": "D2R\\D2R_Logo.png - PNG [500x500, 24 bit, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001533|",
+              "WhenOpened": "2025-04-07T14:31:18.308Z",
+              "EditorCaption": " - PNG [500x500, 24 bit, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "D2R\\MainWindow.xaml",
+              "ToolTip": "D:\\HEAVY_DUTY\\PBL3\\D2R\\MainWindow.xaml",
+              "RelativeToolTip": "D2R\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-07T14:31:36.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "D2R\\MainWindow.xaml.cs",
+              "ToolTip": "D:\\HEAVY_DUTY\\PBL3\\D2R\\MainWindow.xaml.cs",
+              "RelativeToolTip": "D2R\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T18:18:44.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "D2R\\AssemblyInfo.cs",
+              "ToolTip": "D:\\HEAVY_DUTY\\PBL3\\D2R\\AssemblyInfo.cs",
+              "RelativeToolTip": "D2R\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T14:31:16.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\App.xaml",
+              "RelativeDocumentMoniker": "D2R\\App.xaml",
+              "ToolTip": "D:\\HEAVY_DUTY\\PBL3\\D2R\\App.xaml",
+              "RelativeToolTip": "D2R\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-07T14:31:13.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DonorView.xaml",
+              "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\Views\\DonorView.xaml",
+              "RelativeDocumentMoniker": "D2R\\Views\\DonorView.xaml",
+              "ToolTip": "D:\\HEAVY_DUTY\\PBL3\\D2R\\Views\\DonorView.xaml",
+              "RelativeToolTip": "D2R\\Views\\DonorView.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-07T14:30:29.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MenuPage.xaml.cs",
+              "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\Views\\MenuPage.xaml.cs",
+              "RelativeDocumentMoniker": "D2R\\Views\\MenuPage.xaml.cs",
+              "ToolTip": "D:\\HEAVY_DUTY\\PBL3\\D2R\\Views\\MenuPage.xaml.cs",
+              "RelativeToolTip": "D2R\\Views\\MenuPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T14:30:25.411Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MenuPage.xaml",
+              "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\Views\\MenuPage.xaml",
+              "RelativeDocumentMoniker": "D2R\\Views\\MenuPage.xaml",
+              "ToolTip": "D:\\HEAVY_DUTY\\PBL3\\D2R\\Views\\MenuPage.xaml",
+              "RelativeToolTip": "D2R\\Views\\MenuPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-04-07T14:30:22.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "DonorManagementPage.xaml",
               "DocumentMoniker": "D:\\HEAVY_DUTY\\PBL3\\D2R\\Views\\DonorManagementPage.xaml",
               "RelativeDocumentMoniker": "D2R\\Views\\DonorManagementPage.xaml",
