@@ -1,83 +1,109 @@
-﻿<Page x:Class="D2R.Views.DonorManagementPage"
+﻿<Window x:Class="D2R.Views.DonorManagementPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      Background="White">
+      Title="Hệ thống Quản Lý Cứu Trợ Thiên Tai" 
+      Height="1080" 
+      Width="1920"
+      Background="#7A54AE">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="270"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <!-- Chia làm 2 hàng: Header và Nội dung -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <!-- Header -->
+            <RowDefinition Height="*"/>
+            <!-- Nội dung -->
+        </Grid.RowDefinitions>
 
-        <!-- Sidebar -->
-        <StackPanel Grid.Column="0" Background="#B71C1C" >
-            <Button 
-                
-                materialDesign:ButtonProgressAssist.IsIndeterminate="True"
-    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-    materialDesign:ButtonProgressAssist.Value="-1"
-                Content="🏠 Trang chủ" Style ="{StaticResource MaterialDesignRaisedButton}"  Margin="10"
-                    
-                    
-                    
-                    />
-            <Button Content="👥 Quản lí người dùng" Style ="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="🤝 Quản lí mạnh thường quân" Margin="10"/>
-            <Button Content="🏪 Quản lí kho hàng cứu trợ" Style ="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="🚑 Quản lí chiến dịch cứu trợ" Style ="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-            <Button Content="📈 Báo cáo và thống kê" Style ="{StaticResource MaterialDesignFlatButton}" Margin="10"/>
-        </StackPanel>
+        <!-- HEADER -->
+        <Grid Background="#391867" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-        <!-- Main Content -->
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto">
-            <StackPanel Margin="30">
-                <TextBlock FontSize="20" FontWeight="Bold" Foreground="Black" Margin="0,0,0,20"><Run Text="MENU &gt; Quản lí mạnh thường quân"/><LineBreak/><Run/></TextBlock>
+            <!-- Logo -->
+            <Image Source="/D2R_Logo.png"
+                   Height="40"
+                   VerticalAlignment="Center"
+                   Margin="10,0"
+                   Grid.Column="0"/>
 
-                <WrapPanel HorizontalAlignment="Center" ItemWidth="220" ItemHeight="140" Margin="10">
-                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="AddDonation_Click">
-                        <StackPanel HorizontalAlignment="Center">
-                            <TextBlock Text="➕" FontSize="36" TextAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Add new donation" Margin="8" TextAlignment="Center"/>
-                        </StackPanel>
-                    </materialDesign:Card>
+            <!-- Title -->
+            <TextBlock Grid.Column="1" 
+                       Text="QUẢN LÝ MẠNH THƯỜNG QUÂN" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Left"
+                       FontSize="24" 
+                       FontWeight="Bold" 
+                       Foreground="White" 
+                       FontFamily="Segoe UI"/>
 
-                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="UpdateDonation_Click">
-                        <StackPanel HorizontalAlignment="Center">
-                            <TextBlock Text="✏️" FontSize="36" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Update donation info" Margin="8" TextAlignment="Center"/>
-                        </StackPanel>
-                    </materialDesign:Card>
-
-                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="TrackStatus_Click">
-                        <StackPanel HorizontalAlignment="Center">
-                            <TextBlock Text="📍" FontSize="36" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Track donation status" Margin="8" TextAlignment="Center"/>
-                        </StackPanel>
-                    </materialDesign:Card>
-
-                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="ShowDonors_Click">
-                        <StackPanel HorizontalAlignment="Center">
-                            <TextBlock Text="👥" FontSize="36" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Show donor list" Margin="8" TextAlignment="Center"/>
-                        </StackPanel>
-                    </materialDesign:Card>
-
-                    <materialDesign:Card Margin="10" Padding="16" MouseLeftButtonUp="CheckHistory_Click">
-                        <StackPanel HorizontalAlignment="Center">
-                            <TextBlock Text="📜" FontSize="36" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Check donation history" Margin="8" TextAlignment="Center"/>
-                        </StackPanel>
-                    </materialDesign:Card>
-                </WrapPanel>
-
-                <TextBlock Text="Disaster Response and Relief System"
-                           FontStyle="Italic"
-                           FontWeight="Bold"
-                           Foreground="Gray"
-                           HorizontalAlignment="Right"
-                           Margin="0,30,10,0"/>
+            <!-- Window Control Buttons -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                <Button Style="{StaticResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Width="16" Height="16" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Kind="WindowMaximize" Width="16" Height="16" />
+                </Button>
+                <Button Style="{StaticResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Kind="Close" Width="16" Height="16" />
+                </Button>
             </StackPanel>
-        </ScrollViewer>
+        </Grid>
+
+        <!-- NỘI DUNG CHÍNH -->
+        <!-- NỘI DUNG -->
+        <Grid Grid.Row="1" Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Thanh tìm kiếm + nút -->
+                <RowDefinition Height="*"/>
+                <!-- Bảng danh sách -->
+            </Grid.RowDefinitions>
+
+            <!-- THANH TÌM KIẾM -->
+            <DockPanel Grid.Row="0" Margin="0,10,0,10">
+                <TextBox Width="250"
+                 Margin="0,0,10,0"
+                 materialDesign:HintAssist.Hint="Tìm kiếm theo tên"
+                 VerticalAlignment="Center"/>
+                <Button Content="Tìm kiếm"
+                Style="{StaticResource MaterialDesignRaisedButton}" 
+                Margin="0,0,10,0"
+                VerticalAlignment="Center"/>
+                <DockPanel DockPanel.Dock="Right">
+                    <Button Content="Thêm Mới"
+                    Style="{StaticResource MaterialDesignRaisedButton}" 
+                    Background="#391867" 
+                    Foreground="White"
+                    Margin="10,0"/>
+                </DockPanel>
+            </DockPanel>
+
+            <!-- DANH SÁCH MẠNH THƯỜNG QUÂN -->
+            <DataGrid Grid.Row="1"
+              AutoGenerateColumns="False"
+              CanUserAddRows="False"
+              HeadersVisibility="Column"
+              RowHeaderWidth="0"
+              IsReadOnly="True"
+              Margin="0,0,0,10"
+              SelectionMode="Single"
+              Background="White"
+              AlternatingRowBackground="#EEE">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Họ tên" Binding="{Binding FullName}" Width="*"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*"/>
+                    <DataGridTextColumn Header="Số điện thoại" Binding="{Binding Phone}" Width="*"/>
+                    <DataGridTextColumn Header="Địa chỉ" Binding="{Binding Address}" Width="2*"/>
+                    <DataGridTextColumn Header="Ngày tham gia" Binding="{Binding JoinDate, StringFormat=\{0:dd/MM/yyyy\}}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+
     </Grid>
-</Page>
+</Window> 

@@ -1,0 +1,135 @@
+﻿<Window x:Class="D2R.Views.DonorManagementPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Hệ thống Quản Lý Cứu Trợ Thiên Tai"
+        Height="1080"
+        Width="1920"
+        Background="White">
+
+    <Window.Resources>
+        <!-- Nút lớn bo tròn -->
+        <Style x:Key="BigRoundedButton"
+       TargetType="Button"
+       BasedOn="{StaticResource MaterialDesignRaisedDarkButton}">
+            <Setter Property="Height" Value="90"/>
+            <Setter Property="Width" Value="390"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="Padding" Value="0,10"/>
+            <Setter Property="materialDesign:ShadowAssist.ShadowAnimationDuration" Value="0:0:0.0"/>
+            <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="55"/>
+            <!-- Bo góc ở đây -->
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <!-- Header -->
+        <Grid Height="55" VerticalAlignment="Top" Background="#391867" Grid.ColumnSpan="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Logo -->
+            <Image Source="/D2R_Logo.png" Height="40" Margin="20,0" VerticalAlignment="Center"/>
+
+            <!-- Title -->
+            <TextBlock Text="HỆ THỐNG QUẢN LÝ VÀ CỨU TRỢ THIÊN TAI"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       FontFamily="Segoe UI"
+                       Grid.Column="1"/>
+
+            <!-- Window Buttons -->
+            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,20,0">
+                <Button Style="{StaticResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Width="16" Height="16"/>
+                </Button>
+                <Button Style="{StaticResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Kind="WindowMaximize" Width="16" Height="16"/>
+                </Button>
+                <Button Style="{StaticResource MaterialDesignToolButton}">
+                    <materialDesign:PackIcon Kind="Close" Width="16" Height="16"/>
+                </Button>
+            </StackPanel>
+        </Grid>
+
+        <!-- Main Layout -->
+        <Grid Margin="0,55,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450"/>
+                <!-- Sidebar -->
+                <ColumnDefinition Width="629*"/>
+                <ColumnDefinition Width="106*"/>
+                <!-- Main content -->
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar -->
+            <StackPanel Background="#B39DDB" Grid.Column="0" Margin="0,0,10,0">
+
+                <Button Height="50" Margin="0,45"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                        <materialDesign:PackIcon Kind="HomeHeart" Width="63" Height="43" Foreground="Pink" Margin="0,0,5,0"/>
+                        <TextBlock Text="THANH ĐIỀU KHIỂN" FontSize="35" VerticalAlignment="Center" Width="350"/>
+                    </StackPanel>
+                </Button>
+                <Button FontSize="25" Style="{StaticResource BigRoundedButton}" Content="Yêu cầu cứu trợ" Margin="0,-10,0,20"/>
+                <Button FontSize="25" Style="{StaticResource BigRoundedButton}" Content="Quản lý tài khoản người dùng" Margin="0,10"/>
+                <Button FontSize="25" Style="{StaticResource BigRoundedButton}" Content="Quản lý Mạnh Thường Quân" Margin="0,10"/>
+                <Button FontSize="25" Style="{StaticResource BigRoundedButton}" Content="Quản lý kho" Margin="0,10"/>
+                <Button FontSize="25" Style="{StaticResource BigRoundedButton}" Content="Phân phối hàng hóa" Margin="0,10"/>
+                <Button FontSize="25" Style="{StaticResource BigRoundedButton}" Content="Thống kê - B cáo" Margin="0,10"/>
+                <Button FontSize="25" Style="{StaticResource BigRoundedButton}" Content="Cài đặt" Margin="0,10"/>
+                <Button FontSize="25" Style="{StaticResource BigRoundedButton}" Content="Đăng xuất" Margin="0,10" Height="70"/>
+            </StackPanel>
+
+            <!-- Main Content Area -->
+            <Grid Grid.Column="1" Background="White" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="151*"/>
+                    <ColumnDefinition Width="94*"/>
+                </Grid.ColumnDefinitions>
+                <!-- Replace this with your actual content -->
+                <Grid
+                    Margin="56,84,0,0" Grid.ColumnSpan="2"
+ >
+                    <Button
+                     Margin="-14,-63,34,801" FontSize="60" Height="107" 
+                        FontWeight="Bold"
+                        FontStyle="Italic"
+                     materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+                     materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                     materialDesign:ButtonProgressAssist.Value="-1"
+                     Content="Chào mừng bạn đến với trang chủ của hệ thống."
+                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+    />
+                </Grid>
+                <Label Content="🌀 Ứng dụng quản lý và cứu trợ thiên tai" 
+                 FontSize="50"
+                 FontWeight="Bold"
+                 Foreground="#391867"
+                 HorizontalAlignment="Left"
+                 VerticalAlignment="Top"
+                 Margin="189,767,0,0" Grid.ColumnSpan="2" Height="109"/>
+                <Image Source="/D2R_Logo.png" Margin="4,174,6,263" Grid.ColumnSpan="2"/>
+                <TextBlock 
+                 Text="Sự vĩ đại không nằm trong tài sản, quyền lực, danh vọng hay tiếng tăm. Nó được phát hiện trong lòng tốt, sự nhún nhường, sự phụng sự và tính cách.."
+                FontSize="40"
+                FontStyle="Italic"
+                Foreground="#391867"
+                TextWrapping="Wrap"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="50,841,0,0" Grid.ColumnSpan="2"/>
+
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

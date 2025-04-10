@@ -1,73 +1,82 @@
 <Window x:Class="D2R.Views.DonorView"
-        Style="{StaticResource MaterialDesignWindow}"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="DonorView"
-        MinWidth="1024" MinHeight="700">
+        Title="Quản lý Mạnh Thường Quân" Height="1080" Width="1920"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-    <DockPanel LastChildFill="True">
-        
-        <!-- Nội dung chính -->
-        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20">
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" Width="Auto">
-                <!-- Nhập Donor -->
-                <GroupBox Header="Thêm mạnh thường quân" Margin="0,0,0,20">
-                    <StackPanel Margin="10">
-                        <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Tên" Margin="0,5"/>
-                        <TextBox x:Name="txtPhone" materialDesign:HintAssist.Hint="SĐT" Margin="0,5"/>
-                        <Button Content="Thêm Donor" Click="BtnAddDonor_Click"
-                                Style="{StaticResource MaterialDesignRaisedButton}" Width="160"
-                                HorizontalAlignment="Right"/>
-                    </StackPanel>
-                </GroupBox>
+        <!-- Khu vực thêm mạnh thường quân -->
+        <GroupBox Header="Thêm Mạnh Thường Quân" FontWeight="Bold" Margin="0,0,5,0" VerticalAlignment="Center" FontSize="20" Height="353">
+            <StackPanel Width="1774">
 
-                <!-- Nhập Item -->
-                <GroupBox Header="Thêm vật phẩm ủng hộ" Margin="0,0,0,20">
-                    <StackPanel Margin="10">
-                        <TextBox x:Name="txtItemName" materialDesign:HintAssist.Hint="Tên vật phẩm" Margin="0,5"/>
-                        <TextBox x:Name="txtQuantity" materialDesign:HintAssist.Hint="Số lượng" Margin="0,5"/>
-                        <Button Content="Thêm Vật Phẩm" Click="BtnAddItem_Click"
-                                Style="{StaticResource MaterialDesignRaisedButton}" Width="160"
-                                HorizontalAlignment="Right"/>
-                    </StackPanel>
-                </GroupBox>
+                <Grid Margin="0 5" Width="1683">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
 
-                <!-- Danh sách vật phẩm -->
-                <GroupBox Header="Danh sách vật phẩm đã ủng hộ" Margin="0,0,0,10">
-                    <ListView x:Name="lvItems" Height="200">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Tên vật phẩm" DisplayMemberBinding="{Binding ItemName}" Width="250"/>
-                                <GridViewColumn Header="Số lượng" DisplayMemberBinding="{Binding Quantity}" Width="150"/>
-                                <GridViewColumn Header="Ngày nhận" DisplayMemberBinding="{Binding DateReceived}" Width="200"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </GroupBox>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <!-- Nút hiện danh sách donor -->
-                <Button Content="Hiện danh sách Donor"
-                        Click="BtnShowDonors_Click"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        Width="200"
-                        HorizontalAlignment="Right"
-                        Margin="0,10,0,10"/>
+                    <Grid.RowDefinitions >
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-                <!-- Danh sách donor -->
-                <GroupBox Header="Danh sách mạnh thường quân">
-                    <ListView x:Name="lvDonors" SelectionChanged="lvDonors_SelectionChanged" Height="300">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="60"/>
-                                <GridViewColumn Header="Tên" DisplayMemberBinding="{Binding Name}" Width="200"/>
-                                <GridViewColumn Header="SĐT" DisplayMemberBinding="{Binding Phone}" Width="150"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </GroupBox>
+                    <!-- Họ tên -->
+                    <Label Content="Họ tên:" Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtName" Grid.Row="0" Grid.Column="1" Margin="5" Width="1000"/>
 
+                    <!-- Email -->
+                    <Label Content="Email:" Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtEmail" Grid.Row="1" Grid.Column="1" Margin="5" Width="1000"/>
+
+                    <!-- SĐT -->
+                    <Label Content="SĐT:" Grid.Row="2" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtPhone" Grid.Row="2" Grid.Column="1" Margin="5" Width="1000"/>
+
+                    <!-- Địa chỉ -->
+                    <Label Content="Địa chỉ:" Grid.Row="3" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtAddress" Grid.Row="3" Grid.Column="1" Margin="264,5,0,5" Width="1000" HorizontalAlignment="Left"/>
+
+                    <!-- Ngày đăng ký -->
+                    <Label Content="Ngày đăng ký:" Grid.Row="4" Grid.Column="0" Margin="5" VerticalAlignment="Center"/>
+                    <TextBox x:Name="txtDatesignup" Grid.Row="4" Grid.Column="1" Margin="264,5,0,5" Width="1000" HorizontalAlignment="Left"/>
+                </Grid>
+
+                <!-- Nút Thêm -->
+                <Button Content="Thêm Mạnh Thường Quân"
+                Width="406"
+                Height="40"
+                FontSize="20"
+                HorizontalAlignment="Center"
+                Click="BtnAddDonor_Click"/>
             </StackPanel>
-        </ScrollViewer>
-    </DockPanel>
+        </GroupBox>
+
+
+        <!-- Danh sách mạnh thường quân -->
+        <GroupBox Header="Danh sách Mạnh Thường Quân tạo mới thành công"
+                  FontWeight="Bold" FontSize="20"
+                  Margin="0,6,5,-1"
+                  Grid.Row="1">
+            <DataGrid x:Name="dgDonors"
+                      AutoGenerateColumns="False"
+                      CanUserAddRows="False"
+                      Margin="0,11,0,-1" FontSize="20">
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="Họ tên" Binding="{Binding FullName}" Width="2*"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="3*"/>
+                    <DataGridTextColumn Header="Số điện thoại" Binding="{Binding Phone}" Width="2*"/>
+                    <DataGridTextColumn Header="Địa chỉ" Binding="{Binding Address}" Width="3*"/>
+                    <DataGridTextColumn Header="Ngày đăng ký" Binding="{Binding JoinDate, StringFormat=\{0:dd/MM/yyyy\}}" Width="2*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+    </Grid>
 </Window>

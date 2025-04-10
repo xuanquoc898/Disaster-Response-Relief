@@ -8,20 +8,15 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="Hệ thống Quản Lý Cứu Trợ Thiên Tai" 
-        Height="1140" 
-        Width="1928"
+        Height="1080" 
+        Width="1920"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None" 
         ResizeMode="CanResizeWithGrip">
 
     <Grid>
-        <!-- Background for the entire window -->
-        <Grid.Background>
-            <SolidColorBrush Color="#B71C1C"/>
-        </Grid.Background>
-
         <!-- Custom Title Bar -->
-        <Grid Height="55" VerticalAlignment="Top" Background="#420000">
+        <Grid Height="55" VerticalAlignment="Top" Background="#391867">
             <!-- Đặt Grid.ColumnDefinitions lên đầu tiên -->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -46,134 +41,148 @@
             </StackPanel>
 
             <!-- Logo -->
-            <Image Source="/D2R_Logo.png" Margin="-78,0,1723,0" Grid.ColumnSpan="2"/>
+            <Image Source="/D2R_Logo.png" Margin="-74,0,1719,0" Grid.ColumnSpan="2"/>
 
             <!-- Title -->
             <TextBlock Grid.Column="1" Text="HỆ THỐNG QUẢN LÝ VÀ CỨU TRỢ THIÊN TAI" 
                VerticalAlignment="Center" HorizontalAlignment="Left"
-               FontSize="24" FontWeight="Bold" Foreground="White" FontFamily="Segoe UI" Width="656" Margin="70,0,0,0"/>
+               FontSize="35" FontWeight="Bold" Foreground="White" FontFamily="Segoe UI" Width="1750" Margin="70,0,0,0"/>
         </Grid>
+
 
         <!-- Main Content -->
-        <Grid Margin="7,46,-7,10">
+        <Grid Margin="0,0,0,0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1330"/>
                 <!-- Left side for text -->
-                <ColumnDefinition Width="2*"/>
-                <!-- Middle buffer -->
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="590"/>
                 <!-- Right side for white content area -->
             </Grid.ColumnDefinitions>
-
+            <Rectangle Fill="#B39DDB" Margin="0,55,0,0" Grid.Column="0"/>
+            <Rectangle Fill="White" Margin="0,55,0,0" Grid.Column="1"/>
+            <Image Source="/D2R_Logo.png" Margin="46,91,48,733" Grid.Column="1"/>
             <!-- Left Side: Text -->
-            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2">
-                <Viewbox Stretch="Uniform" MaxWidth="6000" Width="1076">
-                    <StackPanel Width="11393" Height="5355">
-                        <!-- Welcome Text -->
-                        <TextBlock Text="Chào mừng bạn đã đến với" 
-                                   FontSize="550" 
-                                   Foreground="White" 
-                                   FontWeight="Bold" 
-                                      FontStyle="Italic"
-                                   FontFamily="Segoe UI"
-                                   Margin="0,0,0,50"
-                                   TextWrapping="WrapWithOverflow"
-                                   TextAlignment="Center" RenderTransformOrigin="0.467,0.902" Height="1142" Width="7519">
-                            <TextBlock.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform AngleX="1.018"/>
-                                    <RotateTransform/>
-                                    <TranslateTransform X="102.362"/>
-                                </TransformGroup>
-                            </TextBlock.RenderTransform>
-                            <TextBlock.Effect>
-                                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
-                            </TextBlock.Effect>
-                        </TextBlock>
-                        <TextBlock Text="ACE OF SPADES" 
-                                   FontSize="699" 
-                                   Foreground="White" 
-                                   FontWeight="Bold" 
-                                   FontFamily="Segoe UI"
-                                   Background="Black" 
-                                   Padding="985"
-                                   Margin="0,0,90,90"
-                                   TextAlignment="Center" Width="10508">
-                            <TextBlock.Effect>
-                                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
-                            </TextBlock.Effect>
-                        </TextBlock>
-                        <TextBlock Text="Hệ thống Quản Lý Cứu Trợ Thiên Tai" 
-                                   FontSize="500" 
-                                   FontStyle="Italic"
-                                   Foreground="White" 
-                                   FontWeight="Bold" 
-                                   FontFamily="Segoe UI"
-                                   TextWrapping="Wrap"
-                                   TextAlignment="Center" Height="2104" Width="9577">
-                            <TextBlock.Effect>
-                                <DropShadowEffect Color="Black" Direction="320" ShadowDepth="5" Opacity="0.5"/>
-                            </TextBlock.Effect>
-                        </TextBlock>
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="1"/>
 
-                        <!-- Main Title -->
-
-                        <!-- Subtitle -->
-                    </StackPanel>
-                </Viewbox>
-            </StackPanel>
-
+            <Label Content="🌀 Ứng dụng quản lý và cứu trợ thiên tai" 
+                FontSize="50"
+                FontWeight="Bold"
+                Foreground="White"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="167,310,0,0"/>
+            <TextBlock 
+                Text="Hệ thống hỗ trợ quản lý thông tin, điều phối cứu trợ và giúp đỡ người dân trong thiên tai một cách nhanh chóng, hiệu quả."
+                FontSize="40"
+                FontStyle="Italic"
+                FontWeight="Bold"
+                Foreground="White"
+                TextWrapping="Wrap"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="55,687,0,0" Width="1204"/>
             <!-- Right Side: White Content Area -->
-            <Border Grid.Column="1" Background="White" Margin="792,10,0,-8" CornerRadius="0" Grid.ColumnSpan="2">
-                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Height="794">
-                    <!-- Logo -->
-
-                    <!-- Login Form -->
-                    <!-- Logo -->
-
-                    <!-- Login Form -->
-                    <!-- Logo -->
-                    <Image Source="/D2R_Logo.png" Width="430" Height="213"/>
-                    <Border Background="#FCCCCC" Padding="10" CornerRadius="10" Width="558" Height="385">
-                        <StackPanel>
-                            <Label Content="ĐĂNG NHẬP VÀO TÀI KHOẢN" FontSize="20" FontWeight="ExtraBold" 
-                             HorizontalAlignment="Center" Margin="50,15,0,50" FontFamily="Times New Roman"/>
-
-                            <Label Content ="Tên người dùng" FontSize="16" Margin="0,0,0,10" FontWeight="Medium" FontFamily="Times New Roman"/>
-                            <TextBox
-                                x:Name="UsernameTextBox"
-                              
-                                materialDesign:HintAssist.HelperText="Nhập tên người dùng của bạn"
-                                materialDesign:TextFieldAssist.HasClearButton="True"
-                                Width="255"
-                                Margin="0,0,0,20"
-                                FontFamily="Times New Roman" TextChanged="UsernameTextBox_TextChanged"/>
-
-                            <Label Content="Mật khẩu" FontSize="16" Margin="0,0,0,5" FontWeight="Medium"  FontFamily="Times New Roman"/>
-
-
-                            <PasswordBox
-                                          x:Name="PasswordBox"
-                                          materialDesign:HintAssist.HelperText="Ít nhất 8 ký tự"
-                                          materialDesign:TextFieldAssist.HasClearButton="True"
-                                          Width="250"
-                                          Margin="0,0,0,10"
-                                          FontFamily="Times New Roman"
-                                          PasswordChanged="PasswordBox_PasswordChanged"/>
+            <Grid Grid.Column="1">
+                <Image Source="/D2R_Logo.png" Margin="0,-977,1719,0" Grid.ColumnSpan="2"/>
+                <TextBlock 
+                    Text="Chào mừng bạn đến với ứng dụng của chúng tôi!"
+                    FontWeight="Bold"
+                    FontSize="24"
+                    TextWrapping="NoWrap"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    TextAlignment="Center"
+                    
+                    Margin="12,865,0,0" Width="570" Height="54"
+/>
+                <TextBlock  
+                    Text="Đăng nhập ngay để có trải nghiệm an toàn và tiện lợi."
+                    FontSize="20"
+                    TextWrapping="Wrap"
+                    VerticalAlignment="Top"
+                    HorizontalAlignment="Center"
+                    TextAlignment="Center"
+                    FontStyle="Italic" Width="570" Height="54" Margin="0,901,0,0"/>
+                <GroupBox Header="Thông tin đăng nhập"
+                    FontWeight="Bold"
+                    FontSize="25"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Width="516" Height="452" Margin="41,350,0,0">
 
 
-                            <Button x:Name="SignInButton" Content="Đăng nhập" Width="112" Margin="0,20,0,10" 
-                                    Style="{StaticResource MaterialDesignRaisedButton}" Click="SignInButton_Click"
-                                    FontFamily="Times New Roman"/>
-                            <Button Content="Quên mật khẩu?" FontSize="12" Foreground="Blue" 
-                                    Cursor="Hand" Click="ForgotPassword_Click"
-                                    FontFamily="Times New Roman" Background="Transparent" BorderBrush="Transparent" Height="23"/>
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-                        </StackPanel>
-                    </Border>
-                </StackPanel>
-            </Border>
+                        <!-- Username Label -->
+                        <Label Content="Tên đăng nhập:" Grid.Column="0"
+                                 VerticalAlignment="Top"
+                                 Margin="69,10,68,0" Grid.ColumnSpan="2" Height="52"/>
+                        <!-- Username TextBox -->
+                        <TextBox Name="UsernameTextBox"
+                                Grid.Row="0"
+                                 Margin="75,67,62,11" Grid.ColumnSpan="2"/>
+
+                        <!-- Password Label -->
+                        <Label Content="Mật khẩu:"
+                               VerticalAlignment="Top"
+                               Margin="63,29,73,0" Grid.ColumnSpan="2" Grid.Row="1"/>
+                        <!-- PasswordBox -->
+                        <PasswordBox Name="PasswordTe"
+                                     Grid.Row="2"
+                                     Margin="71,11,62,11" Grid.ColumnSpan="2"/>
+
+                        <!-- Forgot Password Button -->
+                        <Button Content="Quên mật khẩu?"
+                Grid.Row="3"
+                HorizontalAlignment="Right"
+                Margin="0,45,98,-22"
+                Background="Transparent"
+                BorderBrush="Transparent"
+                Foreground="Blue"
+                Cursor="Hand"
+                FontStyle="Italic"
+                Click="ForgotPassword_Click" Width="301" Grid.ColumnSpan="2"/>
+
+                        <!-- Login Button -->
+                        <Button Name="LoginButton"
+                Content="Đăng nhập"
+                Grid.Row="3" Grid.Column="1"
+                HorizontalAlignment="Left"
+                Margin="1,10,0,10"
+                Width="120"
+                Height="35"/>
+                    </Grid>
+                </GroupBox>
+
+            </Grid>
         </Grid>
+
+        <materialDesign:Card
+                FontSize="95"
+                Padding="8"
+                Background="#581FA1"
+                Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+                UniformCornerRadius="6" Margin="48,392,652,411"
+ >
+            <TextBlock
+                    FontSize="169"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    TextWrapping="NoWrap"
+                    VerticalAlignment="Top"    
+                     Margin="30,12,4,0" Height="257"><Run Text="ACEOFSPADES" TextDecorations="Underline"/></TextBlock>
+        </materialDesign:Card>
     </Grid>
+
+
 </Window>

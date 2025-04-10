@@ -49,8 +49,13 @@ public partial class MainWindow : Window
     }
     private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
     {
-        string password = PasswordBox.Password; // Truy cập mật khẩu đã nhập
+        string password = Password.Password; // Truy cập mật khẩu đã nhập
         // Ví dụ: Thực hiện một số thao tác với mật khẩu
         Console.WriteLine(password); // Để hiển thị mật khẩu ra màn hình console
+    }
+
+    private void LoginButton_Click(object sender, RoutedEventArgs e)
+    {
+
     }
 }
