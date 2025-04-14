@@ -31,7 +31,7 @@ Nếu dùng HTTPS:
 - Nếu là lần đầu tiên mở dự án ngay sau khi vừa mới tải xuống hãy làm theo các bước sau.
 	- Cấu hình người dùng:
 		Gõ lệnh sau:
-		``git config --global user.gmail "youremail@example.com"``
+		``git config --global user.email "youremail@example.com"``
 		``git config --global user.name "your name"``
 
 - Sau khi đã thực hiện "lần đầu":
@@ -40,7 +40,7 @@ Nếu dùng HTTPS:
 	- Kiểm tra lại các folder/file đã chỉnh sửa đã được đẩy lên Git chưa: ``git status`` (Nếu hiện màu xanh là đã thành công)
 	- Commit các file vừa thêm: ``git commit -m "your commit"``
 		nên đặt tên commit theo chức năng làm được hoặc sửa được gì
-	- Push lên repo trên github: ``git push pbl main``
+	- Push lên repo trên github: ``git push origin main``
 	- Nếu có conflict vui lòng báo ngay cho tui :)))
 > Sau này mỗi lần push chỉ cần làm từ bước "Thêm các file vào local repo" trở về sau
 
@@ -49,6 +49,6 @@ Nếu dùng HTTPS:
 - Mở dự án như hướng dẫn trên.
 - Mở terminal của IDE
 LƯU Ý: Nếu không có update gì trong MaterialDesignToolKit thì thực hiện các bước sau:
-- gõ lệnh sau: ``git pull pbl main``
+- gõ lệnh sau: ``git pull origin main``
 - Sau đó vào code như bình thường
 - Nếu có conflict vui lòng liên hệ tui :)))
