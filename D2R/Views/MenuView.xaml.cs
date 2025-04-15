@@ -17,9 +17,9 @@ namespace D2R.Views
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class MenuView : Window
     {
-        public Window1()
+        public MenuView()
         {
             InitializeComponent();
         }

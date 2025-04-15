@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace D2R.Helpers
 {
@@ -56,3 +57,4 @@ namespace D2R.Helpers
         }
     }
 }
+
