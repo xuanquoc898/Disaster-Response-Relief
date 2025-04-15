@@ -4,31 +4,31 @@ using System.Collections.Generic;
 
 namespace D2R.Services
 {
-    public class DonorService
+    public class CampaignService
     {
-        private readonly DonorRepository _repository;
+        private readonly CampaignRepository _repository;
 
-        public DonorService()
+        public CampaignService()
         {
-            _repository = new DonorRepository();
+            _repository = new CampaignRepository();
         }
 
-        public List<Donor> GetAll()
+        public List<Campaign> GetAll()
         {
             return _repository.GetAll();
         }
 
-        public Donor GetById(int id)
+        public Campaign GetById(int id)
         {
             return _repository.GetById(id);
         }
 
-        public void Add(Donor entity)
+        public void Add(Campaign entity)
         {
             _repository.Add(entity);
         }
 
-        public void Update(Donor entity)
+        public void Update(Campaign entity)
         {
             _repository.Update(entity);
         }

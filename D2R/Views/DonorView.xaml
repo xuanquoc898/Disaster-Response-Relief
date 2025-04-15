@@ -55,7 +55,7 @@
                 Height="40"
                 FontSize="20"
                 HorizontalAlignment="Center"
-                Click="BtnAddDonor_Click"/>
+                />
             </StackPanel>
         </GroupBox>
 

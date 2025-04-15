@@ -4,31 +4,31 @@ using System.Collections.Generic;
 
 namespace D2R.Services
 {
-    public class DonorService
+    public class SyncLogService
     {
-        private readonly DonorRepository _repository;
+        private readonly SyncLogRepository _repository;
 
-        public DonorService()
+        public SyncLogService()
         {
-            _repository = new DonorRepository();
+            _repository = new SyncLogRepository();
         }
 
-        public List<Donor> GetAll()
+        public List<SyncLog> GetAll()
         {
             return _repository.GetAll();
         }
 
-        public Donor GetById(int id)
+        public SyncLog GetById(int id)
         {
             return _repository.GetById(id);
         }
 
-        public void Add(Donor entity)
+        public void Add(SyncLog entity)
         {
             _repository.Add(entity);
         }
 
-        public void Update(Donor entity)
+        public void Update(SyncLog entity)
         {
             _repository.Update(entity);
         }

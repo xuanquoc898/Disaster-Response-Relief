@@ -4,31 +4,31 @@ using System.Collections.Generic;
 
 namespace D2R.Services
 {
-    public class DonorService
+    public class DisasterTypeService
     {
-        private readonly DonorRepository _repository;
+        private readonly DisasterTypeRepository _repository;
 
-        public DonorService()
+        public DisasterTypeService()
         {
-            _repository = new DonorRepository();
+            _repository = new DisasterTypeRepository();
         }
 
-        public List<Donor> GetAll()
+        public List<DisasterType> GetAll()
         {
             return _repository.GetAll();
         }
 
-        public Donor GetById(int id)
+        public DisasterType GetById(int id)
         {
             return _repository.GetById(id);
         }
 
-        public void Add(Donor entity)
+        public void Add(DisasterType entity)
         {
             _repository.Add(entity);
         }
 
-        public void Update(Donor entity)
+        public void Update(DisasterType entity)
         {
             _repository.Update(entity);
         }

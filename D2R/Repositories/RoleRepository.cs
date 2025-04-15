@@ -5,32 +5,32 @@ using System.Linq;
 
 namespace D2R.Repositories
 {
-    public class DonorRepository
+    public class RoleRepository
     {
         private readonly DisasterReliefContext _context;
 
-        public DonorRepository()
+        public RoleRepository()
         {
             _context = new DisasterReliefContext();
         }
 
-        public List<Donor> GetAll()
+        public List<Role> GetAll()
         {
-            return _context.Donors.ToList();
+            return _context.Roles.ToList();
         }
 
-        public Donor GetById(int id)
+        public Role GetById(int id)
         {
-            return _context.Donors.Find(id);
+            return _context.Roles.Find(id);
         }
 
-        public void Add(Donor entity)
+        public void Add(Role entity)
         {
-            _context.Donors.Add(entity);
+            _context.Roles.Add(entity);
             _context.SaveChanges();
         }
 
-        public void Update(Donor entity)
+        public void Update(Role entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
@@ -38,10 +38,10 @@ namespace D2R.Repositories
 
         public void Delete(int id)
         {
-            var entity = _context.Donors.Find(id);
+            var entity = _context.Roles.Find(id);
             if (entity != null)
             {
-                _context.Donors.Remove(entity);
+                _context.Roles.Remove(entity);
                 _context.SaveChanges();
             }
         }
