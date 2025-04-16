@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 using D2R.Helpers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
+
 namespace D2R.Models;
 
 public partial class DisasterReliefContext : DbContext
@@ -56,8 +57,6 @@ public partial class DisasterReliefContext : DbContext
         var connectionString = AppConfig.Configuration.GetConnectionString("DefaultConnection");
         optionsBuilder.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
     }
-
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
@@ -320,6 +319,7 @@ public partial class DisasterReliefContext : DbContext
             entity.HasIndex(e => e.WarehouseId, "WarehouseId");
 
             entity.Property(e => e.Password).HasMaxLength(256);
+            entity.Property(e => e.Salt).HasMaxLength(256);
             entity.Property(e => e.Username).HasMaxLength(50);
 
             entity.HasOne(d => d.Area).WithMany(p => p.Users)

@@ -7,39 +7,36 @@ namespace D2R.Views
     /// <summary>
     /// Interaction logic for DonorManagementPage.xaml
     /// </summary>
-    namespace D2R.Views
+    public partial class DonorManagementPage : Window
     {
-        public partial class DonorManagementPage : Window
+        public DonorManagementPage()
         {
-            public DonorManagementPage()
-            {
-                //InitializeComponent(); 
-            }
+            InitializeComponent();
+        }
 
-            private void AddDonation_Click(object sender, MouseButtonEventArgs e)
-            {
-                new DonorView().ShowDialog();
-            }
+        private void AddDonation_Click(object sender, MouseButtonEventArgs e)
+        {
+            new DonorView().ShowDialog();
+        }
 
-            private void UpdateDonation_Click(object sender, MouseButtonEventArgs e)
-            {
-                // _mainFrame.Navigate(new UpdateDonationPage());
-            }
+        private void UpdateDonation_Click(object sender, MouseButtonEventArgs e)
+        {
+            // _mainFrame.Navigate(new UpdateDonationPage());
+        }
 
-            private void TrackStatus_Click(object sender, MouseButtonEventArgs e)
-            {
-                // _mainFrame.Navigate(new TrackDonationStatusPage());
-            }
+        private void TrackStatus_Click(object sender, MouseButtonEventArgs e)
+        {
+            // _mainFrame.Navigate(new TrackDonationStatusPage());
+        }
 
-            private void ShowDonors_Click(object sender, MouseButtonEventArgs e)
-            {
-                // _mainFrame.Navigate(new DonorListPage());
-            }
+        private void ShowDonors_Click(object sender, MouseButtonEventArgs e)
+        {
+            // _mainFrame.Navigate(new DonorListPage());
+        }
 
-            private void CheckHistory_Click(object sender, MouseButtonEventArgs e)
-            {
-                // _mainFrame.Navigate(new DonationHistoryPage());
-            }
+        private void CheckHistory_Click(object sender, MouseButtonEventArgs e)
+        {
+            // _mainFrame.Navigate(new DonationHistoryPage());
         }
     }
 }

@@ -51,6 +51,7 @@
 
                 <!-- Nút Thêm -->
                 <Button Content="Thêm Mạnh Thường Quân"
+                        Click="BtnAddDonor_Click"
                 Width="406"
                 Height="40"
                 FontSize="20"
