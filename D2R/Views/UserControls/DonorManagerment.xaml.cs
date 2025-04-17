@@ -20,14 +20,15 @@ namespace D2R.Views.UserControls
     /// </summary>
     public partial class DonorManagerment : UserControl
     {
-        public DonorManagerment()
+        public DonorManagerment(object Content)
         {
             InitializeComponent();
         }
-
+        public Action<UserControl> Navigate;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //MainContent.Content = new AddDonorView();
+            Content = new AddDonorView();
+            // Navigate?.Invoke(new AddDonorView());
         }
     }
 }

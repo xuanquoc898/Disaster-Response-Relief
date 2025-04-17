@@ -64,7 +64,11 @@ namespace D2R.Views
 
         private void ManageDonors_Click(object sender, RoutedEventArgs e)
         {
-            MainContent.Content = new DonorManagerment();
+            MainContent.Content = new DonorManagerment(MainContent.Content);
+            // var donor = new DonorManagerment();
+            // donor.Navigate = view => MainContent.Content = view;
+            // MainContent.Content = donor;
+
         }
 
         private void ManageWarehouse_Click(object sender, RoutedEventArgs e)

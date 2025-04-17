@@ -28,83 +28,132 @@
             <Grid x:Name="SidebarPanel"
               Grid.Column="0"
               Panel.ZIndex="1"
-              Background="#E27D7D"
+              Background="#F0A5A5"
               HorizontalAlignment="Left">
-                <StackPanel HorizontalAlignment="Left">
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Stretch">
+                    <!-- Toggle Button giữ nguyên -->
                     <ToggleButton x:Name="SidebarToggleButton"
-                              Style="{StaticResource MaterialDesignHamburgerToggleButton}"
-                              IsChecked="True"
-                              Checked="SidebarToggleButton_Checked"
-                              Unchecked="SidebarToggleButton_Unchecked"
-                              Margin="10"
-                              HorizontalAlignment="Right">
-                        <materialDesign:PackIcon Kind="Menu" />
+                  Style="{StaticResource MaterialDesignHamburgerToggleButton}"
+                  IsChecked="True"
+                  Checked="SidebarToggleButton_Checked"
+                  Unchecked="SidebarToggleButton_Unchecked"
+                  Margin="10"
+                  HorizontalAlignment="Right">
+                        <materialDesign:PackIcon Kind="Menu" Width="28" Height="28" />
                     </ToggleButton>
 
-                    <!-- Menu Buttons -->
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" ToolTip="Trang chủ" Click="Home_Click" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Home" Foreground="Black" />
-                            <TextBlock Text="Trang chủ" Margin="10,0,0,0"
-                         Foreground="Black" FontWeight="Bold" FontFamily="Segoe UI" FontSize="14"
-                         Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                        </StackPanel>
-                    </Button>
+                    <!-- Menu Buttons giãn cách đều -->
+                    <UniformGrid Rows="7" VerticalAlignment="Stretch" >
+                        <!-- Trang chủ -->
+                        <Button
+                            Margin="0,5"
+            Style="{StaticResource MaterialDesignRaisedButton}"
+            ToolTip="Trang chủ"
+            Click="Home_Click"
+            HorizontalContentAlignment="Left"
+            Padding="10,5"
+            materialDesign:ButtonAssist.CornerRadius="10"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+            Background="#EB7F7F"
+            BorderBrush="#E9D7D7"
+            Foreground="White">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Home" Foreground="CornflowerBlue" Width="28" Height="28" />
+                                <TextBlock Text="Trang chủ"
+                           Margin="10,0,0,0"
+                           FontSize="16"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </StackPanel>
+                        </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" ToolTip="Quản lý tài khoản" Click="ManageAccounts_Click" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="AccountMultiple" Foreground="Black" />
-                            <TextBlock Text="Quản lý tài khoản" Margin="10,0,0,0"
-                         Foreground="Black" FontWeight="Bold" FontFamily="Segoe UI" FontSize="14"
-                         Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                        </StackPanel>
-                    </Button>
+                        <!-- Quản lý tài khoản -->
+                        <Button 
+                            Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Quản lý tài khoản" Click="ManageAccounts_Click"
+                HorizontalContentAlignment="Left" Padding="10,5"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="AccountMultiple" Foreground="Black" Width="28" Height="28" />
+                                <TextBlock Text="Quản lý tài khoản"
+                           Margin="10,0,0,0" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </StackPanel>
+                        </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" ToolTip="Quản lý Mạnh Thường Quân" Click="ManageDonors_Click" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="AccountHeartOutline" Foreground="Black" />
-                            <TextBlock Text="Quản lý MTQ" Margin="10,0,0,0"
-                         Foreground="Black" FontWeight="Bold" FontFamily="Segoe UI" FontSize="14"
-                         Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                        </StackPanel>
-                    </Button>
+                        <!-- Quản lý MTQ -->
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Quản lý Mạnh Thường Quân" Click="ManageDonors_Click"
+                HorizontalContentAlignment="Left" Padding="10,5"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="AccountHeartOutline" Foreground="Black" Width="28" Height="28" />
+                                <TextBlock Text="Quản lý MTQ"
+                           Margin="10,0,0,0" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </StackPanel>
+                        </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" ToolTip="Quản lý kho" Click="ManageWarehouse_Click" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Warehouse" Foreground="Black" />
-                            <TextBlock Text="Quản lý kho" Margin="10,0,0,0"
-                         Foreground="Black" FontWeight="Bold" FontFamily="Segoe UI" FontSize="14"
-                         Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                        </StackPanel>
-                    </Button>
+                        <!-- Quản lý kho -->
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Quản lý kho" Click="ManageWarehouse_Click"
+                HorizontalContentAlignment="Left" Padding="10,5"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="Warehouse" Foreground="Black" Width="28" Height="28" />
+                                <TextBlock Text="Quản lý kho"
+                           Margin="10,0,0,0" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </StackPanel>
+                        </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" ToolTip="Yêu cầu cứu trợ" Click="RequestSupport_Click" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="HandshakeOutline" Foreground="Black" />
-                            <TextBlock Text="Yêu cầu cứu trợ" Margin="10,0,0,0"
-                         Foreground="Black" FontWeight="Bold" FontFamily="Segoe UI" FontSize="14"
-                         Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                        </StackPanel>
-                    </Button>
+                        <!-- Yêu cầu cứu trợ -->
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Yêu cầu cứu trợ" Click="RequestSupport_Click"
+                HorizontalContentAlignment="Left" Padding="10,5"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="HandshakeOutline" Foreground="Black" Width="28" Height="28" />
+                                <TextBlock Text="Yêu cầu cứu trợ"
+                           Margin="10,0,0,0" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </StackPanel>
+                        </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" ToolTip="Thống kê" Click="Statistics_Click" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="ChartBar" Foreground="Black" />
-                            <TextBlock Text="Thống kê" Margin="10,0,0,0"
-                         Foreground="Black" FontWeight="Bold" FontFamily="Segoe UI" FontSize="14"
-                         Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                        </StackPanel>
-                    </Button>
+                        <!-- Thống kê -->
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Thống kê" Click="Statistics_Click"
+                HorizontalContentAlignment="Left" Padding="10,5"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="ChartBar" Foreground="Black" Width="28" Height="28" />
+                                <TextBlock Text="Thống kê"
+                           Margin="10,0,0,0" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </StackPanel>
+                        </Button>
 
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" ToolTip="Đăng xuất" Click="Logout_Click" HorizontalContentAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="LogoutVariant" Foreground="Black" />
-                            <TextBlock Text="Đăng xuất" Margin="10,0,0,0"
-                         Foreground="Black" FontWeight="Bold" FontFamily="Segoe UI" FontSize="14"
-                         Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}"/>
-                        </StackPanel>
-                    </Button>
+                        <!-- Đăng xuất -->
+                        <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Đăng xuất" Click="Logout_Click"
+                HorizontalContentAlignment="Left" Padding="10,5"
+                materialDesign:ButtonAssist.CornerRadius="10"
+                Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="LogoutVariant" Foreground="Black" Width="28" Height="28" />
+                                <TextBlock Text="Đăng xuất"
+                           Margin="10,0,0,0" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </StackPanel>
+                        </Button>
+                    </UniformGrid>
                 </StackPanel>
+
             </Grid>
 
             <!-- Main Content -->

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using D2R.ViewModels;
 namespace D2R.Views.UserControls
 {
     /// <summary>
@@ -20,9 +20,15 @@ namespace D2R.Views.UserControls
     /// </summary>
     public partial class AddDonorView : UserControl
     {
+        AddDonorViewModel _addDonorVM = new();
         public AddDonorView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _addDonorVM.AddDonor(txtName.Text, txtCCCD.Text, txtPhone.Text, txtEmail.Text);
         }
     }
 }
