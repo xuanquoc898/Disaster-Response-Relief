@@ -9,6 +9,10 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <None Remove="D2R_Logo.png" />
+    </ItemGroup>
+
+    <ItemGroup>
       <PackageReference Include="MaterialDesignColors" Version="5.2.1" />
       <PackageReference Include="MaterialDesignThemes" Version="5.2.1" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.15" />
@@ -29,6 +33,12 @@
     <ItemGroup>
       <Folder Include="Models\" />
       <Folder Include="Repositories\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="D2R_Logo.png">
+        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      </Resource>
     </ItemGroup>
 
     <ItemGroup>

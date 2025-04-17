@@ -10,26 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-namespace D2R.Views
+using D2R.Views.UserControls;
+namespace D2R.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for MenuPage.xaml
+    /// Interaction logic for DonorManagerment.xaml
     /// </summary>
-    public partial class MenuPage : Page
+    public partial class DonorManagerment : UserControl
     {
-        private Frame _mainFrame;
-
-        public MenuPage(Frame mainFrame)
+        public DonorManagerment()
         {
             InitializeComponent();
-            _mainFrame = mainFrame;
         }
 
-        private void DonorManagement_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _mainFrame.Navigate(new DonorManagementPage()); // Điều hướng đến trang Info
+            //MainContent.Content = new AddDonorView();
         }
     }
 }

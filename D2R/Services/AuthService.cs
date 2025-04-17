@@ -10,9 +10,9 @@ public class AuthService
 {
     private readonly UserRepository _userRepository;
 
-    public AuthService(UserRepository userRepository)
+    public AuthService()
     {
-        _userRepository = userRepository;
+        _userRepository = new UserRepository();
     }
 
     public object? Auth(string username, string password)

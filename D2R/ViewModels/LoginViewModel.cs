@@ -1,34 +1,94 @@
-﻿using D2R.Services;
-using D2R.Models;
+﻿using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
+using D2R.Services;
+using D2R.Commands;
+
 namespace D2R.ViewModels;
 
-public class LoginViewModel
+public class LoginViewModel : INotifyPropertyChanged
 {
-     private readonly AuthService _authService;
-     private string _username = string.Empty;
-     private string _password = string.Empty;
-     private string _errorMessage = string.Empty;
-     private bool _isLoggedIn = false;
-     private bool _isLoginMode;
+    private readonly AuthService _authService;
+    private string _username = string.Empty;
+    private string _password = string.Empty;
+    private string _errorMessage = string.Empty;
+    private bool _isLoggedIn;
 
-     public LoginViewModel(AuthService authService)
-     {
-          _authService = authService;
-     }
+    public event Action? LoginSucceeded;
+    public ICommand LoginCommand { get; }
 
-     public bool Login(string username, string password)
-     {
-          if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
-          {
-               return false;
-          }
+    public LoginViewModel()
+    {
+        _authService = new AuthService();
+        LoginCommand = new RelayCommand(ExecuteLogin, CanExecuteLogin);
+    }
 
-          var user = _authService.Auth(username, password);
-          if (user == null)
-          {
-               return false;
-          }
-          
-          return true;
-     }
+    public string Username
+    {
+        get => _username;
+        set
+        {
+            _username = value;
+            OnPropertyChanged(nameof(Username));
+        }
+    }
+
+    public string Password
+    {
+        get => _password;
+        set
+        {
+            _password = value;
+            OnPropertyChanged(nameof(Password));
+        }
+    }
+
+    public string ErrorMessage
+    {
+        get => _errorMessage;
+        set
+        {
+            _errorMessage = value;
+            OnPropertyChanged(nameof(ErrorMessage));
+        }
+    }
+
+    public bool IsLoggedIn
+    {
+        get => _isLoggedIn;
+        set
+        {
+            _isLoggedIn = value;
+            OnPropertyChanged(nameof(IsLoggedIn));
+        }
+    }
+
+    private void ExecuteLogin(object? parameter)
+    {
+        if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
+        {
+            ErrorMessage = "Username and/or password are required.";
+            return;
+        }
+
+        var user = _authService.Auth(Username, Password);
+        if (user == null)
+        {
+            ErrorMessage = "Invalid username or password.";
+            return;
+        }
+
+        ErrorMessage = string.Empty;
+        IsLoggedIn = true;
+        LoginSucceeded?.Invoke();
+    }
+
+    private bool CanExecuteLogin(object? parameter)
+    {
+        return !string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password);
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+    private void OnPropertyChanged(string propertyName)
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
