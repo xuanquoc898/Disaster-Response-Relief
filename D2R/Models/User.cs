@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace D2R.Models;
 
@@ -7,8 +8,10 @@ public partial class User
 {
     public int UserId { get; set; }
 
+    [Required]
     public string Username { get; set; } = null!;
 
+    [Required]
     public string Password { get; set; } = null!;
 
     public string Salt { get; set; } = null!;
