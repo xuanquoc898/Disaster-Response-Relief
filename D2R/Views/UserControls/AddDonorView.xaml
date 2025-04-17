@@ -48,7 +48,7 @@
                         HorizontalAlignment="Left"
                         Margin="5"
                         Grid.Row="5" Grid.ColumnSpan="2"
-                        Style="{StaticResource MaterialDesignRaisedButton}"/>
+                        Style="{StaticResource MaterialDesignRaisedButton}" Click="Button_Click"/>
             </Grid>
         </GroupBox>
 
