@@ -10,8 +10,8 @@
         Title="Hệ thống Quản Lý Cứu Trợ Thiên Tai" 
         Height="1080" 
         Width="1920"
-        WindowStartupLocation="CenterScreen"
-        WindowStyle="None" 
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="ToolWindow" 
         ResizeMode="CanResizeWithGrip">
 
     <Grid>
