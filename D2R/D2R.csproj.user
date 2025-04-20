@@ -2,13 +2,61 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Views\BCTKOptions.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\BCTK_TaoBaoCao.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\BCTK_XemBC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\DonorManagementPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\MenuPage.xaml.cs">
+    <Compile Update="Views\MenuView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\MenuView.xaml.cs">
+    <Compile Update="Views\NhapKhoVienTro.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\NhapKhoMua.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\PhanPhoiHangHoa.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\QuanLyKho.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\QuanLyMTQOptions.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\QuanLyMTQ_XemDS.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\QuanLyTaiKhoan_XemDS.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\QuanLyTaiKhoanOptions.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\SETTING.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\ThongKeHangTon.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\WindowView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\XuatKho.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\YeuCauCuuTro_XemDS.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\YeuCauCuuTroOptions.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

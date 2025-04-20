@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace D2R.Views
 {
-    public partial class DonorView : Window
+    public partial class DonorView : Page
     {
         // private readonly DonorViewModel _donorVM = new();
         // private readonly ItemViewModel _itemVM = new();

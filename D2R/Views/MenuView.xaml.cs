@@ -17,11 +17,16 @@ namespace D2R.Views
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class MenuView : Window
+    public partial class MenuView : Page
     {
         public MenuView()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

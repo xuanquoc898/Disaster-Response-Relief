@@ -1,5 +1,5 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace D2R.Views
@@ -7,36 +7,41 @@ namespace D2R.Views
     /// <summary>
     /// Interaction logic for DonorManagementPage.xaml
     /// </summary>
-    public partial class DonorManagementPage : Window
+    public partial class DonorManagementPage : Page
     {
         public DonorManagementPage()
         {
             InitializeComponent();
         }
 
-        private void AddDonation_Click(object sender, MouseButtonEventArgs e)
+        private void AddNewButton_Click(object sender, RoutedEventArgs e)
         {
-            new DonorView().ShowDialog();
+            // Navigate to AddDonorPage or show dialog
+            // NavigationService?.Navigate(new AddDonorPage());
         }
 
-        private void UpdateDonation_Click(object sender, MouseButtonEventArgs e)
+        private void MinimizeButton_Click(object sender, RoutedEventArgs e)
         {
-            // _mainFrame.Navigate(new UpdateDonationPage());
+            var window = Window.GetWindow(this);
+            if (window != null)
+            {
+                window.WindowState = WindowState.Minimized;
+            }
+
         }
 
-        private void TrackStatus_Click(object sender, MouseButtonEventArgs e)
+        private void MaximizeButton_Click(object sender, RoutedEventArgs e)
         {
-            // _mainFrame.Navigate(new TrackDonationStatusPage());
+            var window = Window.GetWindow(this);
+            if (window != null)
+            {
+                window.WindowState = window.WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            }
         }
 
-        private void ShowDonors_Click(object sender, MouseButtonEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            // _mainFrame.Navigate(new DonorListPage());
-        }
-
-        private void CheckHistory_Click(object sender, MouseButtonEventArgs e)
-        {
-            // _mainFrame.Navigate(new DonationHistoryPage());
+            Window.GetWindow(this)?.Close();
         }
     }
 }

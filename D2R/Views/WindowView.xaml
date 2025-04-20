@@ -1,0 +1,288 @@
+﻿<Window x:Class="D2R.Views.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Hệ thống cứu trợ thiên tai"
+        Width="1920" Height="1025"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Window.Resources>
+        <!-- Blood Red Color Resources -->
+        <Color x:Key="PrimaryBloodRed">#8B0000</Color>
+        <Color x:Key="DarkBloodRed">#660000</Color>
+        <Color x:Key="LightBloodRed">#A52A2A</Color>
+        <Color x:Key="VeryLightBloodRed">#FFE4E1</Color>
+
+        <!-- SolidColorBrush Resources -->
+        <SolidColorBrush x:Key="PrimaryBloodRedBrush" Color="{StaticResource PrimaryBloodRed}"/>
+        <SolidColorBrush x:Key="DarkBloodRedBrush" Color="{StaticResource DarkBloodRed}"/>
+        <SolidColorBrush x:Key="LightBloodRedBrush" Color="{StaticResource LightBloodRed}"/>
+        <SolidColorBrush x:Key="VeryLightBloodRedBrush" Color="{StaticResource VeryLightBloodRed}"/>
+
+        <!-- Button Styles -->
+        <Style x:Key="WindowControlButton" TargetType="Button">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource DarkBloodRedBrush}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="PrimaryButton" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryBloodRedBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource DarkBloodRedBrush}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#500000"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#400000"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Input Styles -->
+        <Style x:Key="ModernTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource LightBloodRedBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ModernPasswordBox" TargetType="PasswordBox">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource LightBloodRedBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="PasswordBox">
+                        <Border x:Name="border" 
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Effects -->
+        <DropShadowEffect x:Key="SubtleShadow" BlurRadius="5" ShadowDepth="2" Opacity="0.2"/>
+    </Window.Resources>
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
+    </WindowChrome.WindowChrome>
+
+    <!-- Single root element -->
+    <Border Background="White" CornerRadius="10" Margin="5">
+        <Border.Effect>
+            <DropShadowEffect BlurRadius="20" ShadowDepth="5" Opacity="0.4"/>
+        </Border.Effect>
+
+        <Grid>
+            <!-- Layout Root -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Grid Grid.Row="0" Height="70" Background="{StaticResource PrimaryBloodRedBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Logo + Title -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Column="0">
+                    <Image Source="/D2R_Logo.png" Width="70" Height="70" Margin="0,0"/>
+                    <TextBlock Text="HỆ THỐNG QUẢN LÝ VÀ CỨU TRỢ THIÊN TAI"
+                               VerticalAlignment="Center"
+                               Foreground="White"
+                               FontSize="26"
+                               FontWeight="Bold"
+                               FontFamily="Segoe UI"
+                               Margin="10,0,0,0"/>
+                </StackPanel>
+
+                <!-- Control Buttons -->
+                <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right">
+                    <Button x:Name="btnMinimize" Style="{StaticResource WindowControlButton}" Content="─" 
+                            Click="btnMinimize_Click" Height="70"/>
+                    <Button x:Name="btnMaximize" Style="{StaticResource WindowControlButton}" Content="□" 
+                            Click="btnMaximize_Click" Height="70"/>
+                    <Button x:Name="btnClose" Style="{StaticResource WindowControlButton}" Content="✕" 
+                            Click="btnClose_Click" Height="70"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Main Content -->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="0.4*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Left: Introduction -->
+                <Grid Grid.Column="0">
+                    <Grid.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="{StaticResource LightBloodRed}" Offset="0"/>
+                            <GradientStop Color="{StaticResource PrimaryBloodRed}" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
+
+                    <StackPanel VerticalAlignment="Center" Margin="80">
+                        <Label Content="🌀 Ứng dụng quản lý và cứu trợ thiên tai" 
+                               FontSize="48" FontWeight="Bold" Foreground="White"
+                               FontFamily="Segoe UI"/>
+                        <TextBlock Text="Hệ thống hỗ trợ quản lý thông tin, điều phối cứu trợ và giúp đỡ người dân trong thiên tai một cách nhanh chóng, hiệu quả."
+                                   FontSize="24" FontStyle="Italic" FontWeight="SemiBold"
+                                   Foreground="White" TextWrapping="Wrap"
+                                   Margin="0,30,0,0" Width="1100"
+                                   FontFamily="Segoe UI" LineHeight="32"
+                                   TextAlignment="Justify"/>
+                        <Border CornerRadius="10" Margin="0,50,0,0" Height="300" 
+                                HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                                Background="{StaticResource PrimaryBloodRedBrush}" 
+                                BorderBrush="{StaticResource DarkBloodRedBrush}" 
+                                BorderThickness="2">
+                            <Image Source="/D2R_Logo.png" Stretch="Uniform" Margin="20"/>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+
+                <!-- Right: Login Form -->
+                <Grid Grid.Column="1" Background="{StaticResource VeryLightBloodRedBrush}">
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="450">
+                        <!-- Welcome -->
+                        <TextBlock Text="Chào mừng bạn đến với ứng dụng của chúng tôi!"
+                                   FontWeight="Bold" FontSize="18"
+                                   TextAlignment="Center" Margin="0,0,0,30"
+                                   Foreground="{StaticResource PrimaryBloodRedBrush}"
+                                   FontFamily="Segoe UI"/>
+
+                        <!-- Logo -->
+                        <Border CornerRadius="100" Width="150" Height="150" Margin="0,0,0,30"
+                                BorderBrush="{StaticResource PrimaryBloodRedBrush}" 
+                                BorderThickness="3">
+                            <Image Source="/D2R_Logo.png" Stretch="Uniform" Margin="10"/>
+                        </Border>
+
+                        <!-- Login Group -->
+                        <Border CornerRadius="10" Background="White" 
+                                BorderBrush="{StaticResource LightBloodRedBrush}" 
+                                BorderThickness="1"
+                                Padding="20" Margin="0,0,0,20"
+                                Effect="{StaticResource SubtleShadow}">
+                            <StackPanel>
+                                <TextBlock Text="Đăng nhập hệ thống"
+                                           FontWeight="Bold" FontSize="20"
+                                           Foreground="{StaticResource PrimaryBloodRedBrush}" 
+                                           Margin="0,0,0,20"
+                                           FontFamily="Segoe UI"/>
+
+                                <!-- Username -->
+                                <TextBlock Text="Tên đăng nhập" Margin="0,5,0,5"
+                                           FontWeight="SemiBold" Foreground="#555"/>
+                                <TextBox x:Name="UsernameTextBox" Height="40" 
+                                         Style="{StaticResource ModernTextBox}"
+                                         FontSize="16" Padding="10"/>
+
+                                <!-- Password -->
+                                <TextBlock Text="Mật khẩu" Margin="0,15,0,5"
+                                           FontWeight="SemiBold" Foreground="#555"/>
+                                <PasswordBox x:Name="PasswordBox" Height="40" 
+                                             Style="{StaticResource ModernPasswordBox}"
+                                             FontSize="16" Padding="10" Margin="0,10,0,10"/>
+
+                                <!-- Forgot Password -->
+                               
+
+                                <!-- Login Button -->
+                                <Button x:Name="LoginButton" Content="Đăng nhập" 
+                                        Height="48" FontSize="16" FontWeight="Bold" 
+                                        Style="{StaticResource PrimaryButton}"
+                                        Click="LoginButton_Click"/>
+
+                                <Button Content="Quên mật khẩu?"
+                                        HorizontalAlignment="Right" Margin="0,10,0,20"
+                                        Foreground="{StaticResource PrimaryBloodRedBrush}"
+                                        Background="Transparent"
+                                        BorderBrush="Transparent"
+                                        Cursor="Hand"
+                                        FontStyle="Italic"
+                                        Click="ForgotPassword_Click" Width="408" Height="38"/>
+                            </StackPanel>
+                        </Border>
+
+                        <!-- Extra info -->
+                        <TextBlock Text="Đăng nhập ngay để có trải nghiệm an toàn và tiện lợi."
+                                   FontSize="16" FontStyle="Italic"
+                                   TextAlignment="Center" 
+                                   Foreground="{StaticResource PrimaryBloodRedBrush}"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
