@@ -1,7 +1,5 @@
 using D2R.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace D2R.Repositories
 {

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using D2R.Helpers;
+﻿using D2R.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Pomelo.EntityFrameworkCore.MySql.Scaffolding.Internal;
 
 namespace D2R.Models;
 

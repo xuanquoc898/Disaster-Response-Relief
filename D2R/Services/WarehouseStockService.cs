@@ -1,6 +1,5 @@
 using D2R.Models;
 using D2R.Repositories;
-using System.Collections.Generic;
 
 namespace D2R.Services
 {
@@ -37,5 +36,29 @@ namespace D2R.Services
         {
             _repository.Delete(id);
         }
+
+        public void AddOrUpdateStock(int? warehouseId, int itemId, int quantity)
+        {
+            var existing = GetAll()
+                .FirstOrDefault(s => s.WarehouseId == warehouseId && s.ItemId == itemId);
+
+            if (existing != null)
+            {
+                existing.Quantity = (existing.Quantity ?? 0) + quantity;
+                Update(existing);
+            }
+            else
+            {
+                var newStock = new WarehouseStock
+                {
+                    WarehouseId = warehouseId,
+                    ItemId = itemId,
+                    Quantity = quantity,
+                    LastUpdated = DateTime.Now
+                };
+                Add(newStock);
+            }
+        }
+
     }
 }

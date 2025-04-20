@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace D2R.Models;
+﻿namespace D2R.Models;
 
 public partial class DisasterLevel
 {

@@ -1,8 +1,9 @@
-﻿using System.ComponentModel;
-using System.Windows;
-using System.Windows.Input;
+﻿using D2R.Commands;
+using D2R.Helpers;
+using D2R.Models;
 using D2R.Services;
-using D2R.Commands;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace D2R.ViewModels;
 
@@ -81,6 +82,8 @@ public class LoginViewModel : INotifyPropertyChanged
         ErrorMessage = string.Empty;
         IsLoggedIn = true;
         LoginSucceeded?.Invoke();
+        LoginSession.CurrentUser = (User)user;
+
     }
 
     private bool CanExecuteLogin(object? parameter)

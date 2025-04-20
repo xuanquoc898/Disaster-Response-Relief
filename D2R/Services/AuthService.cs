@@ -1,8 +1,6 @@
-﻿using System;
-using System.Text;
+﻿using D2R.Repositories;
 using System.Security.Cryptography;
-using D2R.Models;
-using D2R.Repositories;
+using System.Text;
 
 namespace D2R.Services;
 
@@ -27,13 +25,13 @@ public class AuthService
 
     private bool Verify(string Password, string HashedPassword, string Salt)
     {
-        if (ComputeSHA256Hash(Password+Salt) == HashedPassword)
+        if (ComputeSHA256Hash(Password + Salt) == HashedPassword)
         {
             return true;
         }
         return false;
     }
-    
+
     static string GenerateSaltBase64(int length)
     {
         byte[] saltBytes = new byte[length];
@@ -58,5 +56,5 @@ public class AuthService
             }
             return sb.ToString();
         }
-    }   
+    }
 }

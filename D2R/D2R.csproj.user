@@ -2,22 +2,28 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="TestWin.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Update="Views\Layouts\MainLayout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\MenuView.xaml.cs">
+    <Compile Update="Views\UserControls\AddDonorView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\UserControls\AddDonorView.xaml.cs">
+    <Compile Update="Views\UserControls\DonationView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserControls\DonationCategoryGroupControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserControls\DonorManagerment.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserControls\StartView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserControls\SyncView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserControls\WarehouseLocalView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
