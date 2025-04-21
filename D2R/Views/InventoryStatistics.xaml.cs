@@ -5,12 +5,12 @@ using D2R.ViewModels;
 
 namespace D2R.Views
 {
-    public partial class KiemKeHangTon : UserControl
+    public partial class InventoryStatistics : UserControl
     {
-        public KiemKeHangTon()
+        public InventoryStatistics()
         {
             InitializeComponent();
-            DataContext = new KiemKeHangTon();
+            DataContext = new InventoryStatistics();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
