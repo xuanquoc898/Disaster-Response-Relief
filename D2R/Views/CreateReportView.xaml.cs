@@ -4,9 +4,9 @@ using System.Windows.Navigation;
 
 namespace D2R.Views
 {
-    public partial class CreateReportPage : UserControl
+    public partial class CreateReportView : UserControl
     {
-        public CreateReportPage()
+        public CreateReportView()
         {
             InitializeComponent();
             LoadDefaultReportSettings();
@@ -14,7 +14,7 @@ namespace D2R.Views
 
         private void LoadDefaultReportSettings()
         {
-            // TODO: Tải các thiết lập mặc định hoặc từ lần tạo trước
+            
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
@@ -24,19 +24,12 @@ namespace D2R.Views
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Thêm code xử lý tạo báo cáo mới
-            // Validate dữ liệu đầu vào
-           
-
-            // Lưu báo cáo và hiển thị kết quả
-            
-
             
         }
 
         private void PreviewReport()
         {
-            // TODO: Thêm code xử lý xem trước báo cáo
+            
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {

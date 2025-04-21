@@ -1,6 +1,5 @@
-﻿using D2R.Services;
+﻿using D2R.Views;
 using System.ComponentModel;
-using D2R.Views;
 
 namespace D2R.ViewModels
 {

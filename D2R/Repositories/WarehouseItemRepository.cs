@@ -1,7 +1,5 @@
 using D2R.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace D2R.Repositories
 {
@@ -45,5 +43,10 @@ namespace D2R.Repositories
                 _context.SaveChanges();
             }
         }
+        public WarehouseItem? GetByItemId(int itemId)
+        {
+            return _context.WarehouseItems.FirstOrDefault(w => w.ItemId == itemId);
+        }
+
     }
 }

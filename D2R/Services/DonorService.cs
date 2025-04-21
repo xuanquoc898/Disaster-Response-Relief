@@ -1,8 +1,6 @@
-﻿using D2R.Models;
+﻿using D2R.Helpers;
+using D2R.Models;
 using D2R.Repositories;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using D2R.Helpers;
 using System.Windows;
 namespace D2R.Services
 {
@@ -48,7 +46,7 @@ namespace D2R.Services
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-        
+
 
 
         public void Update(Donor entity)

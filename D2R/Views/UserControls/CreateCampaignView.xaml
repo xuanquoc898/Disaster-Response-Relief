@@ -1,0 +1,40 @@
+﻿
+<UserControl x:Class="D2R.Views.UserControls.CreateCampaignView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:D2R.Views.UserControls"
+             Background="White"
+             Height="Auto" Width="Auto">
+    <StackPanel Margin="20">
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <StackPanel Margin="0 0 20 0">
+                <TextBlock Text="Loại thiên tai"/>
+                <ComboBox x:Name="DisasterTypeComboBox"
+                          Width="200"
+                          SelectionChanged="DisasterTypeComboBox_SelectionChanged"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="DisasterTypeId"/>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock Text="Mức độ thiên tai"/>
+                <ComboBox x:Name="DisasterLevelComboBox"
+                          Width="200"
+                          DisplayMemberPath="Level"
+                          SelectedValuePath="LevelId"/>
+            </StackPanel>
+        </StackPanel>
+
+        <TextBlock Text="Danh sách vật phẩm cần cứu trợ:" FontWeight="Bold" Margin="0 10 0 5"/>
+        <ItemsControl x:Name="CategoryGroupsPanel"/>
+
+        <Button Content="Thêm danh mục" Width="150" Margin="0 10 0 10" Click="AddCategory_Click"/>
+
+        <TextBlock Text="Ghi chú:"/>
+        <TextBox x:Name="NoteTextBox" Height="60" TextWrapping="Wrap" Margin="0 0 0 10"/>
+
+        <Button Content="Gửi yêu cầu"
+                Background="#2196F3" Foreground="White" FontWeight="Bold"
+                Width="140" HorizontalAlignment="Right"
+                Click="SubmitButton_Click"/>
+    </StackPanel>
+</UserControl>

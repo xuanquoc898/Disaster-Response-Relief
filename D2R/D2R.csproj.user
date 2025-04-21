@@ -2,7 +2,6 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Update="Views\BCTKOptions.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -13,9 +12,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\DonorManagementPage.xaml.cs">
+    <Compile Update="Views\Layouts\MainLayout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\MenuView.xaml.cs">
+    <Compile Update="Views\UserControls\AddDonorView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\NhapKhoVienTro.xaml.cs">
@@ -59,6 +59,10 @@
     </Compile>
     <Compile Update="Views\YeuCauCuuTroOptions.xaml.cs">
     <Compile Update="Views\UserControls\AddDonorView.xaml.cs">
+    <Compile Update="Views\UserControls\CreateCampaignView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserControls\DonationView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserControls\DonorManagerment.xaml.cs">
@@ -76,6 +80,12 @@
     </Compile>
     <Compile Update="Views\DonorManagementPage.xaml.cs">
     <Compile Update="Views\Layouts\MainLayout.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserControls\SyncView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\UserControls\WarehouseLocalView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

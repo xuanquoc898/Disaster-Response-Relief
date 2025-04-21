@@ -1,6 +1,5 @@
 using D2R.Models;
 using D2R.Repositories;
-using System.Collections.Generic;
 
 namespace D2R.Services
 {
@@ -37,7 +36,7 @@ namespace D2R.Services
         {
             _repository.Delete(id);
         }
-        
-        
+
+
     }
 }
