@@ -4,7 +4,7 @@ using System.Windows.Navigation;
 
 namespace D2R.Views
 {
-    public partial class ViewReportPage : Page
+    public partial class ViewReportPage : UserControl
     {
         public ViewReportPage()
         {
@@ -13,11 +13,7 @@ namespace D2R.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            // Quay lại trang trước
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
+            
         }
 
         private void LoadReportData()

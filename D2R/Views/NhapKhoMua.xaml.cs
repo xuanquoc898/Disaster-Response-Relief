@@ -5,7 +5,7 @@ using D2R.ViewModels;
 
 namespace D2R.Views
 {
-    public partial class NhapKhoMuaSam : Page
+    public partial class NhapKhoMuaSam : UserControl
     {
         public NhapKhoMuaSam()
         {
@@ -15,7 +15,7 @@ namespace D2R.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.GoBack();
+            
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

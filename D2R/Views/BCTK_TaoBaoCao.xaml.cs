@@ -4,7 +4,7 @@ using System.Windows.Navigation;
 
 namespace D2R.Views
 {
-    public partial class CreateReportPage : Page
+    public partial class CreateReportPage : UserControl
     {
         public CreateReportPage()
         {
@@ -19,11 +19,7 @@ namespace D2R.Views
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            // Quay lại trang trước
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
+            
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
@@ -35,11 +31,7 @@ namespace D2R.Views
             // Lưu báo cáo và hiển thị kết quả
             
 
-            // Quay về trang chính hoặc trang trước
-            if (NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
+            
         }
 
         private void PreviewReport()
@@ -48,7 +40,7 @@ namespace D2R.Views
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.GoBack();
+            
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

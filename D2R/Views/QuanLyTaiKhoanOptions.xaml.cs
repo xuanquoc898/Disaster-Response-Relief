@@ -7,7 +7,7 @@ namespace D2R.Views
     /// <summary>
     /// Interaction logic for QuanLyTaiKhoanNguoiDungOptions.xaml
     /// </summary>
-    public partial class QuanLyTaiKhoanNguoiDungOptions : Page
+    public partial class QuanLyTaiKhoanNguoiDungOptions : UserControl
     {
         public QuanLyTaiKhoanNguoiDungOptions()
         {
@@ -16,7 +16,7 @@ namespace D2R.Views
 
         private void ViewList_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new Uri("/Views/QuanLyTaiKhoanNguoiDung.xaml", UriKind.Relative));
+            // NavigationService?.Navigate(new Uri("/Views/QuanLyTaiKhoanNguoiDung.xaml", UriKind.Relative));
         }
 
         private void AddUser_Click(object sender, RoutedEventArgs e)
@@ -36,7 +36,7 @@ namespace D2R.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.GoBack();
+            
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

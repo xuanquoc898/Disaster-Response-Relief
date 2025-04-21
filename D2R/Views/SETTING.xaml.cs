@@ -7,7 +7,7 @@ namespace D2R.Views
     /// <summary>
     /// Interaction logic for SimpleSettingsPage.xaml
     /// </summary>
-    public partial class SimpleSettingsPage : Page
+    public partial class SimpleSettingsPage : UserControl
     {
         public SimpleSettingsPage()
         {
@@ -17,10 +17,7 @@ namespace D2R.Views
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             // Quay lại trang trước đó hoặc đóng
-            if (NavigationService != null && NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
+            
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -29,10 +26,7 @@ namespace D2R.Views
             MessageBox.Show("Đã lưu cài đặt!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // Quay lại trang trước đó
-            if (NavigationService != null && NavigationService.CanGoBack)
-            {
-                NavigationService.GoBack();
-            }
+            
         }
     }
 }

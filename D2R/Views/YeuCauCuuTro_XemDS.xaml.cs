@@ -5,7 +5,7 @@ using D2R.ViewModels;
 
 namespace D2R.Views
 {
-    public partial class YeuCauCuuTro : Page
+    public partial class YeuCauCuuTro : UserControl
     {
         public YeuCauCuuTro()
         {
@@ -15,7 +15,7 @@ namespace D2R.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.GoBack();
+            
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

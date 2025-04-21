@@ -4,7 +4,7 @@ using System.Windows.Navigation;
 
 namespace D2R.Views
 {
-    public partial class YeuCauCuuTroOptions : Page
+    public partial class YeuCauCuuTroOptions : UserControl
     {
         public YeuCauCuuTroOptions()
         {
@@ -13,7 +13,7 @@ namespace D2R.Views
 
         private void ViewList_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.Navigate(new Uri("/Views/YeuCauCuuTro.xaml", UriKind.Relative));
+            // NavigationService?.Navigate(new Uri("/Views/YeuCauCuuTro.xaml", UriKind.Relative));
         }
 
         private void AddRequest_Click(object sender, RoutedEventArgs e)
@@ -33,7 +33,7 @@ namespace D2R.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.GoBack();
+            
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

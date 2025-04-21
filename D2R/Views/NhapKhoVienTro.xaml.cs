@@ -5,7 +5,7 @@ using D2R.ViewModels;
 
 namespace D2R.Views
 {
-    public partial class NhapKhoVienTro : Page
+    public partial class NhapKhoVienTro : UserControl
     {
         public NhapKhoVienTro()
         {
@@ -17,7 +17,6 @@ namespace D2R.Views
         // Sự kiện điều hướng về trang trước
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.GoBack();
         }
 
         // Sự kiện nút "Tiếp theo" (placeholder)

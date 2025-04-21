@@ -18,7 +18,7 @@ namespace D2R.Views
     /// <summary>
     /// Interaction logic for QuanLyKho.xaml
     /// </summary>
-    public partial class QuanLyKho : Page
+    public partial class QuanLyKho : UserControl
     {
         public QuanLyKho()
         {

@@ -5,7 +5,7 @@ using D2R.ViewModels;
 
 namespace D2R.Views
 {
-    public partial class QuanLyTaiKhoanNguoiDung : Page
+    public partial class QuanLyTaiKhoanNguoiDung : UserControl
     {
         public QuanLyTaiKhoanNguoiDung()
         {
@@ -15,7 +15,7 @@ namespace D2R.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService?.GoBack();
+            
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
