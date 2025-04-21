@@ -36,6 +36,10 @@ namespace D2R.Services
         {
             _repository.Delete(id);
         }
+        public List<WarehouseItem> GetByItemId(int itemId)
+        {
+            return GetAll().Where(item => item.ItemId == itemId).ToList(); 
+        }
         public List<WarehouseItem> GetByCategoryId(int categoryId)
         {
             return GetAll().Where(item => item.CategoryId == categoryId).ToList();

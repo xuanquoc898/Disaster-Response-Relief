@@ -13,6 +13,8 @@ namespace D2R.Services
         private readonly DonationService _donationService;
         private readonly DonationItemService _donationItemService;
         private readonly WarehouseStockService _stockService;
+        private readonly WarehouseItemService _warehouseItemService;
+
 
         public DonationTransactionService()
         {
@@ -45,10 +47,12 @@ namespace D2R.Services
                         Quantity = entry.Quantity,
                         Unit = entry.Item.Unit
                     };
+
                     _donationItemService.Add(item);
                     _stockService.AddOrUpdateStock(warehouseId, entry.Item.ItemId, entry.Quantity);
                 }
             }
+
 
             return true;
         }

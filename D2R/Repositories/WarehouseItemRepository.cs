@@ -43,5 +43,10 @@ namespace D2R.Repositories
                 _context.SaveChanges();
             }
         }
+        public WarehouseItem? GetByItemId(int itemId)
+        {
+            return _context.WarehouseItems.FirstOrDefault(w => w.ItemId == itemId);
+        }
+
     }
 }

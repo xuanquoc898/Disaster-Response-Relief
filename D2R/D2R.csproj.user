@@ -8,10 +8,10 @@
     <Compile Update="Views\UserControls\AddDonorView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\UserControls\DonationView.xaml.cs">
+    <Compile Update="Views\UserControls\CreateCampaignView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\UserControls\DonationCategoryGroupControl.xaml.cs">
+    <Compile Update="Views\UserControls\DonationView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserControls\DonorManagerment.xaml.cs">
