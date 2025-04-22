@@ -197,8 +197,7 @@
             <GroupBox Grid.Row="1" 
                       Header="Danh sách hàng tồn" 
                       Style="{StaticResource CustomGroupBoxStyle}">
-                <DataGrid ItemsSource="{Binding InventoryItems}" 
-                          AutoGenerateColumns="False" 
+                <DataGrid AutoGenerateColumns="False" 
                           CanUserAddRows="False" 
                           Margin="10">
                     <DataGrid.Columns>

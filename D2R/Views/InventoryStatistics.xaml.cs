@@ -10,7 +10,6 @@ namespace D2R.Views
         public InventoryStatistics()
         {
             InitializeComponent();
-            DataContext = new InventoryStatistics();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

@@ -5,12 +5,11 @@ using D2R.ViewModels;
 
 namespace D2R.Views
 {
-    public partial class YeuCauCuuTro : UserControl
+    public partial class AdminDistributionView1 : UserControl
     {
-        public YeuCauCuuTro()
+        public AdminDistributionView1()
         {
             InitializeComponent();
-            DataContext = new YeuCauCuuTro();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

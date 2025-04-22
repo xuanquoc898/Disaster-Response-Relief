@@ -2,63 +2,15 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="Views\BCTKOptions.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\BCTK_TaoBaoCao.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\BCTK_XemBC.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\DonorManagementPage.xaml.cs">
     <Compile Update="Views\Layouts\MainLayout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserControls\AddDonorView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\NhapKhoVienTro.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\NhapKhoMua.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\PhanPhoiHangHoa.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\QuanLyKho.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\QuanLyMTQOptions.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\QuanLyMTQ_XemDS.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\QuanLyTaiKhoan_XemDS.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\QuanLyTaiKhoanOptions.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\SETTING.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\ThongKeHangTon.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\WindowView.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\XuatKho.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\YeuCauCuuTro_XemDS.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\YeuCauCuuTroOptions.xaml.cs">
     <Compile Update="Views\UserControls\AddDonorView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserControls\CreateCampaignView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -69,16 +21,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Views\UserControls\StartView.xaml.cs">
-    <Compile Update="Views\BCTKOptions.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\BCTK_TaoBaoCao.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\BCTK_XemBC.xaml.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Update="Views\DonorManagementPage.xaml.cs">
     <Compile Update="Views\Layouts\MainLayout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

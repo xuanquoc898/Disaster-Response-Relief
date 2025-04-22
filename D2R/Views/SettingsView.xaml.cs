@@ -7,9 +7,9 @@ namespace D2R.Views
     /// <summary>
     /// Interaction logic for SimpleSettingsPage.xaml
     /// </summary>
-    public partial class SimpleSettingsPage : UserControl
+    public partial class SettingsView : UserControl
     {
-        public SimpleSettingsPage()
+        public SettingsView()
         {
             InitializeComponent();
         }

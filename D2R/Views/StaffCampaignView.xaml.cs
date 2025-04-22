@@ -5,12 +5,11 @@ using D2R.ViewModels;
 
 namespace D2R.Views
 {
-    public partial class NhapKhoMuaSam : UserControl
+    public partial class StaffCampaignView : UserControl
     {
-        public NhapKhoMuaSam()
+        public StaffCampaignView()
         {
             InitializeComponent();
-            DataContext = new NhapKhoMuaSam();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

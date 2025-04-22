@@ -4,19 +4,14 @@ using System.Windows.Navigation;
 
 namespace D2R.Views
 {
-    public partial class ViewReportPage : UserControl
+    public partial class ReportView : UserControl
     {
-        public ViewReportPage()
+        public ReportView()
         {
             InitializeComponent();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void LoadReportData()
         {
             
         }

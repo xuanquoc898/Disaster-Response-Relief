@@ -5,12 +5,11 @@ using D2R.ViewModels;
 
 namespace D2R.Views
 {
-    public partial class QuanLyManhThuongQuan : UserControl
+    public partial class AdminUserManagermentView1 : UserControl
     {
-        public QuanLyManhThuongQuan()
+        public AdminUserManagermentView1()
         {
             InitializeComponent();
-            DataContext = new QuanLyManhThuongQuan();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

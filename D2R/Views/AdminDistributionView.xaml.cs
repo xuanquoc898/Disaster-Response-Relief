@@ -5,12 +5,11 @@ using D2R.ViewModels;
 
 namespace D2R.Views
 {
-    public partial class DistributionManagementView : UserControl
+    public partial class AdminDistributionView : UserControl
     {
-        public DistributionManagementView()
+        public AdminDistributionView()
         {
             InitializeComponent();
-            DataContext = new DistributionManagementView();
         }
 
         private void CreateDistribution_Click(object sender, RoutedEventArgs e)

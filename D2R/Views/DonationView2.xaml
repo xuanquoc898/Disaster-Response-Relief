@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="D2R.Views.XuatKhoCuuTro"
+﻿<UserControl x:Class="D2R.Views.DonationView2"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -136,17 +136,11 @@
     </UserControl.Resources>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
         <!-- Header -->
-        <Border Grid.Row="0" Background="{StaticResource PrimaryBloodRedBrush}" Height="80" VerticalAlignment="Top">
+        <Border Background="{StaticResource PrimaryBloodRedBrush}" Height="80" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0">
-                <materialDesign:PackIcon Kind="Truck" Foreground="White" Width="40" Height="40" Margin="0,0,15,0"/>
-                <TextBlock Text="XUẤT KHO CỨU TRỢ" 
+                <materialDesign:PackIcon Kind="HandHeart" Foreground="White" Width="40" Height="40" Margin="0,0,15,0"/>
+                <TextBlock Text="NHẬP KHO TỪ VIỆN TRỢ" 
                            Foreground="White" 
                            FontSize="28" 
                            FontWeight="Bold"
@@ -155,7 +149,7 @@
         </Border>
 
         <!-- Main Content -->
-        <Grid Grid.Row="1" Margin="20">
+        <Grid Margin="20" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -164,77 +158,80 @@
             </Grid.RowDefinitions>
 
             <!-- Thông tin chung -->
-            <StackPanel Grid.Row="0" HorizontalAlignment="Left" Margin="402,8,0,32">
-                <TextBlock Text="THÔNG TIN XUẤT KHO" 
+            <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,70,0,10">
+                <TextBlock Text="THÔNG TIN NHẬP KHO" 
                            FontSize="20" 
                            FontWeight="Bold"
                            Foreground="{StaticResource PrimaryBloodRedBrush}"
                            HorizontalAlignment="Center"
-                           Margin="0,0,0,20"/>
+                           Margin="0,0,0,10" Height="40"/>
 
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <TextBlock Text="Điểm cứu trợ:" Width="120" VerticalAlignment="Center"/>
+                    <TextBlock Text="Chọn nhà tài trợ:" Width="120" VerticalAlignment="Center"/>
                     <ComboBox Style="{StaticResource InputComboBoxStyle}" 
-                              ItemsSource="{Binding ReliefPoints}"
-                              SelectedItem="{Binding SelectedReliefPoint}"
-                              materialDesign:HintAssist.Hint="Chọn điểm cứu trợ"/>
+                              ItemsSource="{Binding Donors}"
+                              SelectedItem="{Binding SelectedDonor}"
+                              materialDesign:HintAssist.Hint="Chọn nhà tài trợ"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="10">
-                    <TextBlock Text="Ngày xuất:" Width="120" VerticalAlignment="Center"/>
+                    <TextBlock Text="Ngày nhập vào kho:" Width="120" VerticalAlignment="Center"/>
                     <DatePicker Width="200" Margin="10" 
                                 Style="{StaticResource MaterialDesignDatePicker}"
                                 BorderBrush="{StaticResource PrimaryBloodRedBrush}"
-                                SelectedDate="{Binding ExportDate}"/>
+                                SelectedDate="{Binding ImportDate}"/>
                 </StackPanel>
             </StackPanel>
 
-            <!-- Danh sách hàng hóa có sẵn -->
-            <GroupBox 
-                      Header="Hàng hóa có sẵn" 
-                      Style="{StaticResource CustomGroupBoxStyle}" Margin="10,209,10,30" Grid.RowSpan="2">
-                <DataGrid ItemsSource="{Binding AvailableItems}" 
-                          AutoGenerateColumns="False" 
-                          CanUserAddRows="False" 
-                          Margin="10">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Loại hàng" Binding="{Binding Type}" Width="*"/>
-                        <DataGridTextColumn Header="Số lượng tồn" Binding="{Binding Quantity}" Width="100"/>
-                        <DataGridTextColumn Header="Đơn vị" Binding="{Binding Unit}" Width="100"/>
-                        <DataGridTemplateColumn Header="Số lượng xuất" Width="120">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBox Text="{Binding ExportQuantity, UpdateSourceTrigger=PropertyChanged}" 
-                                             Style="{StaticResource InputTextBoxStyle}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Thêm" Width="80">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Content="Thêm" 
-                                            Style="{StaticResource MaterialDesignFlatButton}" 
-                                            Foreground="{StaticResource PrimaryBloodRedBrush}"
-                                            Command="{Binding DataContext.AddItemCommand, RelativeSource={RelativeSource AncestorType=Page}}"
-                                            CommandParameter="{Binding}"/>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
+            <!-- Form thêm mục hàng hóa -->
+            <GroupBox Grid.Row="1" 
+                      Header="Thêm mục hàng hóa" 
+                      Style="{StaticResource CustomGroupBoxStyle}">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Loại hàng:" Width="100" VerticalAlignment="Center"/>
+                        <ComboBox Style="{StaticResource InputComboBoxStyle}" 
+                                  ItemsSource="{Binding ItemTypes}"
+                                  SelectedItem="{Binding NewItem.Type}"
+                                  materialDesign:HintAssist.Hint="Chọn loại hàng"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Số lượng:" Width="100" VerticalAlignment="Center"/>
+                        <TextBox Style="{StaticResource InputTextBoxStyle}" 
+                                 Text="{Binding NewItem.Quantity}"
+                                 materialDesign:HintAssist.Hint="Nhập số lượng"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Đơn vị:" Width="100" VerticalAlignment="Center"/>
+                        <ComboBox Style="{StaticResource InputComboBoxStyle}" 
+                                  ItemsSource="{Binding Units}"
+                                  SelectedItem="{Binding NewItem.Unit}"
+                                  materialDesign:HintAssist.Hint="Chọn đơn vị"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10">
+                        <TextBlock Text="Ghi chú:" Width="100" VerticalAlignment="Center"/>
+                        <TextBox Style="{StaticResource InputTextBoxStyle}" 
+                                 Text="{Binding NewItem.Note}"
+                                 materialDesign:HintAssist.Hint="Ghi chú (nếu có)"/>
+                    </StackPanel>
+                    <Button Content="THÊM MỤC" 
+                            Style="{StaticResource ActionButtonStyle}" 
+                            Command="{Binding AddItemCommand}" 
+                            HorizontalAlignment="Right"/>
+                </StackPanel>
             </GroupBox>
 
-            <!-- Danh sách hàng hóa xuất kho -->
+            <!-- Danh sách các mục hàng hóa -->
             <GroupBox Grid.Row="2" 
-                      Header="Danh sách hàng hóa xuất kho" 
-                      Style="{StaticResource CustomGroupBoxStyle}" Margin="10,2,10,18">
-                <DataGrid ItemsSource="{Binding SelectedItems}" 
+                      Header="Danh sách hàng hóa" 
+                      Style="{StaticResource CustomGroupBoxStyle}">
+                <DataGrid ItemsSource="{Binding Items}" 
                           AutoGenerateColumns="False" 
                           CanUserAddRows="False" 
                           Margin="10">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Loại hàng" Binding="{Binding Type}" Width="*"/>
-                        <DataGridTextColumn Header="Số lượng xuất" Binding="{Binding ExportQuantity}" Width="100"/>
+                        <DataGridTextColumn Header="Số lượng" Binding="{Binding Quantity}" Width="100"/>
                         <DataGridTextColumn Header="Đơn vị" Binding="{Binding Unit}" Width="100"/>
                         <DataGridTextColumn Header="Ghi chú" Binding="{Binding Note}" Width="*"/>
                         <DataGridTemplateColumn Header="Xóa" Width="80">
@@ -265,7 +262,7 @@
         </Grid>
 
         <!-- Footer -->
-        <Border Grid.Row="2" Height="60" VerticalAlignment="Bottom">
+        <Border Height="60" VerticalAlignment="Bottom">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,20,0">
                 <!-- Nút Quay Lại (Icon) -->
                 <Button Style="{StaticResource IconButtonStyle}"

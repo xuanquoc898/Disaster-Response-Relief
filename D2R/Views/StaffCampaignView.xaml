@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="D2R.Views.YeuCauCuuTroOptions"
+﻿<UserControl x:Class="D2R.Views.StaffCampaignView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -81,6 +81,42 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+        <!-- Style cho GroupBox -->
+        <Style x:Key="CustomGroupBoxStyle" TargetType="GroupBox" BasedOn="{StaticResource MaterialDesignGroupBox}">
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBloodRedBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryBloodRedBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="GroupBox">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Border Grid.Row="0" 
+                                    Background="{StaticResource PrimaryBloodRedBrush}" 
+                                    CornerRadius="4,4,0,0" 
+                                    Padding="5">
+                                <TextBlock Text="{TemplateBinding Header}" 
+                                           Foreground="White" 
+                                           FontWeight="Bold" 
+                                           FontSize="14"/>
+                            </Border>
+                            <Border Grid.Row="1" 
+                                    BorderBrush="{StaticResource PrimaryBloodRedBrush}" 
+                                    BorderThickness="1,0,1,1" 
+                                    CornerRadius="0,0,4,4" 
+                                    Background="{StaticResource VeryLightBloodRedBrush}">
+                                <ContentPresenter Margin="10"/>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
 
     <Grid>
@@ -94,7 +130,7 @@
         <Border Grid.Row="0" Background="{StaticResource PrimaryBloodRedBrush}" Height="80" VerticalAlignment="Top">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0">
                 <materialDesign:PackIcon Kind="HelpCircle" Foreground="White" Width="40" Height="40" Margin="0,0,15,0"/>
-                <TextBlock Text="LỰA CHỌN YÊU CẦU CỨU TRỢ" 
+                <TextBlock Text="YÊU CẦU CỨU TRỢ" 
                            Foreground="White" 
                            FontSize="28" 
                            FontWeight="Bold"
@@ -104,27 +140,20 @@
 
         <!-- Main Content -->
         <Grid Grid.Row="1" Margin="20">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="565" Width="1066">
-                <TextBlock Text="Chọn thao tác:" 
-                           FontSize="20" 
-                           FontWeight="Bold"
-                           Foreground="{StaticResource PrimaryBloodRedBrush}"
-                           HorizontalAlignment="Center"
-                           Margin="0,0,0,20"/>
-
-                <Button Content="XEM DANH SÁCH" 
-                        Style="{StaticResource ActionButtonStyle}" 
-                        Click="ViewList_Click" Width="450" Height="105"/>
-                <Button Content="THÊM YÊU CẦU" 
-                        Style="{StaticResource ActionButtonStyle}" 
-                        Click="AddRequest_Click" Width="450" Height="105"/>
-                <Button Content="CHỈNH SỬA YÊU CẦU" 
-                        Style="{StaticResource ActionButtonStyle}" 
-                        Click="EditRequest_Click" Width="450" Height="105"/>
-                <Button Content="XÓA YÊU CẦU" 
-                        Style="{StaticResource ActionButtonStyle}" 
-                        Click="DeleteRequest_Click" Width="450" Height="105"/>
-            </StackPanel>
+            <GroupBox Header="Danh Sách Yêu Cầu Cứu Trợ" Style="{StaticResource CustomGroupBoxStyle}">
+                <DataGrid ItemsSource="{Binding ReliefRequests}" 
+                          AutoGenerateColumns="False" 
+                          CanUserAddRows="False" 
+                          Margin="10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Mã yêu cầu" Binding="{Binding RequestCode}" Width="120"/>
+                        <DataGridTextColumn Header="Khu vực" Binding="{Binding Area}" Width="*"/>
+                        <DataGridTextColumn Header="Ngày yêu cầu" Binding="{Binding RequestDate, StringFormat='dd/MM/yyyy'}" Width="120"/>
+                        <DataGridTextColumn Header="Số hộ cần hỗ trợ" Binding="{Binding HouseholdCount}" Width="120"/>
+                        <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="120"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
         </Grid>
 
         <!-- Footer -->
