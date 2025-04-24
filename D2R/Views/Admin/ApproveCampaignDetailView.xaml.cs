@@ -22,12 +22,10 @@ namespace D2R.Views.Admin
             _viewModel = new ApproveCampaignDetailViewModel();
             _viewModel.LoadGroupedByCategory(campaignId);
 
-            // Gán thông tin chiến dịch
             CampaignNoteText.Text = _viewModel.Campaign.Note;
             DisasterTypeText.Text = _viewModel.Campaign.DisasterLevel?.DisasterType?.Name ?? "Không rõ";
             DisasterLevelText.Text = _viewModel.Campaign.DisasterLevel?.Level ?? "Không rõ";
 
-            // Tự động tạo danh sách vật phẩm theo danh mục
             foreach (var group in _viewModel.GroupedItems)
             {
                 var categoryHeader = new TextBlock

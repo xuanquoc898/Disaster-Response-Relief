@@ -22,7 +22,6 @@ namespace D2R.ViewModels
             Campaign = _campaignService.GetById(campaignId);
             var campaignItems = _campaignItemService.GetByCampaignId(campaignId);
 
-            // Group items by category
             var grouped = campaignItems
                 .GroupBy(ci => ci.Item.CategoryId)
                 .Select(g => new CategoryGroup
