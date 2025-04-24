@@ -1,4 +1,5 @@
 ﻿using D2R.Helpers;
+using D2R.Views.Admin;
 using D2R.Views.UserControls;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
@@ -49,7 +50,7 @@ namespace D2R.Views
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
         private void Home_Click(object sender, RoutedEventArgs e)
@@ -94,5 +95,11 @@ namespace D2R.Views
             var syncView = new SyncView(warehouseId);
             MainContent.Content = syncView;
         }
+        private void DistributionAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new PlannedCampaignListView();
+        }
+
+        
     }
 }

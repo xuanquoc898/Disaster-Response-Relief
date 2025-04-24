@@ -13,7 +13,6 @@ namespace D2R.Services
         private readonly DonationService _donationService;
         private readonly DonationItemService _donationItemService;
         private readonly WarehouseStockService _stockService;
-        private readonly WarehouseItemService _warehouseItemService;
 
 
         public DonationTransactionService()

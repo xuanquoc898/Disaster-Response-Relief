@@ -43,5 +43,12 @@ namespace D2R.Repositories
                 _context.SaveChanges();
             }
         }
+        public List<CampaignItem> GetByCampaignIdWithItem(int campaignId)
+        {
+            return _context.CampaignItems
+                .Where(ci => ci.CampaignId == campaignId)
+                .Include(ci => ci.Item) 
+                .ToList();
+        }
     }
 }

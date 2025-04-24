@@ -16,6 +16,11 @@ namespace D2R.Services
         {
             return _repository.GetAll();
         }
+        public WarehouseStock? GetCentralStock(int itemId)
+        {
+            return _repository.GetAll()
+                .FirstOrDefault(s => s.ItemId == itemId && s.WarehouseId == null);
+        }
 
         public WarehouseStock GetById(int id)
         {
@@ -39,19 +44,20 @@ namespace D2R.Services
 
         public void AddOrUpdateStock(int? warehouseId, int itemId, int quantity)
         {
-            var existing = GetAll()
+            var existing = _repository.GetAll()
                 .FirstOrDefault(s => s.WarehouseId == warehouseId && s.ItemId == itemId);
 
             if (existing != null)
             {
                 existing.Quantity = (existing.Quantity ?? 0) + quantity;
+                existing.LastUpdated = DateTime.Now; 
                 Update(existing);
             }
             else
             {
                 var newStock = new WarehouseStock
                 {
-                    WarehouseId = warehouseId,
+                    WarehouseId = warehouseId, 
                     ItemId = itemId,
                     Quantity = quantity,
                     LastUpdated = DateTime.Now
@@ -59,6 +65,31 @@ namespace D2R.Services
                 Add(newStock);
             }
         }
+
+        public int GetQuantity(int itemId)
+        {
+            var stock = _repository.GetAll()
+                .FirstOrDefault(s => s.ItemId == itemId && s.WarehouseId == 1); 
+
+            return stock?.Quantity ?? 0;
+        }
+
+
+
+        public void Decrease(int itemId, int quantity)
+        {
+            var stock = _repository.GetAll()
+                .FirstOrDefault(s => s.ItemId == itemId && s.WarehouseId == 1);
+
+            if (stock != null)
+            {
+                stock.Quantity -= quantity;
+                _repository.Update(stock);
+            }
+        }
+
+
+
 
     }
 }

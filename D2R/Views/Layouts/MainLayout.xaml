@@ -43,7 +43,7 @@
                     </ToggleButton>
 
                     <!-- Menu Buttons giãn cách đều -->
-                    <UniformGrid Rows="7" VerticalAlignment="Stretch" >
+                    <UniformGrid Rows="8" VerticalAlignment="Stretch" >
                         <!-- Trang chủ -->
                         <Button
                             Margin="0,5"
@@ -151,6 +151,21 @@
                            Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </StackPanel>
                         </Button>
+
+                        <Button 
+              Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Phân phối" Click="DistributionAdmin_Click"
+  HorizontalContentAlignment="Left" Padding="10,5"
+  materialDesign:ButtonAssist.CornerRadius="10"
+  Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <materialDesign:PackIcon Kind="AccountMultiple" Foreground="Black" Width="28" Height="28" />
+                                <TextBlock Text="Phân phối"
+             Margin="10,0,0,0" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI"
+             VerticalAlignment="Center"
+             Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                            </StackPanel>
+                        </Button>
+
                     </UniformGrid>
                 </StackPanel>
 

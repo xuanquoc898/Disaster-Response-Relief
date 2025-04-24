@@ -1,5 +1,6 @@
 using D2R.Models;
 using D2R.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace D2R.Services
 {
@@ -35,6 +36,10 @@ namespace D2R.Services
         public void Delete(int id)
         {
             _repository.Delete(id);
+        }
+        public List<CampaignItem> GetByCampaignId(int campaignId)
+        {
+            return _repository.GetByCampaignIdWithItem(campaignId);
         }
     }
 }

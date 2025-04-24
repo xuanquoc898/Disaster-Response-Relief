@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="D2R.Views.Admin.StatusCampaignView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="White">
+    <Grid Margin="20" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Bộ lọc -->
+        <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
+            <TextBlock Text="Lọc theo trạng thái:" VerticalAlignment="Center" Margin="0 0 10 0"/>
+            <ComboBox x:Name="StatusFilter" Width="200" SelectionChanged="StatusFilter_SelectionChanged">
+                <ComboBoxItem Content="Tất cả" IsSelected="True"/>
+                <ComboBoxItem Content="Approved"/>
+                <ComboBoxItem Content="Rejected"/>
+                <ComboBoxItem Content="Completed"/>
+            </ComboBox>
+        </StackPanel>
+
+        <!-- Danh sách chiến dịch -->
+        <ListView x:Name="CampaignList" Grid.Row="1">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Tên chiến dịch" Width="200" DisplayMemberBinding="{Binding Note}"/>
+                    <GridViewColumn Header="Khu vực" Width="150" DisplayMemberBinding="{Binding AreaName}"/>
+                    <GridViewColumn Header="Ngày tạo" Width="120" DisplayMemberBinding="{Binding CreatedDate}"/>
+                    <GridViewColumn Header="Trạng thái" Width="100" DisplayMemberBinding="{Binding Status}"/>
+                    <GridViewColumn Header="Xem chi tiết" Width="100">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Xem" Click="ViewDetail_Click" Tag="{Binding CampaignId}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>
