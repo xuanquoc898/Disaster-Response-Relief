@@ -100,6 +100,9 @@ namespace D2R.Views
             MainContent.Content = new PlannedCampaignListView();
         }
 
-        
+        private void CheckAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new StatusCampaignView();
+        }
     }
 }

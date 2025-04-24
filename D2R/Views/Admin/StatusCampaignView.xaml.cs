@@ -20,7 +20,7 @@ namespace D2R.Views.Admin
 
         private void LoadCampaigns(string status)
         {
-            CampaignList.Items.Clear();
+            //CampaignList.Items.Clear();
             List<Campaign> campaigns = _viewModel.GetCampaignsByStatus(status);
 
             foreach (var c in campaigns)
@@ -29,7 +29,7 @@ namespace D2R.Views.Admin
                 {
                     c.CampaignId,
                     c.Note,
-                    AreaName = c.Area?.Name ?? "Không rõ",
+                    //AreaName = c.Area?.Name ?? "Không rõ",
                     CreatedDate = c.CreatedDate?.ToString("dd/MM/yyyy") ?? "",
                     Status = c.Status
                 });

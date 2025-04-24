@@ -23,9 +23,9 @@
         <ListView x:Name="CampaignList" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Tên chiến dịch" Width="200" DisplayMemberBinding="{Binding Note}"/>
-                    <GridViewColumn Header="Khu vực" Width="150" DisplayMemberBinding="{Binding AreaName}"/>
-                    <GridViewColumn Header="Ngày tạo" Width="120" DisplayMemberBinding="{Binding CreatedDate}"/>
+                    <GridViewColumn Header="Tên chiến dịch" Width="150" DisplayMemberBinding="{Binding Note}"/>
+                    <GridViewColumn Header="Khu vực" Width="100" DisplayMemberBinding="{Binding AreaName}"/>
+                    <GridViewColumn Header="Ngày tạo" Width="100" DisplayMemberBinding="{Binding CreatedDate}"/>
                     <GridViewColumn Header="Trạng thái" Width="100" DisplayMemberBinding="{Binding Status}"/>
                     <GridViewColumn Header="Xem chi tiết" Width="100">
                         <GridViewColumn.CellTemplate>

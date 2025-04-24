@@ -12,6 +12,10 @@ public partial class Campaign
 
     public DateTime? CreatedDate { get; set; }
 
+    public DateTime? ApprovedAt { get; set; }
+    public DateTime? RejectedAt { get; set; }
+    public DateTime? CompletedAt { get; set; }
+
     public string? Note { get; set; }
 
     public virtual Area Area { get; set; } = null!;
