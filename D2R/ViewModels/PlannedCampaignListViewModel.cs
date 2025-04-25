@@ -13,9 +13,10 @@ namespace D2R.ViewModels
 
         public PlannedCampaignListViewModel()
         {
-            PlannedCampaigns = _campaignService.GetAll()
+            PlannedCampaigns = _campaignService.GetAllWithRelations()
                 .Where(c => c.Status == "Planned")
                 .ToList();
         }
+
     }
 }

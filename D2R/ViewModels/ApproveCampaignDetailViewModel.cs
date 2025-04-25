@@ -62,15 +62,19 @@ namespace D2R.ViewModels
             }
 
             Campaign.Status = "Approved";
+            Campaign.ApprovedAt = DateTime.Now;
             _campaignService.Update(Campaign);
         }
+
 
 
         public void Reject()
         {
             Campaign.Status = "Rejected";
+            Campaign.RejectedAt = DateTime.Now;
             _campaignService.Update(Campaign);
         }
+
 
 
         public class CategoryGroup

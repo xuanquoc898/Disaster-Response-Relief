@@ -13,8 +13,16 @@ namespace D2R.ViewModels
         public List<Campaign> GetCampaignsByStatus(string status)
         {
             var all = _campaignService.GetAllWithRelations();
-            return status == "Tất cả" ? all :
-                   all.Where(c => c.Status == status).ToList();
+
+            if (status == "Tất cả")
+            {
+                return all;
+            }
+            else
+            {
+                return all.Where(c => c.Status == status).ToList();
+            }
         }
+
     }
 }

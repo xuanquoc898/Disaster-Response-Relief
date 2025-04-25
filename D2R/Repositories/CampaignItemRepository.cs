@@ -47,7 +47,8 @@ namespace D2R.Repositories
         {
             return _context.CampaignItems
                 .Where(ci => ci.CampaignId == campaignId)
-                .Include(ci => ci.Item) 
+                .Include(ci => ci.Item)
+                    .ThenInclude(i => i.Category)
                 .ToList();
         }
     }
