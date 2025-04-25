@@ -1,6 +1,7 @@
 ﻿using D2R.Repositories;
 using System.Security.Cryptography;
 using System.Text;
+using D2R.Models;
 
 namespace D2R.Services;
 
@@ -13,10 +14,10 @@ public class AuthService
         _userRepository = new UserRepository();
     }
 
-    public object? Auth(string username, string password)
+    public object? Auth(User curruser)
     {
-        var user = _userRepository.GetByUsername(username);
-        if (user == null || !Verify(password, user.Password, user.Salt))
+        var user = _userRepository.GetByUsername(curruser.Username);
+        if (user == null || !Verify(curruser.Password, user.Password, user.Salt) || user.Username != curruser.Username)
         {
             return null;
         }
@@ -32,7 +33,7 @@ public class AuthService
         return false;
     }
 
-    static string GenerateSaltBase64(int length)
+    public string GenerateSaltBase64(int length)
     {
         byte[] saltBytes = new byte[length];
         using (var rng = RandomNumberGenerator.Create())
@@ -42,7 +43,7 @@ public class AuthService
         return Convert.ToBase64String(saltBytes);
     }
 
-    static string ComputeSHA256Hash(string input)
+    public string ComputeSHA256Hash(string input)
     {
         using (SHA256 sha256 = SHA256.Create())
         {

@@ -17,9 +17,14 @@ namespace D2R.Services
             return _repository.GetAll();
         }
 
-        public Role GetById(int id)
+        public Role GetByName(string roleName)
         {
-            return _repository.GetById(id);
+            return _repository.GetByName(roleName);
+        }
+
+        public Role GetById(int roleId)
+        {
+            return _repository.GetById(roleId);
         }
 
         public void Add(Role entity)

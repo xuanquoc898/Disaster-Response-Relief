@@ -17,6 +17,11 @@ namespace D2R.Repositories
             return _context.Roles.ToList();
         }
 
+        public Role GetByName(string Name)
+        {
+            return _context.Roles.FirstOrDefault(role => role.RoleName == Name );
+        }
+
         public Role GetById(int id)
         {
             return _context.Roles.Find(id);

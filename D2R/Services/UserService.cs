@@ -32,9 +32,9 @@ namespace D2R.Services
             _repository.Update(entity);
         }
 
-        public void Delete(int id)
+        public void Delete(string username)
         {
-            _repository.Delete(id);
+            _repository.Delete(username);
         }
 
 

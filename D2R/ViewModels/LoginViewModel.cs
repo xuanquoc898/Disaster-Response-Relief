@@ -72,7 +72,10 @@ public class LoginViewModel : INotifyPropertyChanged
             return ;
         }
 
-        var user = _authService.Auth(Username, Password);
+        User auth_user = new User();
+        auth_user.Username = Username;
+        auth_user.Password = Password;
+        var user = _authService.Auth(auth_user);
         if (user == null)
         {
             ErrorMessage = "Invalid username or password!";
@@ -81,8 +84,8 @@ public class LoginViewModel : INotifyPropertyChanged
 
         ErrorMessage = string.Empty;
         IsLoggedIn = true;
-        LoginSucceeded?.Invoke();
         LoginSession.CurrentUser = (User)user;
+        LoginSucceeded?.Invoke();
 
     }
 

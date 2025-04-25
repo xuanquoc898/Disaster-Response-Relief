@@ -59,6 +59,11 @@ namespace D2R.Views
 
         private void ManageAccounts_Click(object sender, RoutedEventArgs e)
         {
+            
+            if (LoginSession.CurrentUser.RoleId == 1)
+            {
+                MainContent.Content = new UserManagermentView();
+            }
         }
 
         private void ManageDonors_Click(object sender, RoutedEventArgs e)

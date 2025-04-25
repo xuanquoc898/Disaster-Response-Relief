@@ -14,7 +14,10 @@ namespace D2R.Repositories
 
         public List<User> GetAll()
         {
-            return _context.Users.ToList();
+            return _context.Users.Include(u => u.Role)
+                .Include(u => u.Warehouse)
+                .ThenInclude(w => w.Area)
+                .ToList();
         }
 
         public User GetById(int id)
@@ -39,9 +42,9 @@ namespace D2R.Repositories
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(string username)
         {
-            var entity = _context.Users.Find(id);
+            var entity = _context.Users.FirstOrDefault(u => u.Username == username);
             if (entity != null)
             {
                 _context.Users.Remove(entity);
