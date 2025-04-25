@@ -36,5 +36,9 @@ namespace D2R.Services
         {
             _repository.Delete(id);
         }
+        public List<Campaign> GetAllWithRelations()
+        {
+            return _repository.GetAllWithRelations();
+        }
     }
 }

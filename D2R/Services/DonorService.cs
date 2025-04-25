@@ -17,7 +17,6 @@ namespace D2R.Services
         {
             return _repository.GetAll();
         }
-
         public Donor GetById(int id)
         {
             return _repository.GetById(id);
@@ -46,8 +45,6 @@ namespace D2R.Services
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-
 
         public void Update(Donor entity)
         {
