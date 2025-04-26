@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 
 namespace D2R.Views
 {
@@ -14,26 +13,26 @@ namespace D2R.Views
 
         private void LoadDefaultReportSettings()
         {
-            
+
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void PreviewReport()
         {
-            
+
         }
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

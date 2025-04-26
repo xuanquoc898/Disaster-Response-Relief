@@ -50,14 +50,14 @@ namespace D2R.Services
             if (existing != null)
             {
                 existing.Quantity = (existing.Quantity ?? 0) + quantity;
-                existing.LastUpdated = DateTime.Now; 
+                existing.LastUpdated = DateTime.Now;
                 Update(existing);
             }
             else
             {
                 var newStock = new WarehouseStock
                 {
-                    WarehouseId = warehouseId, 
+                    WarehouseId = warehouseId,
                     ItemId = itemId,
                     Quantity = quantity,
                     LastUpdated = DateTime.Now
@@ -69,7 +69,7 @@ namespace D2R.Services
         public int GetQuantity(int itemId)
         {
             var stock = _repository.GetAll()
-                .FirstOrDefault(s => s.ItemId == itemId && s.WarehouseId == 1); 
+                .FirstOrDefault(s => s.ItemId == itemId && s.WarehouseId == 1);
 
             return stock?.Quantity ?? 0;
         }

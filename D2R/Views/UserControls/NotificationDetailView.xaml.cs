@@ -1,7 +1,6 @@
-﻿using System.Windows;
+﻿using D2R.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
-using D2R.Models;
-using D2R.ViewModels;
 
 namespace D2R.Views.UserControls
 {

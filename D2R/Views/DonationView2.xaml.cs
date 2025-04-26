@@ -1,7 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
-using D2R.ViewModels;
 
 namespace D2R.Views
 {

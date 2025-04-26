@@ -43,7 +43,7 @@ namespace D2R.Services
         }
         public List<User> GetAdmins()
         {
-            return _repository.GetAdmins(); 
+            return _repository.GetAdmins();
         }
     }
 }

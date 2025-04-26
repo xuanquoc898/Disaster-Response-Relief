@@ -1,8 +1,6 @@
 ﻿
 using D2R.Models;
 using D2R.Services;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace D2R.ViewModels
 {

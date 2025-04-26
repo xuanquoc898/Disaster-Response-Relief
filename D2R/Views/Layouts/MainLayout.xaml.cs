@@ -1,5 +1,4 @@
 ﻿using D2R.Helpers;
-using D2R.Models;
 using D2R.Services;
 using D2R.Views.Admin;
 using D2R.Views.UserControls;
@@ -135,7 +134,7 @@ namespace D2R.Views
                 var service = new NotificationService();
                 service.MarkNotificationAsRead(noti.NotificationId);
 
-                var detailView = new NotificationDetailView(noti); 
+                var detailView = new NotificationDetailView(noti);
                 MainContent.Content = detailView;
 
                 NotificationPopup.IsOpen = false;

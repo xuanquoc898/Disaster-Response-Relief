@@ -1,10 +1,7 @@
-﻿
-using System.Collections.Generic;
+﻿using D2R.Models;
+using D2R.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
-using D2R.Models;
-using D2R.Services;
-using D2R.ViewModels;
 
 namespace D2R.Views.Admin
 {
@@ -19,7 +16,7 @@ namespace D2R.Views.Admin
 
         private void LoadCampaigns(string status)
         {
-            CampaignList.Items.Clear(); 
+            CampaignList.Items.Clear();
 
             List<Campaign> campaigns = _viewModel.GetCampaignsByStatus(status);
 
@@ -52,7 +49,7 @@ namespace D2R.Views.Admin
             var parent = Window.GetWindow(this);
             if (parent is MainWindow mainWin)
             {
-               Content = detailView;
+                Content = detailView;
             }
         }
     }

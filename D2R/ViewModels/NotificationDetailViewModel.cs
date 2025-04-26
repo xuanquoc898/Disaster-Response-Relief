@@ -1,5 +1,4 @@
-﻿using System;
-using D2R.Helpers;
+﻿using D2R.Helpers;
 using D2R.Models;
 using D2R.Services;
 

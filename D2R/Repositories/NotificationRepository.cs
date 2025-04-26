@@ -1,6 +1,4 @@
 ﻿using D2R.Models;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace D2R.Repositories
 {

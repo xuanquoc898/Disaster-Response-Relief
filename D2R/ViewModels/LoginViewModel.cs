@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
-using System.Windows.Input;
-using D2R.Services;
-using D2R.Commands;
+﻿using D2R.Commands;
 using D2R.Helpers;
 using D2R.Models;
+using D2R.Services;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace D2R.ViewModels;
 
@@ -69,14 +69,14 @@ public class LoginViewModel : INotifyPropertyChanged
         if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
         {
             ErrorMessage = "Username and/or password are required!";
-            return ;
+            return;
         }
 
         var user = _authService.Auth(Username, Password);
         if (user == null)
         {
             ErrorMessage = "Invalid username or password!";
-            return ;
+            return;
         }
 
         ErrorMessage = string.Empty;

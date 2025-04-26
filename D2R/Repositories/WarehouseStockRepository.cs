@@ -20,7 +20,7 @@ namespace D2R.Repositories
         {
             return _context.WarehouseStocks
                 .Include(s => s.Warehouse)
-                .ToList(); 
+                .ToList();
         }
 
         public WarehouseStock GetById(int id)

@@ -59,7 +59,7 @@ namespace D2R.Repositories
         public List<User> GetAdmins()
         {
             return _context.Users
-                .Where(u => u.RoleId == 1)  
+                .Where(u => u.RoleId == 1)
                 .ToList();
         }
     }

@@ -3,9 +3,6 @@ using D2R.Helpers;
 using D2R.Models;
 using D2R.Services;
 using D2R.Views.UserControls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace D2R.ViewModels
 {

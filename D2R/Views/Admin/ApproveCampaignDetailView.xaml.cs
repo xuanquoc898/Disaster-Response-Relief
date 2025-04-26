@@ -1,7 +1,7 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using D2R.Helpers;
 using D2R.ViewModels;
-using D2R.Helpers;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace D2R.Views.Admin
 {
