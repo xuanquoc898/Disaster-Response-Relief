@@ -73,10 +73,11 @@ namespace D2R.ViewModels
             foreach (var staff in staffList)
             {
                 _notificationService.CreateNotification(
-                staffId: staff.UserId,
+                userId: staff.UserId,
                 campaignId: Campaign.CampaignId,
-                content: $"Chiến dịch \"{Campaign.Note}\" đã được duyệt."
+                content: "Chiến dịch được duyệt."
             );
+
 
             }
 
@@ -96,7 +97,7 @@ namespace D2R.ViewModels
             foreach (var staff in staffList)
             {
                 _notificationService.CreateNotification(
-                staffId: staff.UserId,
+                userId: staff.UserId,
                 campaignId: Campaign.CampaignId,
                 content: $"Chiến dịch \"{Campaign.Note}\" đã bị từ chối."
             );

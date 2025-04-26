@@ -406,11 +406,12 @@ public partial class DisasterReliefContext : DbContext
             entity.Property(e => e.IsRead).HasDefaultValue(false);
             entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
 
-            entity.HasOne(d => d.Staff)
-                .WithMany()  
-                .HasForeignKey(d => d.StaffId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_Notification_User");
+            entity.HasOne(d => d.User)
+            .WithMany()
+            .HasForeignKey(d => d.UserId)
+            .OnDelete(DeleteBehavior.ClientSetNull)
+            .HasConstraintName("FK_Notification_User");
+
 
             entity.HasOne(d => d.Campaign)
                 .WithMany()

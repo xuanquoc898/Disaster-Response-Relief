@@ -8,22 +8,23 @@ namespace D2R.Services
     {
         private readonly NotificationRepository _repository = new();
 
-        public void CreateNotification(int staffId, int? campaignId, string content)
+        public void CreateNotification(int userId, int? campaignId, string content)
         {
             var notification = new Notification
             {
-                StaffId = staffId,
+                UserId = userId,
                 CampaignId = campaignId,
                 Content = content,
                 IsRead = false,
                 CreatedAt = DateTime.Now
             };
-            _repository.Add(notification);
+
+            _repository.Add(notification); // 🔥 Gọi Repository, không tự save
         }
 
-        public List<Notification> GetNotificationsByStaff(int staffId)
+        public List<Notification> GetNotificationsByUserId(int userId)
         {
-            return _repository.GetByStaffId(staffId);
+            return _repository.GetByUserId(userId);
         }
 
         public void MarkNotificationAsRead(int notificationId)

@@ -110,7 +110,8 @@ namespace D2R.Views
         private void NotificationButton_Click(object sender, RoutedEventArgs e)
         {
             var service = new NotificationService();
-            var notifications = service.GetNotificationsByStaff(LoginSession.CurrentUser.UserId);
+            var notifications = service.GetNotificationsByUserId(LoginSession.CurrentUser.UserId);
+
 
             NotificationList.Items.Clear();
             foreach (var noti in notifications)
@@ -118,7 +119,7 @@ namespace D2R.Views
                 var item = new ListBoxItem
                 {
                     Content = noti.Content,
-                    FontWeight = noti.IsRead ? FontWeights.Normal : FontWeights.Bold,
+                    FontWeight = noti.IsRead.GetValueOrDefault() ? FontWeights.Normal : FontWeights.Bold,
                     Tag = noti
                 };
                 NotificationList.Items.Add(item);

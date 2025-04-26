@@ -41,6 +41,9 @@ namespace D2R.Services
         {
             return _repository.GetStaffsByAreaId(areaId);
         }
-
+        public List<User> GetAdmins()
+        {
+            return _repository.GetAdmins(); 
+        }
     }
 }

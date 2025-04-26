@@ -16,7 +16,7 @@ namespace D2R.Views.UserControls
             _viewModel = new NotificationDetailViewModel(notification);
 
             NotificationContentText.Text = _viewModel.Notification.Content;
-            CreatedAtText.Text = _viewModel.Notification.CreatedAt.ToString("dd/MM/yyyy");
+            CreatedAtText.Text = _viewModel.Notification.CreatedAt?.ToString("dd/MM/yyyy") ?? "Không rõ";
 
             if (_viewModel.Campaign != null)
             {

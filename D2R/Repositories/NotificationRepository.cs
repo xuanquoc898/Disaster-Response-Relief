@@ -14,17 +14,17 @@ namespace D2R.Repositories
             _context.SaveChanges();
         }
 
-        public List<Notification> GetByStaffId(int staffId)
+        public List<Notification> GetByUserId(int userId)
         {
             return _context.Notifications
-                .Where(n => n.StaffId == staffId)
+                .Where(n => n.UserId == userId)
                 .OrderByDescending(n => n.CreatedAt)
                 .ToList();
         }
 
         public void MarkAsRead(int notificationId)
         {
-            var notification = _context.Notifications.Find(notificationId);
+            var notification = _context.Notifications.FirstOrDefault(n => n.NotificationId == notificationId);
             if (notification != null)
             {
                 notification.IsRead = true;
