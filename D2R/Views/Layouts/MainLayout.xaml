@@ -11,11 +11,39 @@
         <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </UserControl.Resources>
 
+
     <Grid>
-        <!-- <Grid.RowDefinitions> -->
-        <!--     <RowDefinition Height="40" /> -->
-        <!--     <RowDefinition Height="*" /> -->
-        <!-- </Grid.RowDefinitions> -->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <!-- Thanh header chứa nút chuông -->
+            <RowDefinition Height="*"/>
+            <!-- Nội dung sidebar + main content -->
+        </Grid.RowDefinitions>
+
+        <!-- Header (chứa chuông) -->
+        <Grid Background="#F0F0F0" Grid.Row="0">
+            <Button x:Name="NotificationButton"
+                Width="66" Height="40"
+                Content="🔔"
+                FontSize="24"
+                Click="NotificationButton_Click"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="115,0,0,0"/>
+
+            <!-- Popup xổ thông báo -->
+            <Popup x:Name="NotificationPopup"
+               PlacementTarget="{Binding ElementName=NotificationButton}"
+               Placement="Bottom"
+               StaysOpen="False">
+                <Border Background="White" BorderBrush="Gray" BorderThickness="1" Width="300" Height="400">
+                    <ListBox x:Name="NotificationList" SelectionChanged="NotificationList_SelectionChanged">
+                        <!-- Mỗi item thông báo sẽ load vào đây -->
+                    </ListBox>
+                </Border>
+            </Popup>
+        </Grid>
 
         <!-- Nội dung chính: chia làm Sidebar và MainContent -->
         <Grid Grid.Row="1">
@@ -47,16 +75,16 @@
                         <!-- Trang chủ -->
                         <Button
                             Margin="0,5"
-            Style="{StaticResource MaterialDesignRaisedButton}"
-            ToolTip="Trang chủ"
-            Click="Home_Click"
-            HorizontalContentAlignment="Left"
-            Padding="10,5"
-            materialDesign:ButtonAssist.CornerRadius="10"
-            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-            Background="#EB7F7F"
-            BorderBrush="#E9D7D7"
-            Foreground="White">
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            ToolTip="Trang chủ"
+                            Click="Home_Click"
+                            HorizontalContentAlignment="Left"
+                            Padding="10,5"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Background="#EB7F7F"
+                            BorderBrush="#E9D7D7"
+                            Foreground="White">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <materialDesign:PackIcon Kind="Home" Foreground="CornflowerBlue" Width="28" Height="28" />
                                 <TextBlock Text="Trang chủ"
@@ -70,9 +98,9 @@
                         <!-- Quản lý tài khoản -->
                         <Button 
                             Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Quản lý tài khoản" Click="ManageAccounts_Click"
-                HorizontalContentAlignment="Left" Padding="10,5"
-                materialDesign:ButtonAssist.CornerRadius="10"
-                Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
+                            HorizontalContentAlignment="Left" Padding="10,5"
+                            materialDesign:ButtonAssist.CornerRadius="10"
+                            Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <materialDesign:PackIcon Kind="AccountMultiple" Foreground="Black" Width="28" Height="28" />
                                 <TextBlock Text="Quản lý tài khoản"
@@ -84,15 +112,15 @@
 
                         <!-- Quản lý MTQ -->
                         <Button Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="Quản lý Mạnh Thường Quân" Click="ManageDonors_Click"
-                HorizontalContentAlignment="Left" Padding="10,5"
-                materialDesign:ButtonAssist.CornerRadius="10"
-                Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        HorizontalContentAlignment="Left" Padding="10,5"
+                                        materialDesign:ButtonAssist.CornerRadius="10"
+                                        Background="#EB7F7F" BorderBrush="#E9D7D7" Foreground="White">
+                           <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <materialDesign:PackIcon Kind="AccountHeartOutline" Foreground="Black" Width="28" Height="28" />
                                 <TextBlock Text="Quản lý MTQ"
-                           Margin="10,0,0,0" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI"
-                           VerticalAlignment="Center"
-                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                           Margin="10,0,0,0" FontSize="16" FontWeight="Bold" FontFamily="Segoe UI"
+                                           VerticalAlignment="Center"
+                                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </StackPanel>
                         </Button>
 

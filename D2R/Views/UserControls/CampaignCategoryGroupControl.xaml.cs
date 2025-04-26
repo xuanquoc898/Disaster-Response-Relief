@@ -1,7 +1,6 @@
 ﻿
 using D2R.Models;
 using D2R.ViewModels;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 

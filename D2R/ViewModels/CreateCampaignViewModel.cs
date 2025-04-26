@@ -3,9 +3,6 @@ using D2R.Helpers;
 using D2R.Models;
 using D2R.Services;
 using D2R.Views.UserControls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace D2R.ViewModels
 {
@@ -24,6 +21,9 @@ namespace D2R.ViewModels
         private readonly WarehouseItemService _warehouseItemService = new();
         private readonly CampaignService _campaignService = new();
         private readonly CampaignItemService _campaignItemService = new();
+        private readonly NotificationService _notificationService = new();
+        private readonly UserService _userService = new();
+
 
         private readonly List<CampaignCategoryGroupControl> _groupControls = new();
 
@@ -58,7 +58,6 @@ namespace D2R.ViewModels
         {
             var items = _warehouseItemService.GetByCategoryId(categoryId);
 
-            // Đảm bảo có tên để hiển thị
             foreach (var item in items)
             {
                 if (string.IsNullOrWhiteSpace(item.Name))
@@ -99,7 +98,20 @@ namespace D2R.ViewModels
                 });
             }
 
+
+            var admins = _userService.GetAdmins();
+
+            foreach (var admin in admins)
+            {
+                _notificationService.CreateNotification(
+                    userId: admin.UserId,
+                    campaignId: campaign.CampaignId,
+                    content: $"Chiến dịch \"{campaign.Note}\" vừa được gửi yêu cầu duyệt."
+                );
+            }
+
             return true;
         }
+
     }
 }

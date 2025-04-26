@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 
 namespace D2R.Views
 {
@@ -13,7 +12,7 @@ namespace D2R.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void ExportButton_Click(object sender, RoutedEventArgs e)

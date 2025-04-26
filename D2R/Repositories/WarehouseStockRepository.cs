@@ -20,7 +20,7 @@ namespace D2R.Repositories
         {
             return _context.WarehouseStocks
                 .Include(s => s.Warehouse)
-                .ToList(); 
+                .ToList();
         }
 
         public WarehouseStock GetById(int id)
@@ -49,5 +49,35 @@ namespace D2R.Repositories
                 _context.SaveChanges();
             }
         }
+        public void SyncWarehouseFromDistribution(int campaignId, int warehouseId)
+        {
+            var distributions = _context.DistributionLogs
+                .Where(d => d.CampaignId == campaignId)
+                .ToList();
+
+            foreach (var dist in distributions)
+            {
+                var existingStock = _context.WarehouseStocks
+                    .FirstOrDefault(ws => ws.WarehouseId == warehouseId && ws.ItemId == dist.ItemId);
+
+                if (existingStock != null)
+                {
+                    existingStock.Quantity += dist.Quantity ?? 0;
+                }
+                else
+                {
+                    _context.WarehouseStocks.Add(new WarehouseStock
+                    {
+                        WarehouseId = warehouseId,
+                        ItemId = dist.ItemId,
+                        Quantity = dist.Quantity ?? 0,
+                        LastUpdated = DateTime.Now
+                    });
+                }
+            }
+
+            _context.SaveChanges();
+        }
+
     }
 }

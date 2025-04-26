@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="D2R.Views.UserControls.NotificationDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="White">
+    <Grid Margin="20" Background="White">
+        <StackPanel>
+
+            <TextBlock Text="Chi tiết Thông báo" FontSize="20" FontWeight="Bold" Margin="0 0 0 20"/>
+
+            <TextBlock Text="Nội dung:" FontWeight="Bold"/>
+            <TextBlock x:Name="NotificationContentText" Margin="0 0 0 10"/>
+
+            <TextBlock Text="Ngày tạo:" FontWeight="Bold"/>
+            <TextBlock x:Name="CreatedAtText" Margin="0 0 0 20"/>
+
+            <Separator Margin="0 10"/>
+
+            <!-- Nếu có chiến dịch liên quan -->
+            <StackPanel x:Name="CampaignDetailPanel" Visibility="Collapsed">
+
+                <TextBlock Text="Chi tiết Chiến dịch" FontSize="18" FontWeight="Bold" Margin="0 0 0 10"/>
+
+                <TextBlock Text="Tên chiến dịch:" FontWeight="Bold"/>
+                <TextBlock x:Name="CampaignNoteText" Margin="0 0 0 10"/>
+
+                <TextBlock Text="Trạng thái:" FontWeight="Bold"/>
+                <TextBlock x:Name="CampaignStatusText" Margin="0 0 0 10"/>
+
+                <TextBlock Text="Ngày duyệt / từ chối:" FontWeight="Bold"/>
+                <TextBlock x:Name="CampaignApprovedOrRejectedAtText" Margin="0 0 0 10"/>
+
+                <Button x:Name="ConfirmButton"
+                        Content="Xác nhận đã nhận hàng"
+                        Margin="0 20 0 0"
+                        Width="200" Height="40"
+                        Visibility="Collapsed"
+                        Click="ConfirmButton_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

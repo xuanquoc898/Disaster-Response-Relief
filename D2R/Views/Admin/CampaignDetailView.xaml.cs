@@ -1,9 +1,6 @@
-﻿
-using D2R.Models;
-using D2R.Services;
-using System.Linq;
-using System.Windows.Controls;
+﻿using D2R.Services;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace D2R.Views.Admin
 {

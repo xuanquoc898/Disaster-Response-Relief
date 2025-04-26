@@ -47,6 +47,5 @@ namespace D2R.Repositories
         {
             return _context.WarehouseItems.FirstOrDefault(w => w.ItemId == itemId);
         }
-
     }
 }

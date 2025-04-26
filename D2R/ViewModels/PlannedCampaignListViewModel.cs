@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using D2R.Models;
+﻿using D2R.Models;
 using D2R.Services;
 
 namespace D2R.ViewModels

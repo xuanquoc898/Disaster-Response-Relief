@@ -1,8 +1,6 @@
 ﻿
 using D2R.Models;
 using D2R.Services;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace D2R.ViewModels
 {
@@ -13,6 +11,9 @@ namespace D2R.ViewModels
         private readonly WarehouseStockService _warehouseStockService = new();
         private readonly ItemCategoryService _itemCategoryService = new();
         private readonly DistributionLogService _logService = new();
+        private readonly NotificationService _notificationService = new();
+        private readonly UserService _userService = new();
+
 
         public Campaign Campaign { get; private set; }
         public List<CategoryGroup> GroupedItems { get; private set; }
@@ -64,7 +65,22 @@ namespace D2R.ViewModels
             Campaign.Status = "Approved";
             Campaign.ApprovedAt = DateTime.Now;
             _campaignService.Update(Campaign);
+
+            var staffList = _userService.GetStaffsByAreaId(Campaign.AreaId);
+
+            foreach (var staff in staffList)
+            {
+                _notificationService.CreateNotification(
+                userId: staff.UserId,
+                campaignId: Campaign.CampaignId,
+                content: "Chiến dịch được duyệt."
+            );
+
+
+            }
+
         }
+
 
 
 
@@ -73,10 +89,19 @@ namespace D2R.ViewModels
             Campaign.Status = "Rejected";
             Campaign.RejectedAt = DateTime.Now;
             _campaignService.Update(Campaign);
+
+            var staffList = _userService.GetStaffsByAreaId(Campaign.AreaId);
+
+            foreach (var staff in staffList)
+            {
+                _notificationService.CreateNotification(
+                userId: staff.UserId,
+                campaignId: Campaign.CampaignId,
+                content: $"Chiến dịch \"{Campaign.Note}\" đã bị từ chối."
+            );
+
+            }
         }
-
-
-
         public class CategoryGroup
         {
             public string CategoryName { get; set; }

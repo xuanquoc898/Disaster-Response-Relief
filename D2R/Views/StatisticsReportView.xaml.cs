@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace D2R.Views
@@ -15,7 +13,7 @@ namespace D2R.Views
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void NextButton_Click(object sender, RoutedEventArgs e)

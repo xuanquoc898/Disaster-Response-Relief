@@ -26,6 +26,9 @@
     <Compile Update="Views\UserControls\DonorManagerment.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\UserControls\NotificationDetailView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\UserControls\StartView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
