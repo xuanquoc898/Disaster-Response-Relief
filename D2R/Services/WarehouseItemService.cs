@@ -44,6 +44,5 @@ namespace D2R.Services
         {
             return GetAll().Where(item => item.CategoryId == categoryId).ToList();
         }
-
     }
 }

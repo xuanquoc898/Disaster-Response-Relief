@@ -37,6 +37,10 @@ namespace D2R.Services
             _repository.Delete(id);
         }
 
+        public List<User> GetStaffsByAreaId(int areaId)
+        {
+            return _repository.GetStaffsByAreaId(areaId);
+        }
 
     }
 }

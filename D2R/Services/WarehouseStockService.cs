@@ -87,8 +87,10 @@ namespace D2R.Services
                 _repository.Update(stock);
             }
         }
-
-
+        public void SyncWarehouseFromDistribution(int campaignId, int warehouseId)
+        {
+            _repository.SyncWarehouseFromDistribution(campaignId, warehouseId);
+        }
 
 
     }

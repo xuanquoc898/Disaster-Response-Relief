@@ -48,6 +48,8 @@ public partial class DisasterReliefContext : DbContext
     public virtual DbSet<WarehouseItem> WarehouseItems { get; set; }
 
     public virtual DbSet<WarehouseStock> WarehouseStocks { get; set; }
+    public virtual DbSet<Notification> Notifications { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -395,6 +397,26 @@ public partial class DisasterReliefContext : DbContext
                 .HasConstraintName("WarehouseStock_ibfk_1");
         });
 
+        modelBuilder.Entity<Notification>(entity =>
+        {
+            entity.ToTable("Notification");
+            entity.HasKey(e => e.NotificationId);
+
+            entity.Property(e => e.Content).HasMaxLength(255).IsRequired();
+            entity.Property(e => e.IsRead).HasDefaultValue(false);
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+            entity.HasOne(d => d.Staff)
+                .WithMany()  
+                .HasForeignKey(d => d.StaffId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Notification_User");
+
+            entity.HasOne(d => d.Campaign)
+                .WithMany()
+                .HasForeignKey(d => d.CampaignId)
+                .HasConstraintName("FK_Notification_Campaign");
+        });
         OnModelCreatingPartial(modelBuilder);
     }
 

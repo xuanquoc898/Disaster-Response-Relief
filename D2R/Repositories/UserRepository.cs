@@ -48,5 +48,12 @@ namespace D2R.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public List<User> GetStaffsByAreaId(int areaId)
+        {
+            return _context.Users
+                .Where(u => u.RoleId == 2 && u.AreaId == areaId)
+                .ToList();
+        }
     }
 }

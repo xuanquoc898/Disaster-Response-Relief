@@ -1,4 +1,6 @@
 ﻿using D2R.Helpers;
+using D2R.Models;
+using D2R.Services;
 using D2R.Views.Admin;
 using D2R.Views.UserControls;
 using System.ComponentModel;
@@ -103,6 +105,40 @@ namespace D2R.Views
         private void CheckAdmin_Click(object sender, RoutedEventArgs e)
         {
             MainContent.Content = new StatusCampaignView();
+        }
+
+        private void NotificationButton_Click(object sender, RoutedEventArgs e)
+        {
+            var service = new NotificationService();
+            var notifications = service.GetNotificationsByStaff(LoginSession.CurrentUser.UserId);
+
+            NotificationList.Items.Clear();
+            foreach (var noti in notifications)
+            {
+                var item = new ListBoxItem
+                {
+                    Content = noti.Content,
+                    FontWeight = noti.IsRead ? FontWeights.Normal : FontWeights.Bold,
+                    Tag = noti
+                };
+                NotificationList.Items.Add(item);
+            }
+
+            NotificationPopup.IsOpen = true;
+        }
+
+        private void NotificationList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (NotificationList.SelectedItem is ListBoxItem item && item.Tag is Notification noti)
+            {
+                var service = new NotificationService();
+                service.MarkNotificationAsRead(noti.NotificationId);
+
+                var detailView = new NotificationDetailView(noti); 
+                MainContent.Content = detailView;
+
+                NotificationPopup.IsOpen = false;
+            }
         }
     }
 }

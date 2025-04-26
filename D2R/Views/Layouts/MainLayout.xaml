@@ -11,11 +11,39 @@
         <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
     </UserControl.Resources>
 
+
     <Grid>
-        <!-- <Grid.RowDefinitions> -->
-        <!--     <RowDefinition Height="40" /> -->
-        <!--     <RowDefinition Height="*" /> -->
-        <!-- </Grid.RowDefinitions> -->
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <!-- Thanh header chứa nút chuông -->
+            <RowDefinition Height="*"/>
+            <!-- Nội dung sidebar + main content -->
+        </Grid.RowDefinitions>
+
+        <!-- Header (chứa chuông) -->
+        <Grid Background="#F0F0F0" Grid.Row="0">
+            <Button x:Name="NotificationButton"
+                Width="66" Height="40"
+                Content="🔔"
+                FontSize="24"
+                Click="NotificationButton_Click"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Margin="115,0,0,0"/>
+
+            <!-- Popup xổ thông báo -->
+            <Popup x:Name="NotificationPopup"
+               PlacementTarget="{Binding ElementName=NotificationButton}"
+               Placement="Bottom"
+               StaysOpen="False">
+                <Border Background="White" BorderBrush="Gray" BorderThickness="1" Width="300" Height="400">
+                    <ListBox x:Name="NotificationList" SelectionChanged="NotificationList_SelectionChanged">
+                        <!-- Mỗi item thông báo sẽ load vào đây -->
+                    </ListBox>
+                </Border>
+            </Popup>
+        </Grid>
 
         <!-- Nội dung chính: chia làm Sidebar và MainContent -->
         <Grid Grid.Row="1">
