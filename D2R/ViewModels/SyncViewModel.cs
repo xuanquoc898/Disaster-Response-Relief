@@ -16,7 +16,7 @@ namespace D2R.ViewModels
 
         public void Sync()
         {
-            _syncOpService.SyncToCentral(_warehouseId);
+            _syncOpService.SyncToCentralWarehouse(_warehouseId);
         }
 
         public List<SyncLog> GetSyncHistory()

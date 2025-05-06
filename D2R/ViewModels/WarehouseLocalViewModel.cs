@@ -1,5 +1,4 @@
 ﻿using D2R.Services;
-
 namespace D2R.ViewModels
 {
     public class WarehouseLocalViewModel
@@ -15,7 +14,15 @@ namespace D2R.ViewModels
 
         public List<WarehouseStockDisplay> GetGroupedStock()
         {
-            return _inventoryService.GetGroupedStockByWarehouse(_warehouseId);
+            return _inventoryService.GetStockByWarehouse(_warehouseId);
         }
+    }
+
+    public class WarehouseStockDisplay
+    {
+        public string? CategoryName { get; set; }
+        public string? ItemName { get; set; }
+        public int Quantity { get; set; }
+        public string? Unit { get; set; }
     }
 }

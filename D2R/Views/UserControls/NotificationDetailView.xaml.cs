@@ -11,9 +11,12 @@ namespace D2R.Views.UserControls
         public NotificationDetailView(Notification notification)
         {
             InitializeComponent();
-
             _viewModel = new NotificationDetailViewModel(notification);
+            LoadNotification();
+        }
 
+        public void LoadNotification()
+        {
             NotificationContentText.Text = _viewModel.Notification.Content;
             CreatedAtText.Text = _viewModel.Notification.CreatedAt?.ToString("dd/MM/yyyy") ?? "Không rõ";
 

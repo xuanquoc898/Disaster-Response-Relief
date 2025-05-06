@@ -10,7 +10,7 @@ namespace D2R.ViewModels
         private readonly WarehouseStockService _warehouseStockService = new();
         private readonly ItemCategoryService _itemCategoryService = new();
         private readonly DistributionLogService _logService = new();
-        private readonly NotificationService _notificationService = new();
+        private readonly NotificationDetailService _notificationService = new();
         private readonly UserService _userService = new();
 
         public Campaign Campaign { get; private set; }

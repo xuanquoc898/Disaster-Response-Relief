@@ -1,4 +1,5 @@
 using D2R.Models;
+using D2R.ViewModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace D2R.Repositories
@@ -16,12 +17,35 @@ namespace D2R.Repositories
         {
             return _context.WarehouseStocks.ToList();
         }
-        public List<WarehouseStock> GetAllWithWarehouse()
+        public List<WarehouseStockDisplay> GetStockByWarehouse(int warehouseId)
         {
-            return _context.WarehouseStocks
-                .Include(s => s.Warehouse)
+            var stocks = _context.WarehouseStocks
+                .Where(s => s.WarehouseId == warehouseId)
+                .Join(_context.WarehouseItems, s => s.ItemId, i => i.ItemId, (s, i) => new { s, i })
+                .Join(_context.ItemCategories, si => si.i.CategoryId, c => c.CategoryId, (si, c) => new WarehouseStockDisplay
+                {
+                    CategoryName = c.CategoryName,
+                    ItemName = si.i.Name,
+                    Quantity = si.s.Quantity ?? 0,
+                    Unit = si.i.Unit
+                })
+                .OrderBy(r => r.CategoryName)
                 .ToList();
+            return stocks;
         }
+
+
+        public WarehouseStock GetCentralStockByItemId(int itemId)
+        {
+            return (WarehouseStock)_context.WarehouseStocks.Where(ws => ws.ItemId == itemId && ws.WarehouseId == null);
+        }
+
+        public List<WarehouseStock> GetStockById(int warehouseId)
+        {
+            return _context.WarehouseStocks.Where(s => s.WarehouseId == warehouseId).ToList();
+
+        }
+
         public void Add(WarehouseStock entity)
         {
             _context.WarehouseStocks.Add(entity);

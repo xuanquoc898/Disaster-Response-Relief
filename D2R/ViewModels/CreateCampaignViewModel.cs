@@ -21,7 +21,7 @@ namespace D2R.ViewModels
         private readonly WarehouseItemService _warehouseItemService = new();
         private readonly CampaignService _campaignService = new();
         private readonly CampaignItemService _campaignItemService = new();
-        private readonly NotificationService _notificationService = new();
+        private readonly NotificationDetailService _notificationService = new();
         private readonly UserService _userService = new();
 
 

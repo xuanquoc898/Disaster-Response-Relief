@@ -6,9 +6,8 @@ namespace D2R.ViewModels
 {
     public class NotificationDetailViewModel
     {
-        private readonly CampaignService _campaignService = new();
         private readonly WarehouseStockService _warehouseStockService = new();
-        private readonly NotificationService _notificationService = new();
+        private readonly NotificationDetailService _notificationService = new();
 
         public Notification Notification { get; private set; }
         public Campaign? Campaign { get; private set; }
@@ -23,7 +22,7 @@ namespace D2R.ViewModels
         {
             if (Notification.CampaignId.HasValue)
             {
-                Campaign = _campaignService.GetById(Notification.CampaignId.Value);
+                Campaign = _notificationService.GetByNotiCampaignId(Notification.CampaignId.Value);
             }
         }
 
@@ -43,7 +42,7 @@ namespace D2R.ViewModels
 
             Campaign.Status = "Completed";
             Campaign.CompletedAt = DateTime.Now;
-            _campaignService.Update(Campaign);
+            _notificationService.UpdateNotification(Campaign);
 
             _warehouseStockService.SyncWarehouseFromDistribution(
                 Campaign.CampaignId,

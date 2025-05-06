@@ -133,7 +133,7 @@ namespace D2R.Views.UserControls
 
         private void NotificationButton_Click(object sender, RoutedEventArgs e)
         {
-            var service = new NotificationService();
+            var service = new NotificationDetailService();
             var notifications = service.GetNotificationsByUserId(LoginSession.CurrentUser.UserId);
 
 
@@ -156,7 +156,7 @@ namespace D2R.Views.UserControls
         {
             if (NotificationList.SelectedItem is ListBoxItem item && item.Tag is Notification noti)
             {
-                var service = new NotificationService();
+                var service = new NotificationDetailService();
                 service.MarkNotificationAsRead(noti.NotificationId);
 
                 var detailView = new NotificationDetailView(noti);

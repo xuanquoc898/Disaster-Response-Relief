@@ -9,7 +9,10 @@ namespace D2R.Repositories
 
         public Campaign GetById(int id)
         {
-            return _context.Campaigns.Include(c => c.Area).Include(c => c.DisasterLevel).ThenInclude(dl => dl.DisasterType).FirstOrDefault(c => c.CampaignId == id);
+            return _context.Campaigns.Include(c => c.Area)
+                .Include(c => c.DisasterLevel)
+                .ThenInclude(dl => dl.DisasterType)
+                .FirstOrDefault(c => c.CampaignId == id);
         }
 
         public List<Campaign> GetAllWithRelations()
