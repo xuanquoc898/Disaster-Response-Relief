@@ -22,12 +22,6 @@ namespace D2R.Repositories
                 .Include(s => s.Warehouse)
                 .ToList();
         }
-
-        public WarehouseStock GetById(int id)
-        {
-            return _context.WarehouseStocks.Find(id);
-        }
-
         public void Add(WarehouseStock entity)
         {
             _context.WarehouseStocks.Add(entity);
@@ -75,7 +69,6 @@ namespace D2R.Repositories
                     });
                 }
             }
-
             _context.SaveChanges();
         }
 

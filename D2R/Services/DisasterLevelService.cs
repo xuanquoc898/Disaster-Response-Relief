@@ -16,25 +16,5 @@ namespace D2R.Services
         {
             return _repository.GetAll();
         }
-
-        public DisasterLevel GetById(int id)
-        {
-            return _repository.GetById(id);
-        }
-
-        public void Add(DisasterLevel entity)
-        {
-            _repository.Add(entity);
-        }
-
-        public void Update(DisasterLevel entity)
-        {
-            _repository.Update(entity);
-        }
-
-        public void Delete(int id)
-        {
-            _repository.Delete(id);
-        }
     }
 }

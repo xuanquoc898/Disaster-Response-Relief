@@ -17,7 +17,7 @@ namespace D2R.Services
                 CreatedAt = DateTime.Now
             };
 
-            _repository.Add(notification); // 🔥 Gọi Repository, không tự save
+            _repository.Add(notification);
         }
 
         public List<Notification> GetNotificationsByUserId(int userId)

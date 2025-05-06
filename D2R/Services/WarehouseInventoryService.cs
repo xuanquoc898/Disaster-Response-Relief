@@ -2,10 +2,10 @@
 {
     public class WarehouseStockDisplay
     {
-        public string CategoryName { get; set; }
-        public string ItemName { get; set; }
+        public string? CategoryName { get; set; }
+        public string? ItemName { get; set; }
         public int Quantity { get; set; }
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
     }
 
     public class WarehouseInventoryService

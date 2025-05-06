@@ -32,16 +32,11 @@ namespace D2R.Views.Admin
                 });
             }
         }
-
-
-
         private void StatusFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var selected = (StatusFilter.SelectedItem as ComboBoxItem)?.Content?.ToString();
             LoadCampaigns(selected ?? "Tất cả");
         }
-
-
         private void ViewDetail_Click(object sender, RoutedEventArgs e)
         {
             var campaignId = (int)(sender as Button).Tag;

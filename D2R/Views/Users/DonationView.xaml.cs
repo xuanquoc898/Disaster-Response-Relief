@@ -47,7 +47,7 @@ namespace D2R.Views.Users
                 AddCategoryGroup();
             }
         }
-        
+
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var keyword = SearchBox.Text.Trim();

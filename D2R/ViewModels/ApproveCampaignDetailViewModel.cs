@@ -1,5 +1,4 @@
-﻿
-using D2R.Models;
+﻿using D2R.Models;
 using D2R.Services;
 
 namespace D2R.ViewModels
@@ -13,7 +12,6 @@ namespace D2R.ViewModels
         private readonly DistributionLogService _logService = new();
         private readonly NotificationService _notificationService = new();
         private readonly UserService _userService = new();
-
 
         public Campaign Campaign { get; private set; }
         public List<CategoryGroup> GroupedItems { get; private set; }
@@ -76,14 +74,9 @@ namespace D2R.ViewModels
                 content: "Chiến dịch được duyệt."
             );
 
-
             }
 
         }
-
-
-
-
         public void Reject()
         {
             Campaign.Status = "Rejected";
@@ -111,7 +104,7 @@ namespace D2R.ViewModels
         public class ItemEntry
         {
             public int ItemId { get; set; }
-            public string ItemName { get; set; }
+            public string? ItemName { get; set; }
             public int QuantityRequested { get; set; }
             public int QuantityAvailable { get; set; }
         }

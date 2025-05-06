@@ -7,17 +7,9 @@ namespace D2R.Repositories
     {
         private readonly DisasterReliefContext _context = new();
 
-        public List<Campaign> GetAll()
-        {
-            return _context.Campaigns.ToList();
-        }
-
         public Campaign GetById(int id)
         {
-            return _context.Campaigns
-                .Include(c => c.Area)
-                .Include(c => c.DisasterLevel).ThenInclude(dl => dl.DisasterType)
-                .FirstOrDefault(c => c.CampaignId == id);
+            return _context.Campaigns.Include(c => c.Area).Include(c => c.DisasterLevel).ThenInclude(dl => dl.DisasterType).FirstOrDefault(c => c.CampaignId == id);
         }
 
         public List<Campaign> GetAllWithRelations()
@@ -38,16 +30,6 @@ namespace D2R.Repositories
         {
             _context.Entry(campaign).State = EntityState.Modified;
             _context.SaveChanges();
-        }
-
-        public void Delete(int id)
-        {
-            var entity = _context.Campaigns.Find(id);
-            if (entity != null)
-            {
-                _context.Campaigns.Remove(entity);
-                _context.SaveChanges();
-            }
         }
     }
 }

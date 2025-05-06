@@ -17,11 +17,6 @@ namespace D2R.Services
             return _repository.GetAll();
         }
 
-        public User GetById(int id)
-        {
-            return _repository.GetById(id);
-        }
-
         public void Add(User entity)
         {
             _repository.Add(entity);
@@ -36,7 +31,6 @@ namespace D2R.Services
         {
             _repository.Delete(username);
         }
-
         public List<User> GetStaffsByAreaId(int areaId)
         {
             return _repository.GetStaffsByAreaId(areaId);

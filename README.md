@@ -19,9 +19,9 @@ Mở terminal, nhập: ``git --version``
 
 LƯU Ý: Đối với LẦN ĐẦU clone project
 
-Nếu dùng SSH:
+- Nếu dùng SSH:
 - Nhập lệnh ``git clone --recurse-submodules git@github.com:xuanquoc898/PBL3.git``
-Nếu dùng HTTPS:
+- Nếu dùng HTTPS:
 - Nhập lệnh ``git clone --recurse-submodules https://github.com/xuanquoc898/PBL3.git``
 
 > Dưới đây là bước mở dự án

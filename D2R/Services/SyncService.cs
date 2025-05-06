@@ -14,7 +14,7 @@ namespace D2R.Services
             _syncLogItemService = new SyncLogItemService();
             _stockService = new WarehouseStockService();
         }
-
+        //hi
         public void SyncToCentralWarehouse(int staffWarehouseId)
         {
             var stockList = _stockService.GetAll()

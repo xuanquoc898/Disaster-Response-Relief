@@ -11,12 +11,6 @@ namespace D2R.Services
         {
             _repository = new CampaignRepository();
         }
-
-        public List<Campaign> GetAll()
-        {
-            return _repository.GetAll();
-        }
-
         public Campaign GetById(int id)
         {
             return _repository.GetById(id);
@@ -30,11 +24,6 @@ namespace D2R.Services
         public void Update(Campaign entity)
         {
             _repository.Update(entity);
-        }
-
-        public void Delete(int id)
-        {
-            _repository.Delete(id);
         }
         public List<Campaign> GetAllWithRelations()
         {

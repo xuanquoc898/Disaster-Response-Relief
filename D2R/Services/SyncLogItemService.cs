@@ -11,30 +11,9 @@ namespace D2R.Services
         {
             _repository = new SyncLogItemRepository();
         }
-
-        public List<SyncLogItem> GetAll()
-        {
-            return _repository.GetAll();
-        }
-
-        public SyncLogItem GetById(int id)
-        {
-            return _repository.GetById(id);
-        }
-
         public void Add(SyncLogItem entity)
         {
             _repository.Add(entity);
-        }
-
-        public void Update(SyncLogItem entity)
-        {
-            _repository.Update(entity);
-        }
-
-        public void Delete(int id)
-        {
-            _repository.Delete(id);
         }
     }
 }

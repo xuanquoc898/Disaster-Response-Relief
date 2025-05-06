@@ -12,7 +12,6 @@ namespace D2R.Services
             _syncService = new SyncService();
             _logService = new SyncLogService();
         }
-
         public void SyncToCentral(int warehouseId)
         {
             _syncService.SyncToCentralWarehouse(warehouseId);

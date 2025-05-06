@@ -23,7 +23,6 @@ namespace D2R.ViewModels
             _transactionService = new DonationTransactionService();
         }
 
-        public List<Donor> GetDonors() => _donorService.GetAll();
         public void SetSelectedDonor(Donor donor) => SelectedDonor = donor;
 
         public bool ConfirmDonation(List<DonationCategoryGroupControl> groups)

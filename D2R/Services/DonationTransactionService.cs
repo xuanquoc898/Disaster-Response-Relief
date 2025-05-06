@@ -46,8 +46,6 @@ namespace D2R.Services
                     _stockService.AddOrUpdateStock(warehouseId, entry.Item.ItemId, entry.Quantity);
                 }
             }
-
-
             return true;
         }
     }

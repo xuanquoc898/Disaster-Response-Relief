@@ -1,5 +1,4 @@
 using D2R.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace D2R.Repositories
 {
@@ -20,28 +19,6 @@ namespace D2R.Repositories
         public ItemCategory GetById(int id)
         {
             return _context.ItemCategories.Find(id);
-        }
-
-        public void Add(ItemCategory entity)
-        {
-            _context.ItemCategories.Add(entity);
-            _context.SaveChanges();
-        }
-
-        public void Update(ItemCategory entity)
-        {
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.SaveChanges();
-        }
-
-        public void Delete(int id)
-        {
-            var entity = _context.ItemCategories.Find(id);
-            if (entity != null)
-            {
-                _context.ItemCategories.Remove(entity);
-                _context.SaveChanges();
-            }
         }
     }
 }

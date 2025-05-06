@@ -1,5 +1,4 @@
 using D2R.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace D2R.Repositories
 {
@@ -11,37 +10,10 @@ namespace D2R.Repositories
         {
             _context = new DisasterReliefContext();
         }
-
-        public List<SyncLogItem> GetAll()
-        {
-            return _context.SyncLogItems.ToList();
-        }
-
-        public SyncLogItem GetById(int id)
-        {
-            return _context.SyncLogItems.Find(id);
-        }
-
         public void Add(SyncLogItem entity)
         {
             _context.SyncLogItems.Add(entity);
             _context.SaveChanges();
-        }
-
-        public void Update(SyncLogItem entity)
-        {
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.SaveChanges();
-        }
-
-        public void Delete(int id)
-        {
-            var entity = _context.SyncLogItems.Find(id);
-            if (entity != null)
-            {
-                _context.SyncLogItems.Remove(entity);
-                _context.SaveChanges();
-            }
         }
     }
 }

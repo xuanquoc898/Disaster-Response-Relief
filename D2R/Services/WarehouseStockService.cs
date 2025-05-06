@@ -16,16 +16,7 @@ namespace D2R.Services
         {
             return _repository.GetAll();
         }
-        public WarehouseStock? GetCentralStock(int itemId)
-        {
-            return _repository.GetAll()
-                .FirstOrDefault(s => s.ItemId == itemId && s.WarehouseId == null);
-        }
 
-        public WarehouseStock GetById(int id)
-        {
-            return _repository.GetById(id);
-        }
 
         public void Add(WarehouseStock entity)
         {
@@ -74,8 +65,6 @@ namespace D2R.Services
             return stock?.Quantity ?? 0;
         }
 
-
-
         public void Decrease(int itemId, int quantity)
         {
             var stock = _repository.GetAll()
@@ -91,7 +80,5 @@ namespace D2R.Services
         {
             _repository.SyncWarehouseFromDistribution(campaignId, warehouseId);
         }
-
-
     }
 }

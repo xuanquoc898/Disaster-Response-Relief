@@ -1,5 +1,4 @@
 using D2R.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace D2R.Repositories
 {
@@ -15,33 +14,6 @@ namespace D2R.Repositories
         public List<DisasterLevel> GetAll()
         {
             return _context.DisasterLevels.ToList();
-        }
-
-        public DisasterLevel GetById(int id)
-        {
-            return _context.DisasterLevels.Find(id);
-        }
-
-        public void Add(DisasterLevel entity)
-        {
-            _context.DisasterLevels.Add(entity);
-            _context.SaveChanges();
-        }
-
-        public void Update(DisasterLevel entity)
-        {
-            _context.Entry(entity).State = EntityState.Modified;
-            _context.SaveChanges();
-        }
-
-        public void Delete(int id)
-        {
-            var entity = _context.DisasterLevels.Find(id);
-            if (entity != null)
-            {
-                _context.DisasterLevels.Remove(entity);
-                _context.SaveChanges();
-            }
         }
     }
 }

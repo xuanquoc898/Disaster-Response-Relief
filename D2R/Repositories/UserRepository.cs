@@ -19,12 +19,6 @@ namespace D2R.Repositories
                 .ThenInclude(w => w.Area)
                 .ToList();
         }
-
-        public User GetById(int id)
-        {
-            return _context.Users.Find(id);
-        }
-
         public User GetByUsername(string username)
         {
             return _context.Users.Include(u => u.Role)

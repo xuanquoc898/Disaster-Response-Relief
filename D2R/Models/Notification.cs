@@ -3,7 +3,7 @@
 public partial class Notification
 {
     public int NotificationId { get; set; }
-    public int UserId { get; set; }  // ✅ Đổi từ StaffId thành UserId
+    public int UserId { get; set; }  
     public int? CampaignId { get; set; }
     public string Content { get; set; } = null!;
     public bool? IsRead { get; set; }

@@ -1,7 +1,7 @@
-﻿using D2R.Repositories;
+﻿using D2R.Models;
+using D2R.Repositories;
 using System.Security.Cryptography;
 using System.Text;
-using D2R.Models;
 
 namespace D2R.Services;
 

@@ -55,7 +55,7 @@ namespace D2R.Views.Users
             panel.Children.Add(qtyBox);
             ItemEntryPanel.Items.Add(panel);
         }
-        
+
         private void DeleteItemEntry_Click(object sender, RoutedEventArgs e)
         {
             if (sender is Button btn && btn.DataContext != null)
@@ -82,7 +82,6 @@ namespace D2R.Views.Users
                     });
                 }
             }
-
             return result;
         }
     }

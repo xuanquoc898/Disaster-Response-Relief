@@ -1,28 +1,27 @@
 ﻿using D2R.Helpers;
 using D2R.Services;
+using D2R.ViewModels;
 using D2R.Views.Admin;
-using D2R.Views.UserControls;
+using D2R.Views.Users;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Animation;
-using D2R.ViewModels;
-using D2R.Views.Users;
 
 namespace D2R.Views.UserControls
 {
     public partial class MenuView : UserControl, INotifyPropertyChanged
     {
         private bool _isSidebarExpanded = true;
-        
+
         private bool _isAdminExpanded = true;
         public bool IsSidebarExpanded
         {
             get => _isSidebarExpanded;
             set { _isSidebarExpanded = value; OnPropertyChanged(); }
         }
-        
+
         public bool IsAdminExpanded
         {
             get => _isAdminExpanded;
@@ -66,7 +65,7 @@ namespace D2R.Views.UserControls
 
         private void SidebarToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            AnimateSidebar(SidebarPanel.ActualWidth, (LoginSession.CurrentUser.Role.RoleName == "Staff")?190:220);
+            AnimateSidebar(SidebarPanel.ActualWidth, (LoginSession.CurrentUser.Role.RoleName == "Staff") ? 190 : 220);
             IsSidebarExpanded = true;
         }
 
@@ -87,7 +86,7 @@ namespace D2R.Views.UserControls
 
         private void ManageAccounts_Click(object sender, RoutedEventArgs e)
         {
-            
+
             if (LoginSession.CurrentUser.RoleId == 1)
             {
                 MainContent.Content = new UserManagermentView();

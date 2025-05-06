@@ -11,30 +11,9 @@ namespace D2R.Services
         {
             _repository = new WarehouseRepository();
         }
-
         public List<Warehouse> GetAll()
         {
             return _repository.GetAll();
-        }
-
-        public Warehouse GetById(int id)
-        {
-            return _repository.GetById(id);
-        }
-
-        public void Add(Warehouse entity)
-        {
-            _repository.Add(entity);
-        }
-
-        public void Update(Warehouse entity)
-        {
-            _repository.Update(entity);
-        }
-
-        public void Delete(int id)
-        {
-            _repository.Delete(id);
         }
     }
 }

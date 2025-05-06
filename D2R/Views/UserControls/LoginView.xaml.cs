@@ -1,9 +1,8 @@
 ﻿using D2R.ViewModels;
+using MaterialDesignThemes.Wpf;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Imaging;
-using MaterialDesignThemes.Wpf;
 
 namespace D2R.Views.UserControls
 {

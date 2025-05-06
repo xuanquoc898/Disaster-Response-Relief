@@ -11,30 +11,9 @@ namespace D2R.Services
         {
             _repository = new AreaRepository();
         }
-
         public List<Area> GetAll()
         {
             return _repository.GetAll();
-        }
-
-        public Area GetById(int id)
-        {
-            return _repository.GetById(id);
-        }
-
-        public void Add(Area entity)
-        {
-            _repository.Add(entity);
-        }
-
-        public void Update(Area entity)
-        {
-            _repository.Update(entity);
-        }
-
-        public void Delete(int id)
-        {
-            _repository.Delete(id);
         }
     }
 }

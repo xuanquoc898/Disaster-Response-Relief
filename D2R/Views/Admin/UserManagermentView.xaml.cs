@@ -1,23 +1,23 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using D2R.Models;
+﻿using D2R.Models;
 using D2R.ViewModels;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace D2R.Views.Admin;
 
 public partial class UserManagermentView : UserControl
 {
-    
+
     private readonly UserManagementViewModel _viewModel = new UserManagementViewModel();
 
     public UserManagermentView()
-    {   
+    {
         InitializeComponent();
         DataGridUsers.ItemsSource = _viewModel.Users;
         CbbWarehouseName.ItemsSource = _viewModel.Warehouses;
         CbbNameWarehouseLocation.ItemsSource = _viewModel.Areas;
     }
-    
+
     private void DataGridUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var user = DataGridUsers.SelectedItem as User;
@@ -26,20 +26,20 @@ public partial class UserManagermentView : UserControl
     private void BtnAddUser_Click(object sender, RoutedEventArgs e)
     {
         Area area = new Area();
-        area.Name = CbbNameWarehouseLocation.Text==null 
-            ? ((ComboBoxItem)CbbNameWarehouseLocation.SelectedItem).Content.ToString() 
+        area.Name = CbbNameWarehouseLocation.Text == null
+            ? ((ComboBoxItem)CbbNameWarehouseLocation.SelectedItem).Content.ToString()
             : CbbNameWarehouseLocation.Text;
-        area.District = CbbDistrictWarehouseLocation.Text==null 
-            ? ((ComboBoxItem)CbbDistrictWarehouseLocation.SelectedItem).Content.ToString() 
+        area.District = CbbDistrictWarehouseLocation.Text == null
+            ? ((ComboBoxItem)CbbDistrictWarehouseLocation.SelectedItem).Content.ToString()
             : CbbDistrictWarehouseLocation.Text;
-        area.Province = CbbProvinceWarehouseLocation.Text==null 
+        area.Province = CbbProvinceWarehouseLocation.Text == null
             ? ((ComboBoxItem)CbbProvinceWarehouseLocation.SelectedItem).Content.ToString()
             : CbbProvinceWarehouseLocation.Text;
 
         string tmp = CbbWarehouseName.Text == null
             ? ((ComboBoxItem)CbbWarehouseName.SelectedItem).Content.ToString()
             : CbbWarehouseName.Text;
-        
+
         _viewModel.AddUser(
             TxtUsername.Text.Trim(),
             PwdPassword.Password,
@@ -63,7 +63,7 @@ public partial class UserManagermentView : UserControl
         _viewModel.ClearSelection();
         DataGridUsers.UnselectAll();
     }
-    
+
     private void RowResetPassword_Click(object sender, RoutedEventArgs e)
     {
         User user = null;
@@ -89,7 +89,7 @@ public partial class UserManagermentView : UserControl
             user = btn.DataContext as User;
         if (user != null)
         {
-            if (MessageBox.Show($"Xác nhận xóa {user.Username}?", "Xóa người dùng", MessageBoxButton.YesNo) 
+            if (MessageBox.Show($"Xác nhận xóa {user.Username}?", "Xóa người dùng", MessageBoxButton.YesNo)
                 == MessageBoxResult.Yes)
             {
                 _viewModel.SelectUser(user);
@@ -100,7 +100,7 @@ public partial class UserManagermentView : UserControl
             }
         }
     }
-    
+
     private void RowActions_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button btn && btn.ContextMenu != null)
