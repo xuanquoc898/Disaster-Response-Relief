@@ -27,7 +27,8 @@ namespace D2R.Repositories
 
         public User GetByUsername(string username)
         {
-            return _context.Users.FirstOrDefault(u => u.Username == username);
+            return _context.Users.Include(u => u.Role)
+                .FirstOrDefault(u => u.Username == username);
         }
 
         public void Add(User entity)

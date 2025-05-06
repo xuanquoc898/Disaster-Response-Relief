@@ -9,7 +9,6 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <!-- Đảm bảo UserControl co giãn hoàn toàn trong ContentControl -->
     <Grid Background="White"
           Margin="0"
           HorizontalAlignment="Stretch"
@@ -22,14 +21,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Logo -->
-        <Image Source="/D2R_Logo.png"
+        <Image Source="/Images/D2R_Logo.png"
                Height="120"
                HorizontalAlignment="Center"
                Grid.Row="0"
                Margin="0,20,0,10"/>
 
-        <!-- Tiêu đề -->
         <TextBlock Text="Hệ thống quản lý và cứu trợ thiên tai"
                    FontSize="28"
                    FontWeight="Bold"
@@ -38,7 +35,6 @@
                    Grid.Row="1"
                    Margin="0,0,0,10"/>
 
-        <!-- Card chào mừng -->
         <materialDesign:Card Grid.Row="2"
                              Margin="0,0,0,20"
                              Padding="20"
@@ -76,8 +72,6 @@
                        TextWrapping="Wrap"
                        TextAlignment="Center"/>
         </materialDesign:Card>
-
-        <!-- Trích dẫn -->
         <TextBlock Text="Sự vĩ đại không nằm trong tài sản, quyền lực, danh vọng hay tiếng tăm. Nó được phát hiện trong lòng tốt, sự nhún nhường, sự phụng sự và tính cách."
                    FontSize="16"
                    FontStyle="Italic"

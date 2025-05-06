@@ -1,0 +1,122 @@
+﻿<UserControl x:Class="D2R.Views.Admin.UserManagermentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             Background="White"
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Quản lý người dùng" 
+                   FontSize="20" FontWeight="Bold" Margin="0,0,0,10" />
+
+        <TabControl Grid.Row="1" FontSize="16">
+            <TabItem Header="Danh sách tài khoản">
+                <DockPanel Margin="5">
+                    <DataGrid x:Name="DataGridUsers"
+                              AutoGenerateColumns="False"
+                              CanUserAddRows="False"
+                              HeadersVisibility="Column"
+                              RowHeaderWidth="0"
+                              IsReadOnly="True"
+                              Margin="0"
+                              SelectionMode="Single"
+                              Background="White"
+                              AlternatingRowBackground="#F9F9F9"
+                              GridLinesVisibility="None"
+                              BorderBrush="#CCC"
+                              BorderThickness="1"
+                              RowHeight="40"
+                              FontSize="16"
+                              SelectionChanged="DataGridUsers_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Tên tài khoản" Binding="{Binding Username}" Width="2*"/>
+                            <DataGridTextColumn Header="Vai trò" Binding="{Binding Role.RoleName}" Width="*" />
+                            <DataGridTextColumn Header="Kho quản lý" Binding="{Binding Warehouse.Name}" Width="2*" />
+                            <DataGridTextColumn Header="Vị trí kho" Binding="{Binding Warehouse.Area.Name}" Width="2*" />
+                            <DataGridTemplateColumn Header="" Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Content="⋮"
+                                                Width="24" Height="24"
+                                                Padding="0"
+                                                FontWeight="ExtraBold"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontSize="20"
+                                                Foreground="Black"
+                                                Background="Transparent"
+                                                BorderThickness="0"
+                                                Click="RowActions_Click">
+                                            <Button.ContextMenu>
+                                                <ContextMenu DataContext="{Binding}">
+                                                    <MenuItem Header="Reset mật khẩu" Click="RowResetPassword_Click" />
+                                                    <MenuItem Header="Xóa" Click="RowDeleteUser_Click" />
+                                                </ContextMenu>
+                                            </Button.ContextMenu>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
+
+            <TabItem Header="Thêm người dùng">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Tên tài khoản:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
+                    <TextBox x:Name="TxtUsername" Grid.Row="0" Grid.Column="1" Margin="5"/>
+
+                    <TextBlock Text="Mật khẩu:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
+                    <PasswordBox x:Name="PwdPassword" Grid.Row="1" Grid.Column="1" Margin="5"/>
+
+                    <TextBlock Text="Vai trò:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
+                    <ComboBox x:Name="CbxRole" Grid.Row="2" Grid.Column="1" Margin="5">
+                        <ComboBoxItem Content="Admin"/>
+                        <ComboBoxItem Content="Staff"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Kho quản lý:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
+                    <ComboBox x:Name="CbbWarehouseName" IsEditable="True" Grid.Row="3" Grid.Column="1" Margin="5"/>
+
+                    <TextBlock Text="Vị trí kho:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
+                    <Grid Grid.Row="4" Grid.Column="1" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <ComboBox x:Name="CbbNameWarehouseLocation" IsEditable="True" Margin="0,0,5,0"/>
+                        <ComboBox x:Name="CbbDistrictWarehouseLocation" Grid.Column="1" IsEditable="True" Margin="5,0,5,0"/>
+                        <ComboBox x:Name="CbbProvinceWarehouseLocation" Grid.Column="2" IsEditable="True" Margin="5,0,0,0"/>
+                    </Grid>
+                    
+                    <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                        <Button x:Name="BtnAddUser" Content="Thêm" Width="100" Click="BtnAddUser_Click" IsDefault="True"/>
+                        <Button x:Name="BtnClearForm" Content="Xóa" Width="100" Margin="5,0,0,0" Click="BtnClearForm_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

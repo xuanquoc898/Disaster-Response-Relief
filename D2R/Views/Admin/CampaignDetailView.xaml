@@ -2,48 +2,77 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              Background="White">
+
     <ScrollViewer>
         <StackPanel Margin="20">
-            <TextBlock Text="Chi tiết chiến dịch" FontSize="20" FontWeight="Bold" Margin="0 0 0 10"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Tên chiến dịch: " FontWeight="SemiBold"/>
-                <TextBlock x:Name="NoteText"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Khu vực: " FontWeight="SemiBold"/>
-                <TextBlock x:Name="AreaText"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Loại thiên tai: " FontWeight="SemiBold"/>
-                <TextBlock x:Name="DisasterTypeText"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Mức độ thiên tai: " FontWeight="SemiBold"/>
-                <TextBlock x:Name="DisasterLevelText"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Ngày gửi yêu cầu: " FontWeight="SemiBold"/>
-                <TextBlock x:Name="CreatedDateText"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Ngày duyệt / từ chối: " FontWeight="SemiBold"/>
-                <TextBlock x:Name="ApprovedOrRejectedDateText"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" x:Name="CompletedTimePanel" Visibility="Collapsed">
-                <TextBlock Text="Thời gian xác nhận hoàn tất: " FontWeight="SemiBold"/>
-                <TextBlock x:Name="CompletedTimeText"/>
-            </StackPanel>
 
-            <TextBlock Text="Danh sách vật phẩm yêu cầu" FontWeight="Bold" Margin="0 20 0 10"/>
-            <ListView x:Name="ItemListView" Height="300">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Tên vật phẩm" Width="200" DisplayMemberBinding="{Binding ItemName}"/>
-                        <GridViewColumn Header="Số lượng yêu cầu" Width="150" DisplayMemberBinding="{Binding QuantityRequested}"/>
-                        <GridViewColumn Header="Danh mục" Width="150" DisplayMemberBinding="{Binding CategoryName}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+            <TextBlock Text="Chi tiết chiến dịch" 
+                       FontSize="20" 
+                       FontWeight="Bold" 
+                       Margin="0 0 0 20"
+                       Foreground="#333"/>
+
+            <Border Background="#F9F9F9"
+                    BorderBrush="#DDD"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="15"
+                    Margin="0 0 0 20">
+
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5">
+                        <TextBlock Text="Tên chiến dịch: " FontSize="14" FontWeight="SemiBold" Width="180"/>
+                        <TextBlock x:Name="NoteText" FontSize="14"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5">
+                        <TextBlock Text="Khu vực: " FontSize="14" FontWeight="SemiBold" Width="180"/>
+                        <TextBlock x:Name="AreaText" FontSize="14"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5">
+                        <TextBlock Text="Loại thiên tai: " FontSize="14" FontWeight="SemiBold" Width="180"/>
+                        <TextBlock x:Name="DisasterTypeText" FontSize="14"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5">
+                        <TextBlock Text="Mức độ thiên tai: " FontSize="14" FontWeight="SemiBold" Width="180"/>
+                        <TextBlock x:Name="DisasterLevelText" FontSize="14"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5">
+                        <TextBlock Text="Ngày gửi yêu cầu: " FontSize="14" FontWeight="SemiBold" Width="180"/>
+                        <TextBlock x:Name="CreatedDateText" FontSize="14"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 5">
+                        <TextBlock Text="Ngày duyệt / từ chối: " FontSize="14" FontWeight="SemiBold" Width="180"/>
+                        <TextBlock x:Name="ApprovedOrRejectedDateText" FontSize="14"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" x:Name="CompletedTimePanel" Margin="0 5" Visibility="Collapsed">
+                        <TextBlock Text="Thời gian xác nhận hoàn tất: " FontSize="14" FontWeight="SemiBold" Width="180"/>
+                        <TextBlock x:Name="CompletedTimeText" FontSize="14"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <TextBlock Text="Danh sách vật phẩm yêu cầu" 
+                       FontWeight="Bold" 
+                       FontSize="16"
+                       Foreground="#333"
+                       Margin="0 0 0 10"/>
+
+            <Border Background="White"
+                    BorderBrush="#DDD"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="10">
+                <ListView x:Name="ItemListView" Height="300" Background="White" BorderThickness="0">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Tên vật phẩm" Width="200" DisplayMemberBinding="{Binding ItemName}"/>
+                            <GridViewColumn Header="Số lượng yêu cầu" Width="200" DisplayMemberBinding="{Binding QuantityRequested}"/>
+                            <GridViewColumn Header="Danh mục" Width="150" DisplayMemberBinding="{Binding CategoryName}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Border>
+
         </StackPanel>
     </ScrollViewer>
 </UserControl>

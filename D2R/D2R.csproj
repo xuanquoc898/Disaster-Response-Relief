@@ -31,8 +31,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Resource Include="D2R_Logo.png">
-        <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <Resource Include="Images\D2R_Logo.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Images\hide.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <Resource Include="Images\view.png">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Resource>
     </ItemGroup>
 
@@ -40,6 +46,77 @@
       <None Update="appsettings.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="Views\User\DonorManagerment.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\User\AddDonorView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\Admin\UserManagermentView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\Users\CreateCampaignView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\Users\CampaignCategoryGroupControl.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\Users\DonationView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\Users\DonationCategoryGroupControl.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\Users\SyncView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\UserControls\MenuView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\UserControls\LoginView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\User\DonorManagerment.xaml.cs">
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\User\AddDonorView.xaml.cs">
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Users\CreateCampaignView.xaml.cs">
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Users\DonationView.xaml.cs">
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Users\SyncView.xaml.cs">
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>

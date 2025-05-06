@@ -1,5 +1,5 @@
 ﻿using D2R.Models;
-using D2R.Views.UserControls;
+using D2R.Views.Users;
 
 namespace D2R.Services
 {

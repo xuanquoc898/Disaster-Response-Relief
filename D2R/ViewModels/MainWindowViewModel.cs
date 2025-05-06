@@ -1,4 +1,4 @@
-﻿using D2R.Views;
+﻿using D2R.Views.UserControls;
 using System.ComponentModel;
 
 namespace D2R.ViewModels
@@ -32,7 +32,7 @@ namespace D2R.ViewModels
         }
         private void OnLoginSucceeded()
         {
-            CurrentView = new MainLayout();
+            CurrentView = new MenuView();
         }
     }
 }

@@ -6,14 +6,25 @@ namespace D2R.ViewModels;
 
 public class UserManagementViewModel
     {
-        // private ObservableCollection<User> _users;
-        private List<User> _users;
-        private User _selectedUser;
         private UserService _userService;
         private AuthService _authService;
         private RoleService _roleService;
+        private WarehouseService _warehouseService;
+        private AreaService _areaService;
+        
+        private List<User> _users;
+        private User _selectedUser;
+        private List<Warehouse> _warehouses;
+        private Warehouse _selectedWarehouse;
+        private List<Area> _areas;
+        private Area _selectedArea;
+        
         public IEnumerable<User> Users => _users; // Interface chỉ đọc
+        public IEnumerable<Warehouse> Warehouses => _warehouses;
+        public IEnumerable<Area> Areas => _areas;
         public User SelectedUser => _selectedUser;
+        public Warehouse SelectedWarehouse => _selectedWarehouse;
+        public Area SelectedArea => _selectedArea;
 
         public UserManagementViewModel()
         {
@@ -25,7 +36,11 @@ public class UserManagementViewModel
             _userService = new UserService();
             _roleService = new RoleService();
             _authService = new AuthService();
+            _warehouseService = new WarehouseService();
+            _areaService = new AreaService();
             _users = _userService.GetAll().ToList();
+            _warehouses = _warehouseService.GetAll().ToList();
+            _areas = _areaService.GetAll().ToList();
         }
 
         public void SelectUser(User user)
@@ -65,7 +80,8 @@ public class UserManagementViewModel
             return true;
         }
 
-        public void AddUser(string username, string password, string role, string warehouseName, string warehouseLocation)
+        public void AddUser(string username, string password, string role, 
+                            string warehouseName, object Location)
         {
             string salt = _authService.GenerateSaltBase64(32);
             var role_tmp = new Role();

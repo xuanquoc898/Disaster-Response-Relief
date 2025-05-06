@@ -6,29 +6,59 @@
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
              Background="White">
+
     <Grid Margin="20" Background="White">
         <StackPanel>
-            <TextBlock Text="Danh sách chiến dịch cần phân phối" FontSize="18" FontWeight="Bold" Margin="0 0 0 20"/>
-            <DataGrid x:Name="CampaignGrid"
-                  AutoGenerateColumns="False"
-                  Height="350"
-                  IsReadOnly="True"
-                  CanUserAddRows="False"
-                  CanUserDeleteRows="False"
-                  HeadersVisibility="Column">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Tên chiến dịch" Binding="{Binding Note}" Width="*"/>
-                    <DataGridTextColumn Header="Khu vực" Binding="{Binding Area.Name}" Width="200"/>
-                    <DataGridTextColumn Header="Ngày tạo" Binding="{Binding CreatedDate, StringFormat=d}" Width="150"/>
-                    <DataGridTemplateColumn Header="Thao tác" Width="100">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Content="Xem chi tiết" Tag="{Binding CampaignId}" Click="ViewDetail_Click"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+            <TextBlock Text="📢 Danh sách chiến dịch cần phân phối" 
+                       FontSize="20" 
+                       FontWeight="Bold" 
+                       Foreground="#333" 
+                       Margin="0 0 0 20"/>
+            <Border Background="#F9F9F9"
+                    BorderBrush="#DDD"
+                    BorderThickness="1"
+                    CornerRadius="8"
+                    Padding="5">
+
+                <DataGrid x:Name="CampaignGrid"
+                          AutoGenerateColumns="False"
+                          Height="350"
+                          IsReadOnly="True"
+                          CanUserAddRows="False"
+                          CanUserDeleteRows="False"
+                          HeadersVisibility="Column"
+                          RowBackground="White"
+                          AlternatingRowBackground="#F5F5F5"
+                          GridLinesVisibility="None"
+                          BorderThickness="0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="📄 Tên chiến dịch" Binding="{Binding Note}" Width="2*" />
+                        <DataGridTextColumn Header="📍 Khu vực" Binding="{Binding Area.Name}" Width="*" />
+                        <DataGridTextColumn Header="📅 Ngày tạo" Binding="{Binding CreatedDate, StringFormat=d}" Width="*" />
+
+                        <DataGridTemplateColumn Header="🔎 Thao tác" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Xem chi tiết" 
+                                            Tag="{Binding CampaignId}" 
+                                            Click="ViewDetail_Click" 
+                                            Background="#2196F3"
+                                            Foreground="White"
+                                            Padding="5,2"
+                                            BorderThickness="0"
+                                            Cursor="Hand"
+                                            FontSize="13"
+                                            Width="100"
+                                            HorizontalAlignment="Center"
+                                            />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Border>
         </StackPanel>
     </Grid>
 </UserControl>

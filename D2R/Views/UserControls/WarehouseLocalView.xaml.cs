@@ -19,7 +19,6 @@ namespace D2R.Views.UserControls
         {
             var list = _viewModel.GetGroupedStock();
             StockListView.ItemsSource = list;
-            // Hiển thị thông báo nếu rỗng
             NoItemsText.Visibility = list.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         }
     }
