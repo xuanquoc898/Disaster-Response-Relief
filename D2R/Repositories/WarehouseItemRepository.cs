@@ -11,9 +11,9 @@ namespace D2R.Repositories
             _context = new DisasterReliefContext();
         }
 
-        public List<WarehouseItem> GetAll()
+        public List<WarehouseItem> GetById(int id)
         {
-            return _context.WarehouseItems.ToList();
+            return _context.WarehouseItems.Where(i => i.CategoryId == id).ToList();
         }
     }
 }

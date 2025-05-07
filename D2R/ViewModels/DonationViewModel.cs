@@ -7,10 +7,9 @@ namespace D2R.ViewModels
     public class DonationViewModel
     {
         private readonly DonorService _donorService;
-        private readonly ItemCategoryService _categoryService;
-        private readonly WarehouseItemService _itemService;
         private readonly DonationTransactionService _transactionService;
         private readonly int _warehouseId;
+
 
         public Donor? SelectedDonor { get; private set; }
 
@@ -18,8 +17,6 @@ namespace D2R.ViewModels
         {
             _warehouseId = warehouseId;
             _donorService = new DonorService();
-            _categoryService = new ItemCategoryService();
-            _itemService = new WarehouseItemService();
             _transactionService = new DonationTransactionService();
         }
 
@@ -31,18 +28,19 @@ namespace D2R.ViewModels
             return _transactionService.ExecuteDonation(SelectedDonor, _warehouseId, groups);
         }
 
-        public List<ItemCategory> GetCategories() => _categoryService.GetAll();
+        public List<ItemCategory> GetCategories()
+        {
+            return _transactionService.GetCategories();
+        }
 
         public List<WarehouseItem> GetItemsByCategory(int categoryId)
         {
-            return _itemService.GetAll().Where(i => i.CategoryId == categoryId).ToList();
+            return _transactionService.GetByCategoryId(categoryId);
         }
 
         public List<Donor> SearchDonors(string keyword)
         {
-            return _donorService.GetAll()
-                .Where(d => d.FullName.Contains(keyword, StringComparison.OrdinalIgnoreCase))
-                .ToList();
+            return _donorService.GetAllByKey(keyword);
         }
     }
 

@@ -6,7 +6,7 @@ namespace D2R.ViewModels
 {
     public class NotificationDetailViewModel
     {
-        private readonly WarehouseStockService _warehouseStockService = new();
+        private readonly SyncOperationService _syncOpService = new();
         private readonly NotificationDetailService _notificationService = new();
 
         public Notification Notification { get; private set; }
@@ -44,7 +44,7 @@ namespace D2R.ViewModels
             Campaign.CompletedAt = DateTime.Now;
             _notificationService.UpdateNotification(Campaign);
 
-            _warehouseStockService.SyncWarehouseFromDistribution(
+            _syncOpService.SyncWarehouseFromDistribution(
                 Campaign.CampaignId,
                 LoginSession.CurrentUser.WarehouseId ?? 0
             );

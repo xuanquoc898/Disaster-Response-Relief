@@ -10,6 +10,9 @@ namespace D2R.Services
         private readonly SyncLogItemRepository _synclogitemRepository;
         public SyncOperationService()
         {
+            _synclogRepository = new SyncLogRepository();
+            _stockRepository = new WarehouseStockRepository();
+            _synclogitemRepository = new SyncLogItemRepository();
         }
         public void SyncToCentralWarehouse(int warehouseId)
         {
@@ -73,5 +76,32 @@ namespace D2R.Services
         {
             return _synclogRepository.GetHistoryByWarehouse(warehouseId);
         }
+
+        public void SyncWarehouseFromDistribution(int campaignId, int warehouseId)
+        {
+            var distributions = _synclogitemRepository.GetDistributionsByCampaign(campaignId);
+
+            foreach (var dist in distributions)
+            {
+                var existingStock = _synclogitemRepository.GetWarehouseStock(warehouseId, dist.ItemId);
+
+                if (existingStock != null)
+                {
+                    existingStock.Quantity += dist.Quantity ?? 0;
+                }
+                else
+                {
+                    _synclogitemRepository.AddWarehouseStock(new WarehouseStock
+                    {
+                        WarehouseId = warehouseId,
+                        ItemId = dist.ItemId,
+                        Quantity = dist.Quantity ?? 0,
+                        LastUpdated = DateTime.Now
+                    });
+                }
+            }
+            _synclogitemRepository.SaveChanges();
+        }
+        
     }
 }

@@ -1,20 +1,32 @@
 ﻿using D2R.Models;
+using D2R.Repositories;
 using D2R.Views.Users;
 
 namespace D2R.Services
 {
     public class DonationTransactionService
     {
-        private readonly DonationService _donationService;
-        private readonly DonationItemService _donationItemService;
-        private readonly WarehouseStockService _stockService;
-
+        private readonly WarehouseItemRepository _warehouseitemRepository;
+        private readonly ItemCategoryRepository _itemcategoryRepository;
+        private readonly DonationRepository _donationRepository;
+        private readonly DonationItemRepository _donationitemRepository;
+        private readonly WarehouseStockRepository _warehousestockRepository;
 
         public DonationTransactionService()
         {
-            _donationService = new DonationService();
-            _donationItemService = new DonationItemService();
-            _stockService = new WarehouseStockService();
+            _warehouseitemRepository = new WarehouseItemRepository();
+            _itemcategoryRepository = new ItemCategoryRepository();
+            _donationRepository = new DonationRepository();
+            _donationitemRepository = new DonationItemRepository();
+            _warehousestockRepository = new WarehouseStockRepository();
+        }
+        public List<ItemCategory> GetCategories()
+        {
+            return _itemcategoryRepository.GetAll();
+        }
+        public List<WarehouseItem> GetByCategoryId(int categoryId)
+        {
+            return _warehouseitemRepository.GetById(categoryId);
         }
 
         public bool ExecuteDonation(Donor donor, int warehouseId, List<DonationCategoryGroupControl> groups)
@@ -28,7 +40,7 @@ namespace D2R.Services
                 AreaId = 1
             };
 
-            _donationService.Add(donation);
+            _donationRepository.Add(donation);
 
             foreach (var group in groups)
             {
@@ -42,11 +54,34 @@ namespace D2R.Services
                         Unit = entry.Item.Unit
                     };
 
-                    _donationItemService.Add(item);
-                    _stockService.AddOrUpdateStock(warehouseId, entry.Item.ItemId, entry.Quantity);
+                    _donationitemRepository.Add(item);
+                    AddOrUpdateStock(warehouseId, entry.Item.ItemId, entry.Quantity);
                 }
             }
             return true;
+        }
+
+        public void AddOrUpdateStock(int? warehouseId, int itemId, int quantity)
+        {
+            var existing = _warehousestockRepository.GetByWarehouseIdItemId(warehouseId, itemId);
+
+            if (existing != null)
+            {
+                existing.Quantity = (existing.Quantity ?? 0) + quantity;
+                existing.LastUpdated = DateTime.Now;
+                _warehousestockRepository.Update(existing);
+            }
+            else
+            {
+                var newStock = new WarehouseStock
+                {
+                    WarehouseId = warehouseId,
+                    ItemId = itemId,
+                    Quantity = quantity,
+                    LastUpdated = DateTime.Now
+                };
+                _warehousestockRepository.Add(newStock);
+            }
         }
     }
 }

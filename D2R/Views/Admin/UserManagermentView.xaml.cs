@@ -44,8 +44,8 @@ public partial class UserManagermentView : UserControl
             TxtUsername.Text.Trim(),
             PwdPassword.Password,
             ((ComboBoxItem)CbxRole.SelectedItem).Content.ToString(),
-            tmp,
-            area
+            tmp
+            //area
         );
         DataGridUsers.ItemsSource = _viewModel.Users;
         BtnClearForm_Click(sender, e);

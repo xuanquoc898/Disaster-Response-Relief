@@ -15,6 +15,5 @@ namespace D2R.ViewModels
                 .Where(c => c.Status == "Planned")
                 .ToList();
         }
-
     }
 }

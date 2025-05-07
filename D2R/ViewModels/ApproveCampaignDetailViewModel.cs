@@ -5,27 +5,27 @@ namespace D2R.ViewModels
 {
     public class ApproveCampaignDetailViewModel
     {
-        private readonly CampaignService _campaignService = new();
-        private readonly CampaignItemService _campaignItemService = new();
+        private readonly ApproveCampaignService _approveCampaignService = new();
         private readonly WarehouseStockService _warehouseStockService = new();
-        private readonly ItemCategoryService _itemCategoryService = new();
-        private readonly DistributionLogService _logService = new();
         private readonly NotificationDetailService _notificationService = new();
         private readonly UserService _userService = new();
-
         public Campaign Campaign { get; private set; }
         public List<CategoryGroup> GroupedItems { get; private set; }
+        public ApproveCampaignDetailViewModel()
+        {
+            GroupedItems = new List<CategoryGroup>();
+        }
 
         public void LoadGroupedByCategory(int campaignId)
         {
-            Campaign = _campaignService.GetById(campaignId);
-            var campaignItems = _campaignItemService.GetByCampaignId(campaignId);
+            Campaign = _approveCampaignService.GetCampaignById(campaignId);
+            var campaignItems = _approveCampaignService.GetByCampaignId(campaignId);
 
             var grouped = campaignItems
                 .GroupBy(ci => ci.Item.CategoryId)
                 .Select(g => new CategoryGroup
                 {
-                    CategoryName = _itemCategoryService.GetById(g.Key ?? 0)?.CategoryName ?? "Không rõ",
+                    CategoryName = _approveCampaignService.GetItemCategoryById(g.Key ?? 0)?.CategoryName ?? "Không rõ",
                     Items = g.Select(i => new ItemEntry
                     {
                         ItemId = i.ItemId,
@@ -51,7 +51,7 @@ namespace D2R.ViewModels
             {
                 _warehouseStockService.Decrease(item.ItemId, item.QuantityRequested);
 
-                _logService.Add(new DistributionLog
+                _approveCampaignService.AddDistributionLog(new DistributionLog
                 {
                     CampaignId = Campaign.CampaignId,
                     ItemId = item.ItemId,
@@ -62,7 +62,7 @@ namespace D2R.ViewModels
 
             Campaign.Status = "Approved";
             Campaign.ApprovedAt = DateTime.Now;
-            _campaignService.Update(Campaign);
+            _approveCampaignService.UpdateCampaign(Campaign);
 
             var staffList = _userService.GetStaffsByAreaId(Campaign.AreaId);
 
@@ -75,13 +75,12 @@ namespace D2R.ViewModels
             );
 
             }
-
         }
         public void Reject()
         {
             Campaign.Status = "Rejected";
             Campaign.RejectedAt = DateTime.Now;
-            _campaignService.Update(Campaign);
+            _approveCampaignService.UpdateCampaign(Campaign);
 
             var staffList = _userService.GetStaffsByAreaId(Campaign.AreaId);
 
@@ -92,7 +91,6 @@ namespace D2R.ViewModels
                 campaignId: Campaign.CampaignId,
                 content: $"Chiến dịch \"{Campaign.Note}\" đã bị từ chối."
             );
-
             }
         }
         public class CategoryGroup

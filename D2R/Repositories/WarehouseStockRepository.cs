@@ -1,6 +1,7 @@
 using D2R.Models;
 using D2R.ViewModels;
 using Microsoft.EntityFrameworkCore;
+using static MaterialDesignThemes.Wpf.Theme.ToolBar;
 
 namespace D2R.Repositories
 {
@@ -17,6 +18,14 @@ namespace D2R.Repositories
         {
             return _context.WarehouseStocks.ToList();
         }
+
+        public WarehouseStock? GetByWarehouseIdItemId(int? warehouseId, int? itemId)
+        {
+            return GetAll()
+                .FirstOrDefault(s => (!warehouseId.HasValue || s.WarehouseId == warehouseId) &&
+                                     (!itemId.HasValue || s.ItemId == itemId));
+        }
+
         public List<WarehouseStockDisplay> GetStockByWarehouse(int warehouseId)
         {
             var stocks = _context.WarehouseStocks
@@ -33,7 +42,6 @@ namespace D2R.Repositories
                 .ToList();
             return stocks;
         }
-
 
         public WarehouseStock GetCentralStockByItemId(int itemId)
         {
@@ -67,34 +75,18 @@ namespace D2R.Repositories
                 _context.SaveChanges();
             }
         }
-        public void SyncWarehouseFromDistribution(int campaignId, int warehouseId)
+
+        public List<WarehouseStock> GetStocksByWarehouse(int warehouseId)
         {
-            var distributions = _context.DistributionLogs
-                .Where(d => d.CampaignId == campaignId)
-                .ToList();
-
-            foreach (var dist in distributions)
-            {
-                var existingStock = _context.WarehouseStocks
-                    .FirstOrDefault(ws => ws.WarehouseId == warehouseId && ws.ItemId == dist.ItemId);
-
-                if (existingStock != null)
-                {
-                    existingStock.Quantity += dist.Quantity ?? 0;
-                }
-                else
-                {
-                    _context.WarehouseStocks.Add(new WarehouseStock
-                    {
-                        WarehouseId = warehouseId,
-                        ItemId = dist.ItemId,
-                        Quantity = dist.Quantity ?? 0,
-                        LastUpdated = DateTime.Now
-                    });
-                }
-            }
-            _context.SaveChanges();
+            return _context.WarehouseStocks.Where(s => s.WarehouseId == warehouseId).ToList();
         }
-
+        public List<WarehouseItem> GetWarehouseItems()
+        {
+            return _context.WarehouseItems.ToList();
+        }
+        public List<ItemCategory> GetItemCategories()
+        {
+            return _context.ItemCategories.ToList();
+        }
     }
 }

@@ -6,41 +6,32 @@ namespace D2R.ViewModels;
 
 public class UserManagementViewModel
 {
-    private UserService _userService;
-    private AuthService _authService;
-    private RoleService _roleService;
-    private WarehouseService _warehouseService;
-    private AreaService _areaService;
+    private readonly UserManagermentService _userManagermentService;
+    private readonly AuthService _authService;
 
-    private List<User> _users;
-    private User _selectedUser;
-    private List<Warehouse> _warehouses;
-    private Warehouse _selectedWarehouse;
-    private List<Area> _areas;
-    private Area _selectedArea;
+    private List<User> _users = new();
+    private User _selectedUser = new();
+    private List<Warehouse> _warehouses = new();
+    private Warehouse? _selectedWarehouse = new();
+    private List<Area> _areas = new();
+    private Area? _selectedArea = new();
 
     public IEnumerable<User> Users => _users; // Interface chỉ đọc
     public IEnumerable<Warehouse> Warehouses => _warehouses;
     public IEnumerable<Area> Areas => _areas;
-    public User SelectedUser => _selectedUser;
-    public Warehouse SelectedWarehouse => _selectedWarehouse;
-    public Area SelectedArea => _selectedArea;
 
     public UserManagementViewModel()
     {
+        _userManagermentService = new UserManagermentService();
+        _authService = new AuthService();
         LoadUsers();
     }
 
     public void LoadUsers()
     {
-        _userService = new UserService();
-        _roleService = new RoleService();
-        _authService = new AuthService();
-        _warehouseService = new WarehouseService();
-        _areaService = new AreaService();
-        _users = _userService.GetAll().ToList();
-        _warehouses = _warehouseService.GetAll().ToList();
-        _areas = _areaService.GetAll().ToList();
+        _users = _userManagermentService.GetAllUser().ToList();
+        _warehouses = _userManagermentService.GetAllWarehouse().ToList();
+        _areas = _userManagermentService.GetAllArea().ToList();
     }
 
     public void SelectUser(User user)
@@ -50,10 +41,10 @@ public class UserManagementViewModel
 
     public bool CanResetPassword()
     {
-        return _selectedUser != null && _roleService.GetById(LoginSession.CurrentUser.RoleId).RoleName == "Admin";
+        return _selectedUser != null && _userManagermentService.GetById(LoginSession.CurrentUser.RoleId).RoleName == "Admin";
     }
 
-    public string ResetPassword()
+    public string? ResetPassword()
     {
         if (!CanResetPassword())
             return null;
@@ -61,7 +52,7 @@ public class UserManagementViewModel
         _selectedUser.Salt = _authService.GenerateSaltBase64(32);
         var newPass = _selectedUser.Username + "A@" + _selectedUser.Salt;
         _selectedUser.Password = _authService.ComputeSHA256Hash(newPass);
-        _userService.Update(_selectedUser);
+        _userManagermentService.Update(_selectedUser);
         return newPass;
     }
 
@@ -75,17 +66,15 @@ public class UserManagementViewModel
         if (!CanDeleteUser())
             return false;
 
-        _userService.Delete(_selectedUser.Username);
+        _userManagermentService.Delete(_selectedUser.Username);
         LoadUsers();
         return true;
     }
 
-    public void AddUser(string username, string password, string role,
-                        string warehouseName, object Location)
+    public void AddUser(string username, string password, string role, string warehouseName)
     {
         string salt = _authService.GenerateSaltBase64(32);
-        var role_tmp = new Role();
-        role_tmp = _roleService.GetByName(role);
+        var role_tmp = _userManagermentService.GetByName(role);
         var user = new User()
         {
             Username = username,
@@ -94,7 +83,7 @@ public class UserManagementViewModel
             RoleId = role_tmp.RoleId
 
         };
-        _userService.Add(user);
+        _userManagermentService.Add(user);
         LoadUsers();
     }
 

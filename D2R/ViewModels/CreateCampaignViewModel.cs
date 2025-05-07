@@ -1,5 +1,4 @@
-﻿
-using D2R.Helpers;
+﻿using D2R.Helpers;
 using D2R.Models;
 using D2R.Services;
 using D2R.Views.Users;
@@ -15,21 +14,23 @@ namespace D2R.ViewModels
 
     public class CreateCampaignViewModel
     {
-        private readonly DisasterTypeService _disasterTypeService = new();
-        private readonly DisasterLevelService _disasterLevelService = new();
-        private readonly ItemCategoryService _itemCategoryService = new();
-        private readonly WarehouseItemService _warehouseItemService = new();
-        private readonly CampaignService _campaignService = new();
-        private readonly CampaignItemService _campaignItemService = new();
-        private readonly NotificationDetailService _notificationService = new();
-        private readonly UserService _userService = new();
+        private readonly CreateCampaignService _createCampaignService;
+        private readonly UserService _userService;
+        private readonly NotificationDetailService _notificationService;
 
-
+        //private readonly CampaignItemService _campaignItemService = new();
+        
+       
         private readonly List<CampaignCategoryGroupControl> _groupControls = new();
-
         public int? DisasterLevelId { get; set; }
         public string? Note { get; set; }
 
+        public CreateCampaignViewModel()
+        {
+            _createCampaignService = new CreateCampaignService();
+            _userService = new UserService();
+            _notificationService = new NotificationDetailService();
+        }
         public void AddGroup(CampaignCategoryGroupControl group)
         {
             _groupControls.Add(group);
@@ -42,29 +43,24 @@ namespace D2R.ViewModels
 
         public List<DisasterType> GetDisasterTypes()
         {
-            return _disasterTypeService.GetAll();
+            return _createCampaignService.GetAllDisasterType();
         }
 
         public List<DisasterLevel> GetDisasterLevelsByType(int disasterTypeId)
         {
-            return _disasterLevelService.GetAll().Where(l => l.DisasterTypeId == disasterTypeId).ToList();
+            return _createCampaignService.GetDisasterLevelsByType(disasterTypeId);
         }
 
         public List<ItemCategory> GetCategories()
         {
-            return _itemCategoryService.GetAll();
+            return _createCampaignService.GetAllItemCategory();
         }
+
         public List<WarehouseItem> GetItemsByCategory(int categoryId)
         {
-            var items = _warehouseItemService.GetByCategoryId(categoryId);
+            return _createCampaignService.GetItemsByCategory(categoryId);
 
-            foreach (var item in items)
-            {
-                if (string.IsNullOrWhiteSpace(item.Name))
-                    item.Name = "Không tên";
-            }
 
-            return items;
         }
 
 
@@ -85,11 +81,11 @@ namespace D2R.ViewModels
                 Note = Note
             };
 
-            _campaignService.Add(campaign);
+            _createCampaignService.AddCampaign(campaign);
 
             foreach (var request in allRequestedItems)
             {
-                _campaignItemService.Add(new CampaignItem
+                _createCampaignService.AddCampaignItem(new CampaignItem
                 {
                     CampaignId = campaign.CampaignId,
                     ItemId = request.ItemId ?? 0,
@@ -106,10 +102,9 @@ namespace D2R.ViewModels
                 _notificationService.CreateNotification(
                     userId: admin.UserId,
                     campaignId: campaign.CampaignId,
-                    content: $"Chiến dịch \"{campaign.Note}\" vừa được gửi yêu cầu duyệt."
+                    content: $"● Chiến dịch \"{campaign.Note}\" vừa được gửi yêu cầu duyệt."
                 );
             }
-
             return true;
         }
 

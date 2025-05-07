@@ -4,12 +4,8 @@ namespace D2R.Repositories
 {
     public class DistributionLogRepository
     {
-        private readonly DisasterReliefContext _context;
+        private readonly DisasterReliefContext _context = new DisasterReliefContext();
 
-        public DistributionLogRepository()
-        {
-            _context = new DisasterReliefContext();
-        }
         public void Add(DistributionLog entity)
         {
             _context.DistributionLogs.Add(entity);

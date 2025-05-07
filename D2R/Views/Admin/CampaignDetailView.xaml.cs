@@ -12,7 +12,10 @@ namespace D2R.Views.Admin
         public CampaignDetailView(int campaignId)
         {
             InitializeComponent();
-
+            LoadCampaignDetailView(campaignId);
+        }
+        private void LoadCampaignDetailView(int campaignId)
+        {
             var campaign = _campaignService.GetById(campaignId);
             NoteText.Text = campaign.Note;
             AreaText.Text = campaign.Area?.Name ?? "Không rõ";

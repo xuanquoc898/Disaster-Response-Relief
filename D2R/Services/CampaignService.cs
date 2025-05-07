@@ -16,15 +16,6 @@ namespace D2R.Services
             return _repository.GetById(id);
         }
 
-        public void Add(Campaign entity)
-        {
-            _repository.Add(entity);
-        }
-
-        public void Update(Campaign entity)
-        {
-            _repository.Update(entity);
-        }
         public List<Campaign> GetAllWithRelations()
         {
             return _repository.GetAllWithRelations();

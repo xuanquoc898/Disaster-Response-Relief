@@ -11,10 +11,6 @@ namespace D2R.Services
         {
             _repository = new CampaignItemRepository();
         }
-        public void Add(CampaignItem entity)
-        {
-            _repository.Add(entity);
-        }
 
         public List<CampaignItem> GetByCampaignId(int campaignId)
         {

@@ -27,15 +27,12 @@
                              BorderBrush="#CCC"
                              BorderThickness="1"
                              TextChanged="SearchBox_TextChanged"/>
-                    <ListBox x:Name="DonorListBox"
-                             Width="300"
-                             Height="120"
-                             Background="#FFF"
-                             BorderBrush="#CCC"
-                             BorderThickness="1"
-                             Margin="0 5 0 0"
-                             DisplayMemberPath="FullName"
-                             SelectionChanged="DonorListBox_SelectionChanged"/>
+                    <ListBox    x:Name="DonorListBox"
+                                Width="300"
+                                Height="100"
+                                Margin="0 0 0 10"
+                                DisplayMemberPath="FullName"
+                                SelectionChanged="DonorListBox_SelectionChanged"/>
                 </StackPanel>
 
                 <ItemsControl x:Name="CategoryGroupsPanel" Margin="0 0 0 15"/>

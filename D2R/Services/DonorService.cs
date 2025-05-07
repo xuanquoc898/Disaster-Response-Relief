@@ -13,11 +13,10 @@ namespace D2R.Services
             _repository = new DonorRepository();
         }
 
-        public List<Donor> GetAll()
+        public List<Donor> GetAllByKey(string keyword)
         {
-            return _repository.GetAll();
+            return _repository.GetAllByKey(keyword);
         }
-
         public void Add(Donor entity)
         {
             try
