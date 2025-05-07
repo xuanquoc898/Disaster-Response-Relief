@@ -27,6 +27,8 @@
                               Background="#FAFAFA"
                               BorderBrush="#DDD"
                               BorderThickness="1"
+                              DisplayMemberPath="Name"
+                              SelectedValuePath="DisasterTypeId"
                               SelectionChanged="DisasterTypeComboBox_SelectionChanged"/>
                 </StackPanel>
 
@@ -37,6 +39,8 @@
                               Padding="10"
                               Background="#FAFAFA"
                               BorderBrush="#DDD"
+                              DisplayMemberPath="Level"
+                              SelectedValuePath="DisasterLevelId"
                               BorderThickness="1"/>
                 </StackPanel>
 
