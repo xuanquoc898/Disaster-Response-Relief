@@ -13,13 +13,11 @@ namespace D2R.Services
         private readonly UserRepository _userRepository;
         private readonly RoleRepository _roleRepository;
         private readonly WarehouseRepository _warehouseRepository;
-        private readonly AreaRepository _areaRepository;
         public UserManagermentService()
         {
             _userRepository = new UserRepository();
             _roleRepository = new RoleRepository();
             _warehouseRepository = new WarehouseRepository();
-            _areaRepository = new AreaRepository();
         }
 
         public void Update(User entity)
@@ -41,22 +39,28 @@ namespace D2R.Services
             return _userRepository.GetAll();
         }
 
-        public Role GetByName(string roleName)
+        public Role GetRoleByName(string? roleName)
         {
             return _roleRepository.GetByName(roleName);
+        }
+
+        public Warehouse? GetWarehouseByName(string? warehouseName)
+        {
+            return _warehouseRepository.GetWarehouseByName(warehouseName);
+        }
+
+        public void AddWarehouse(Warehouse entity)
+        {
+            _warehouseRepository.AddWarehouse(entity);
         }
 
         public Role GetById(int roleId)
         {
             return _roleRepository.GetById(roleId);
         }
-        public List<Warehouse> GetAllWarehouse()
+        public List<string> GetAllWarehouse()
         {
             return _warehouseRepository.GetAll();
-        }
-        public List<Area> GetAllArea()
-        {
-            return _areaRepository.GetAll();
         }
     }
 }

@@ -15,7 +15,29 @@ public partial class UserManagermentView : UserControl
         InitializeComponent();
         DataGridUsers.ItemsSource = _viewModel.Users;
         CbbWarehouseName.ItemsSource = _viewModel.Warehouses;
-        CbbNameWarehouseLocation.ItemsSource = _viewModel.Areas;
+    }
+    
+    private void CbbWarehouseName_Loaded(object sender, RoutedEventArgs e)
+    {
+        var textBox = (TextBox)CbbWarehouseName.Template.FindName("PART_EditableTextBox", CbbWarehouseName);
+        if (textBox != null)
+        {
+            textBox.TextChanged += TextBox_TextChanged;
+        }
+    }
+    
+    private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (sender is TextBox textBox && !string.IsNullOrWhiteSpace(textBox.Text) && !_viewModel.NameWarehouseIsExist(CbbWarehouseName.Text))
+        {
+            LocationTextBlock.Visibility = Visibility.Visible;
+            LocationGrid.Visibility = Visibility.Visible;
+        }
+        else
+        {
+            LocationTextBlock.Visibility = Visibility.Collapsed;
+            LocationGrid.Visibility = Visibility.Collapsed;
+        }
     }
 
     private void DataGridUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -26,26 +48,18 @@ public partial class UserManagermentView : UserControl
     private void BtnAddUser_Click(object sender, RoutedEventArgs e)
     {
         Area area = new Area();
-        area.Name = CbbNameWarehouseLocation.Text == null
-            ? ((ComboBoxItem)CbbNameWarehouseLocation.SelectedItem).Content.ToString()
-            : CbbNameWarehouseLocation.Text;
-        area.District = CbbDistrictWarehouseLocation.Text == null
-            ? ((ComboBoxItem)CbbDistrictWarehouseLocation.SelectedItem).Content.ToString()
-            : CbbDistrictWarehouseLocation.Text;
-        area.Province = CbbProvinceWarehouseLocation.Text == null
-            ? ((ComboBoxItem)CbbProvinceWarehouseLocation.SelectedItem).Content.ToString()
-            : CbbProvinceWarehouseLocation.Text;
+        area.Name = TxtNameLocation.Text;
+        area.District = TxtDistrictLocation.Text;
+        area.Province = TxtProvinceLocation.Text;
 
-        string tmp = CbbWarehouseName.Text == null
-            ? ((ComboBoxItem)CbbWarehouseName.SelectedItem).Content.ToString()
-            : CbbWarehouseName.Text;
-
+        string warehouseName = CbbWarehouseName.Text;
+        
         _viewModel.AddUser(
             TxtUsername.Text.Trim(),
             PwdPassword.Password,
             ((ComboBoxItem)CbxRole.SelectedItem).Content.ToString(),
-            tmp
-            //area
+            warehouseName,
+            area
         );
         DataGridUsers.ItemsSource = _viewModel.Users;
         BtnClearForm_Click(sender, e);
@@ -57,9 +71,12 @@ public partial class UserManagermentView : UserControl
         PwdPassword.Clear();
         CbxRole.SelectedIndex = -1;
         CbbWarehouseName.SelectedIndex = -1;
-        CbbNameWarehouseLocation.SelectedIndex = -1;
-        CbbDistrictWarehouseLocation.SelectedIndex = -1;
-        CbbProvinceWarehouseLocation.SelectedIndex = -1;
+        CbbWarehouseName.Text = null;
+        TxtNameLocation.Clear();
+        TxtDistrictLocation.Clear();
+        TxtProvinceLocation.Clear();
+        LocationTextBlock.Visibility = Visibility.Collapsed;
+        LocationGrid.Visibility = Visibility.Collapsed;
         _viewModel.ClearSelection();
         DataGridUsers.UnselectAll();
     }

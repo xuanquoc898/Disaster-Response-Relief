@@ -11,14 +11,11 @@ public class UserManagementViewModel
 
     private List<User> _users = new();
     private User _selectedUser = new();
-    private List<Warehouse> _warehouses = new();
+    private List<string> _warehouses = new();
     private Warehouse? _selectedWarehouse = new();
-    private List<Area> _areas = new();
-    private Area? _selectedArea = new();
 
-    public IEnumerable<User> Users => _users; // Interface chỉ đọc
-    public IEnumerable<Warehouse> Warehouses => _warehouses;
-    public IEnumerable<Area> Areas => _areas;
+    public IEnumerable<User> Users => _users;
+    public IEnumerable<string> Warehouses => _warehouses;
 
     public UserManagementViewModel()
     {
@@ -30,8 +27,25 @@ public class UserManagementViewModel
     public void LoadUsers()
     {
         _users = _userManagermentService.GetAllUser().ToList();
-        _warehouses = _userManagermentService.GetAllWarehouse().ToList();
-        _areas = _userManagermentService.GetAllArea().ToList();
+        _warehouses = _userManagermentService.GetAllWarehouse();
+        // _areas = _userManagermentService.GetAllArea().ToList();
+    }
+
+    public bool CheckInputNullorEmpty(string? input)
+    {
+        return false;
+    }
+    
+    public bool NameWarehouseIsExist(string nameitem)
+    {
+        foreach (var warehouse in _warehouses)
+        {
+            if (warehouse == nameitem)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void SelectUser(User user)
@@ -71,17 +85,35 @@ public class UserManagementViewModel
         return true;
     }
 
-    public void AddUser(string username, string password, string role, string warehouseName)
+    public void AddUser(string username, string password, string? role, string? warehouseName, Area area)
     {
         string salt = _authService.GenerateSaltBase64(32);
-        var role_tmp = _userManagermentService.GetByName(role);
+        var roleTmp = _userManagermentService.GetRoleByName(role);
+        
+        // TODO: Kiểm tra điều kiện (ngày 9/5)
+        // CheckInputNullorEmpty(username);
+        // CheckInputNullorEmpty(password);
+        // CheckInputNullorEmpty(warehouseName);
+        
+        if (!NameWarehouseIsExist(warehouseName))
+        {
+            var warehouse = new Warehouse()
+            {
+                Name = warehouseName,
+                Area = area,
+                Type = "Local"
+            };
+            _userManagermentService.AddWarehouse(warehouse);
+        }
+        
         var user = new User()
         {
             Username = username,
             Salt = salt,
             Password = _authService.ComputeSHA256Hash(password + salt),
-            RoleId = role_tmp.RoleId
-
+            RoleId = roleTmp.RoleId,
+            WarehouseId = _userManagermentService.GetWarehouseByName(warehouseName)?.WarehouseId,
+            AreaId = _userManagermentService.GetWarehouseByName(warehouseName)?.AreaId
         };
         _userManagermentService.Add(user);
         LoadUsers();

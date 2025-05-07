@@ -7,46 +7,91 @@
              Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid Margin="20" Background="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Border Background="#F5F5F5"
+            CornerRadius="10"
+            Padding="20"
+            BorderBrush="#CCC"
+            BorderThickness="1"
+            Margin="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,10">
+            <TextBlock Text="Đồng bộ dữ liệu"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#391867"
+                       HorizontalAlignment="Left"
+                       Margin="0,0,0,20"/>
+
+            <DataGrid x:Name="SyncDataGrid"
+                      Grid.Row="1"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      CanUserAddRows="False"
+                      HeadersVisibility="Column"
+                      GridLinesVisibility="Horizontal"
+                      AlternatingRowBackground="#F2F2F2"
+                      Background="White"
+                      Foreground="Black"
+                      RowBackground="White"
+                      BorderBrush="#DDD"
+                      BorderThickness="1"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Stretch">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding SyncId}" Width="*" />
+                    <DataGridTextColumn Header="Kho Staff" Binding="{Binding WarehouseId}" Width="*" />
+                    <DataGridTextColumn Header="Thời gian" Binding="{Binding SyncDate}" Width="*" />
+                    <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="*" />
+                </DataGrid.Columns>
+            </DataGrid>
+
             <Button x:Name="BtnSync"
-                    Content="Đồng bộ dữ liệu"
+                    Grid.Row="2"
                     Width="200"
                     Height="40"
                     FontWeight="Bold"
+                    Margin="0,20,0,0"
                     Background="#8B0000"
                     Foreground="White"
-                    Click="BtnSync_Click"
-                    BorderThickness="0"/>
-        </StackPanel>
+                    BorderThickness="0"
+                    Cursor="Hand"
+                    Click="BtnSync_Click">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <TextBlock Text="🔄" FontSize="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="Đồng bộ dữ liệu"/>
+                    </StackPanel>
+                </Button.Content>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                        <Setter Property="Background" Value="#8B0000"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="RenderTransformOrigin" Value="0.5,0.5"/>
+                        <Setter Property="RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleX="1" ScaleY="1"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#A80000"/>
+                                <Setter Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="1.05" ScaleY="1.05"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
 
-        <DataGrid x:Name="SyncDataGrid"
-                  Grid.Row="1"
-                  AutoGenerateColumns="False"
-                  IsReadOnly="True"
-                  CanUserAddRows="False"
-                  HeadersVisibility="Column"
-                  GridLinesVisibility="Horizontal"
-                  AlternatingRowBackground="#F2F2F2"
-                  Background="White"
-                  Foreground="Black"
-                  RowBackground="White"
-                  BorderBrush="#DDD"
-                  BorderThickness="1"
-                  HorizontalAlignment="Stretch"
-                  VerticalAlignment="Stretch">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding SyncId}" Width="*" />
-                <DataGridTextColumn Header="Kho Staff" Binding="{Binding WarehouseId}" Width="*" />
-                <DataGridTextColumn Header="Thời gian" Binding="{Binding SyncDate}" Width="*" />
-                <DataGridTextColumn Header="Trạng thái" Binding="{Binding Status}" Width="*" />
-            </DataGrid.Columns>
-        </DataGrid>
+        </Grid>
+    </Border>
 
-    </Grid>
 </UserControl>

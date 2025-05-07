@@ -31,7 +31,7 @@
                               AlternatingRowBackground="#F9F9F9"
                               GridLinesVisibility="None"
                               BorderBrush="#CCC"
-                              BorderThickness="1"
+                              BorderThickness="1.5"
                               RowHeight="40"
                               FontSize="16"
                               SelectionChanged="DataGridUsers_SelectionChanged">
@@ -70,53 +70,86 @@
             </TabItem>
 
             <TabItem Header="Thêm người dùng">
-                <Grid Margin="10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="10">
 
-                    <TextBlock Text="Tên tài khoản:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0"/>
-                    <TextBox x:Name="TxtUsername" Grid.Row="0" Grid.Column="1" Margin="5"/>
+                        <Border Background="#F5F5F5"
+                                BorderBrush="#CCC"
+                                CornerRadius="10"
+                                Padding="20"
+                                BorderThickness="1">
+                            <Grid Margin="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="Mật khẩu:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0"/>
-                    <PasswordBox x:Name="PwdPassword" Grid.Row="1" Grid.Column="1" Margin="5"/>
+                                <TextBlock Text="Tên tài khoản:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Margin="0,5"/>
+                                <TextBox x:Name="TxtUsername" Grid.Row="0" Grid.Column="1" Margin="5" Height="35"/>
 
-                    <TextBlock Text="Vai trò:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0"/>
-                    <ComboBox x:Name="CbxRole" Grid.Row="2" Grid.Column="1" Margin="5">
-                        <ComboBoxItem Content="Admin"/>
-                        <ComboBoxItem Content="Staff"/>
-                    </ComboBox>
+                                <TextBlock Text="Mật khẩu:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="0,5"/>
+                                <PasswordBox x:Name="PwdPassword" Grid.Row="1" Grid.Column="1" Margin="5" Height="35"/>
 
-                    <TextBlock Text="Kho quản lý:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0"/>
-                    <ComboBox x:Name="CbbWarehouseName" IsEditable="True" Grid.Row="3" Grid.Column="1" Margin="5"/>
+                                <TextBlock Text="Vai trò:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="2" Grid.Column="0" Margin="0,5"/>
+                                <ComboBox x:Name="CbxRole" Grid.Row="2" Grid.Column="1" Margin="5" Height="35">
+                                    <ComboBoxItem Content="Admin"/>
+                                    <ComboBoxItem Content="Staff"/>
+                                </ComboBox>
 
-                    <TextBlock Text="Vị trí kho:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0"/>
-                    <Grid Grid.Row="4" Grid.Column="1" Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <ComboBox x:Name="CbbNameWarehouseLocation" IsEditable="True" Margin="0,0,5,0"/>
-                        <ComboBox x:Name="CbbDistrictWarehouseLocation" Grid.Column="1" IsEditable="True" Margin="5,0,5,0"/>
-                        <ComboBox x:Name="CbbProvinceWarehouseLocation" Grid.Column="2" IsEditable="True" Margin="5,0,0,0"/>
-                    </Grid>
-                    
-                    <StackPanel Grid.Row="5" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
-                        <Button x:Name="BtnAddUser" Content="Thêm" Width="100" Click="BtnAddUser_Click" IsDefault="True"/>
-                        <Button x:Name="BtnClearForm" Content="Xóa" Width="100" Margin="5,0,0,0" Click="BtnClearForm_Click"/>
+                                <TextBlock Text="Kho quản lý:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="3" Grid.Column="0" Margin="0,5"/>
+                                <ComboBox x:Name="CbbWarehouseName" IsEditable="True" Grid.Row="3" Grid.Column="1" Margin="5" Height="35" Loaded="CbbWarehouseName_Loaded"/>
+
+                                <TextBlock Name="LocationTextBlock" Text="Vị trí kho:" Visibility="Collapsed" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="4" Grid.Column="0" Margin="0,5"/>
+                                <Grid Name="LocationGrid" Grid.Row="4" Grid.Column="1" Margin="5" Visibility="Collapsed">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox x:Name="TxtNameLocation" Grid.Column="0" Margin="0,0,5,0" Height="35"/>
+                                    <TextBox x:Name="TxtDistrictLocation" Grid.Column="1" Margin="5,0,5,0" Height="35"/>
+                                    <TextBox x:Name="TxtProvinceLocation" Grid.Column="2" Margin="5,0,0,0" Height="35"/>
+                                </Grid>
+
+                            </Grid>
+                        </Border>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,0">
+                            <Button x:Name="BtnAddUser"
+                                    Content="Thêm"
+                                    Width="120"
+                                    Height="40"
+                                    Margin="0,0,5,0"
+                                    Click="BtnAddUser_Click"
+                                    Background="#006400"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    IsDefault="True"/>
+                            <Button x:Name="BtnClearForm"
+                                    Content="Xóa"
+                                    Width="120"
+                                    Height="40"
+                                    Click="BtnClearForm_Click"
+                                    Background="#8B0000"
+                                    Foreground="White"
+                                    FontWeight="Bold"
+                                    BorderThickness="0"
+                                    Cursor="Hand"/>
+                        </StackPanel>
+
                     </StackPanel>
-                </Grid>
+                </ScrollViewer>
             </TabItem>
+
         </TabControl>
     </Grid>
 </UserControl>

@@ -126,7 +126,7 @@
                                                                     Cursor="Hand">
                                                                 <Button.Content>
                                                                     <materialDesign:PackIcon x:Name="PasswordVisibilityIcon" Kind="Eye"
-                                                                        Width="20" Height="20"
+                                                                        Width="25" Height="25"
                                                                         Foreground="Black"/>
                                                                 </Button.Content>
                                                                 <Button.Style>

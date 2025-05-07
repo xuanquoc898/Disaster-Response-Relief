@@ -10,9 +10,20 @@ namespace D2R.Repositories
         {
             _context = new DisasterReliefContext();
         }
-        public List<Warehouse> GetAll()
+
+        public Warehouse? GetWarehouseByName(string? name)
         {
-            return _context.Warehouses.ToList();
+            return _context.Warehouses.FirstOrDefault(w => w.Name == name);
+        }
+
+        public void AddWarehouse(Warehouse entity)
+        {
+            _context.Warehouses.Add(entity);
+            _context.SaveChanges();
+        }
+        public List<string> GetAll()
+        {
+            return _context.Warehouses.Select(w => w.Name).Distinct().ToList();
         }
     }
 }
