@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="D2R.Views.UserControls.NotificationView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" Background="Transparent"
+             d:DesignHeight="200" d:DesignWidth="400">
+
+    <Grid x:Name="RootGrid" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent">
+        <Border Background="#FF323232"
+                CornerRadius="10"
+                Padding="10"
+                Width="300"
+                Height="100">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="2" ShadowDepth="0" Opacity="0.5"/>
+            </Border.Effect>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+                    <TextBlock x:Name="TitleTextBlock"
+                               Text="Thông báo"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               FontSize="16"/>
+                    <TextBlock x:Name="MessageTextBlock"
+                               Text="Đây là nội dung thông báo!"
+                               FontSize="14"
+                               Foreground="White"
+                               Margin="0,5,0,0"
+                               TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <Button Grid.Column="1"
+                        Width="25" Height="25"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Cursor="Hand"
+                        Click="CloseButton_Click"
+                        Padding="0">
+                    <materialDesign:PackIcon Kind="Close"
+                                             Width="20" Height="20"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"
+                                             Foreground="White">
+                        <materialDesign:PackIcon.Style>
+                            <Style TargetType="materialDesign:PackIcon">
+                                <Setter Property="Foreground" Value="White"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </materialDesign:PackIcon.Style>
+                    </materialDesign:PackIcon>
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

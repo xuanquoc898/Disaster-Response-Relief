@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:conv="clr-namespace:D2R.Converters"
+             xmlns:localview="clr-namespace:D2R.Views.UserControls"
              mc:Ignorable="d"
              x:Name="MainShell">
     <UserControl.Resources>
@@ -206,6 +207,12 @@
                         </StackPanel>
                     </Border>
                 </Popup>
+                <localview:NotificationView x:Name="Noti"
+                                            Background="Transparent"
+                                            Visibility="Collapsed"
+                                            HorizontalAlignment="Right"
+                                            VerticalAlignment="Bottom"
+                                            Margin="15,15,30,45"/>
             </Grid>
         </Grid>
 

@@ -33,6 +33,14 @@ namespace D2R.Views.UserControls
             InitializeComponent();
             MainContent.Content = new StartView();
             CheckPermittedAccess();
+            ShowNoti();
+        }
+
+        private void ShowNoti()
+        {
+            Noti.VerticalAlignment = VerticalAlignment.Top;
+            Noti.HorizontalAlignment = HorizontalAlignment.Left;
+            Noti.ShowNotification($"Hello {LoginSession.CurrentUser?.Username}! Welcome Back", "Chúc bạn một ngày tốt lành.");
         }
 
         private void CheckPermittedAccess()

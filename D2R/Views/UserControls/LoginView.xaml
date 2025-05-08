@@ -165,7 +165,7 @@
                                                 <Button Name="LoginButton" Content="Đăng nhập" 
                                                         Height="48" FontSize="22" FontWeight="Bold"
                                                         VerticalAlignment="Center"
-                                                        Margin="10,10,10,5"
+                                                        Margin="10,10,10,20"
                                                         Command="{Binding LoginCommand}">
                                                     <Button.Template>
                                                         <ControlTemplate TargetType="Button">
@@ -177,6 +177,7 @@
                                                 </Button>
                                                 
                                                 <Button Content="Quên mật khẩu?"
+                                                        Visibility="Collapsed"
                                                         VerticalAlignment="Center" 
                                                         FontSize="17"
                                                         Margin="130,0,130,5"

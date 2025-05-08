@@ -2,6 +2,7 @@
 using D2R.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
+using D2R.Views.UserControls;
 
 namespace D2R.Views.Admin;
 
@@ -62,8 +63,22 @@ public partial class UserManagermentView : UserControl
             area
         );
         DataGridUsers.ItemsSource = _viewModel.Users;
+        ShowNotificationFromUserManagement("Thông báo", "Đã thêm người dùng thành công!", 10);
         BtnClearForm_Click(sender, e);
     }
+    
+    private void ShowNotificationFromUserManagement(string title, string message, int seconds = 5)
+    {
+        var menuView = Helpers.FindAncestor.FindParent<MenuView>(this);
+        
+        if (menuView != null)
+        {
+            menuView.Noti.VerticalAlignment = VerticalAlignment.Bottom;
+            menuView.Noti.HorizontalAlignment = HorizontalAlignment.Right;
+            menuView.Noti.ShowNotification(title, message, seconds);
+        }
+    }
+
 
     private void BtnClearForm_Click(object sender, RoutedEventArgs e)
     {
@@ -93,7 +108,7 @@ public partial class UserManagermentView : UserControl
             _viewModel.SelectUser(user);
             var newPass = _viewModel.ResetPassword();
             if (newPass != null)
-                MessageBox.Show($"Mật khẩu mới cho {user.Username}");
+                ShowNotificationFromUserManagement("Thông báo", $"Đã đặt lại mật khẩu cho {user.Username}");
         }
     }
 
@@ -112,6 +127,7 @@ public partial class UserManagermentView : UserControl
                 _viewModel.SelectUser(user);
                 if (_viewModel.DeleteUser())
                 {
+                    ShowNotificationFromUserManagement("Thông báo", $"Đã xóa người dùng {user.Username} thành công!");
                     DataGridUsers.ItemsSource = _viewModel.Users;
                 }
             }
