@@ -64,7 +64,7 @@ namespace D2R.Services
             {
                 _stockRepository.Add(new WarehouseStock
                 {
-                    WarehouseId = null,
+                    WarehouseId = 1,
                     ItemId = itemId,
                     Quantity = quantity,
                     LastUpdated = DateTime.Now

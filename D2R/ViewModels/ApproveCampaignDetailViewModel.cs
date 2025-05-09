@@ -71,7 +71,7 @@ namespace D2R.ViewModels
                 _notificationService.CreateNotification(
                 userId: staff.UserId,
                 campaignId: Campaign.CampaignId,
-                content: "Chiến dịch được duyệt."
+                content: "Chiến dịch \"{Campaign.Note}\" được duyệt."
             );
 
             }
