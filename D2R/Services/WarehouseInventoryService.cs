@@ -11,7 +11,7 @@ namespace D2R.Services
             _stockrepository = new WarehouseStockRepository();
         }
 
-        public List<WarehouseStockDisplay> GetStockByWarehouse(int warehouseId)
+        public List<WarehouseStockDisplay> GetStockByWarehouse(int? warehouseId)
         {
             var stocks = _stockrepository.GetStocksByWarehouse(warehouseId);
             var items = _stockrepository.GetWarehouseItems();

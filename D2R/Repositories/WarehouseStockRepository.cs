@@ -42,9 +42,9 @@ namespace D2R.Repositories
             return stocks;
         }
 
-        public WarehouseStock GetCentralStockByItemId(int itemId)
+        public WarehouseStock? GetCentralStockByItemId(int itemId)
         {
-            return (WarehouseStock)_context.WarehouseStocks.Where(ws => ws.ItemId == itemId && ws.WarehouseId == null);
+            return _context.WarehouseStocks.FirstOrDefault(ws => ws.ItemId == itemId && ws.WarehouseId == null);
         }
 
         public List<WarehouseStock> GetStockById(int warehouseId)
@@ -75,7 +75,7 @@ namespace D2R.Repositories
             }
         }
 
-        public List<WarehouseStock> GetStocksByWarehouse(int warehouseId)
+        public List<WarehouseStock> GetStocksByWarehouse(int? warehouseId)
         {
             return _context.WarehouseStocks.Where(s => s.WarehouseId == warehouseId).ToList();
         }

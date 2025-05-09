@@ -56,6 +56,7 @@ namespace D2R.Views.UserControls
                 DonnorButton.Visibility = Visibility.Collapsed;
                 CvButton.Visibility = Visibility.Collapsed;
                 WareHouseButton.Visibility = Visibility.Collapsed;
+                SyncButton.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -119,7 +120,7 @@ namespace D2R.Views.UserControls
 
         private void Statistics_Click(object sender, RoutedEventArgs e)
         {
-            int warehouseId = LoginSession.CurrentUser.WarehouseId ?? 0;
+            int? warehouseId = LoginSession.CurrentUser.WarehouseId;
             MainContent.Content = new WarehouseLocalView(warehouseId);
         }
 

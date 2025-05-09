@@ -119,7 +119,7 @@
                                            Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource SidebarButtonStyle}" ToolTip="Đồng bộ" Click="Sync_Click">
+                        <Button Name="SyncButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="Đồng bộ" Click="Sync_Click">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <materialDesign:PackIcon Kind="Sync" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
                                 <TextBlock FontWeight="Bold" Text="Đồng bộ" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
