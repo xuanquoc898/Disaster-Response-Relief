@@ -6,6 +6,8 @@ namespace D2R.ViewModels
     public class AddDonorViewModel
     {
         private DonorService _service = new();
+        private List<Donor> _donors = new();
+        public IEnumerable<Donor> Donors => _donors;
 
         public void AddDonor(string name, string cccd, string phone, string email)
         {
@@ -17,12 +19,26 @@ namespace D2R.ViewModels
                 Email = email
             };
             _service.Add(donor);
-            return;
         }
 
         public List<Donor> GetAllDonors()
         {
-            return _service.GetAllDonors();
+            _donors = _service.GetAllDonors();
+            return _donors;
         }
+
+        public List<Donor> SearchDonorByName(string name)
+        {
+            List<Donor> donorsTmp = new();
+            foreach (var donor in _donors)
+            {
+                if (donor.FullName.Contains(name))
+                {
+                    donorsTmp.Add(donor);
+                }
+            }
+            return donorsTmp;
+        }
+        
     }
 }

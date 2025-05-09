@@ -26,8 +26,10 @@
             <DockPanel Grid.Row="1" Margin="0 0 0 20">
                 <TextBox Width="400"
                          Height="35"
+                         Name="SearchTextBoxBox"
                          Padding="8"
                          Margin="0"
+                         TextChanged="SearchTextBoxBox_OnTextChanged"
                          VerticalAlignment="Center"
                          FontSize="15">
                     <TextBox.Style>
@@ -155,9 +157,9 @@
                       FontSize="16">
                 <DataGrid.Columns> 
                     <DataGridTextColumn Header="Họ tên" Binding="{Binding FullName}" Width="3*"/>
-                    <DataGridTextColumn Header="CCCD" Binding="{Binding Email}" Width="2*"/>
+                    <DataGridTextColumn Header="CCCD" Binding="{Binding Cccd}" Width="2*"/>
                     <DataGridTextColumn Header="Số điện thoại" Binding="{Binding Phone}" Width="2*"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding Address}" Width="2*"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

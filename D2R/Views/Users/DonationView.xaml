@@ -14,7 +14,7 @@
             <StackPanel x:Name="RootPanel">
                 <TextBlock Text="Ủng Hộ Chiến Dịch"
                            FontSize="24" FontWeight="Bold"
-                           Foreground="#8B0000"
+                           Foreground="#391867"
                            Margin="0 0 0 20"/>
                 
                 <StackPanel Margin="0 0 0 15">
@@ -93,7 +93,8 @@
                     </Button.Style>
                 </Button>
 
-                <Button Content="Xác nhận ủng hộ"
+                <Button Content="✅ Xác nhận ủng hộ"
+                        FontSize="18"
                         Width="200"
                         Height="40"
                         Background="#006400"
