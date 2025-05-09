@@ -1,6 +1,7 @@
 ﻿using D2R.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using MySqlConnector;
 
 namespace D2R.Models;
 

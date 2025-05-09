@@ -40,7 +40,7 @@
                               Background="#FAFAFA"
                               BorderBrush="#DDD"
                               DisplayMemberPath="Level"
-                              SelectedValuePath="DisasterLevelId"
+                              SelectedValuePath="LevelId"
                               BorderThickness="1"/>
                 </StackPanel>
 

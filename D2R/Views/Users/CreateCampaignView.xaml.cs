@@ -60,6 +60,8 @@ namespace D2R.Views.Users
                 CategoryGroupsPanel.Items.Clear();
                 AddCategoryGroup();
                 NoteTextBox.Text = "";
+                DisasterTypeComboBox.ItemsSource = null;
+                DisasterLevelComboBox.ItemsSource = null;
             }
             else
             {

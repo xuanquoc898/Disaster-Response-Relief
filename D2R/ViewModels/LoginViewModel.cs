@@ -3,7 +3,9 @@ using D2R.Helpers;
 using D2R.Models;
 using D2R.Services;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 using System.Windows.Input;
+using D2R.Views.UserControls;
 using MySqlConnector;
 
 namespace D2R.ViewModels;
@@ -91,7 +93,7 @@ public class LoginViewModel : INotifyPropertyChanged
         }
         catch (MySqlException e)
         {
-            ErrorMessage = "Connection Error!";
+            ErrorMessage = "Please connect your internet!";
             return;
         }
     }

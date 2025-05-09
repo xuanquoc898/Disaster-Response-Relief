@@ -1,5 +1,6 @@
 using D2R.Models;
 using Microsoft.EntityFrameworkCore;
+using MySqlConnector;
 
 namespace D2R.Repositories
 {
