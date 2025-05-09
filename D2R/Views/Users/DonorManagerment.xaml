@@ -28,6 +28,7 @@
                          Height="35"
                          Padding="8"
                          Margin="0"
+                         TextChanged="TextBoxBase_OnTextChanged"
                          VerticalAlignment="Center"
                          FontSize="15">
                     <TextBox.Style>
@@ -155,9 +156,9 @@
                       FontSize="16">
                 <DataGrid.Columns> 
                     <DataGridTextColumn Header="Họ tên" Binding="{Binding FullName}" Width="3*"/>
-                    <DataGridTextColumn Header="CCCD" Binding="{Binding Email}" Width="2*"/>
+                    <DataGridTextColumn Header="CCCD" Binding="{Binding Cccd}" Width="2*"/>
                     <DataGridTextColumn Header="Số điện thoại" Binding="{Binding Phone}" Width="2*"/>
-                    <DataGridTextColumn Header="Email" Binding="{Binding Address}" Width="2*"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="2*"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

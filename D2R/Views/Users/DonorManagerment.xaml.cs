@@ -25,5 +25,10 @@ namespace D2R.Views.Users
         {
             DonorMgDataGrid.ItemsSource = _donorVM.GetAllDonors();
         }
+
+        private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+        }
     }
 }

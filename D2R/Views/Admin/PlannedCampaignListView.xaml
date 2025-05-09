@@ -10,9 +10,9 @@
     <Grid Margin="20" Background="White">
         <StackPanel>
             <TextBlock Text="📢 Danh sách chiến dịch cần phân phối" 
-                       FontSize="20" 
+                       FontSize="24" 
                        FontWeight="Bold" 
-                       Foreground="#333" 
+                       Foreground="#391867" 
                        Margin="0 0 0 20"/>
             <Border Background="#F9F9F9"
                     BorderBrush="#DDD"

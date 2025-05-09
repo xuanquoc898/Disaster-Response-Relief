@@ -20,7 +20,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Đồng bộ dữ liệu"
+            <TextBlock Text="🔄 Đồng bộ dữ liệu"
                        FontSize="24"
                        FontWeight="Bold"
                        Foreground="#391867"

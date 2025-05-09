@@ -17,7 +17,6 @@ namespace D2R.ViewModels
                 Email = email
             };
             _service.Add(donor);
-            return;
         }
 
         public List<Donor> GetAllDonors()
