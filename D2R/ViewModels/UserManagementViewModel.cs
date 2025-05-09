@@ -35,7 +35,7 @@ public class UserManagementViewModel
     {
         return false;
     }
-    
+
     public bool NameWarehouseIsExist(string nameitem)
     {
         foreach (var warehouse in _warehouses)
@@ -89,12 +89,12 @@ public class UserManagementViewModel
     {
         string salt = _authService.GenerateSaltBase64(32);
         var roleTmp = _userManagermentService.GetRoleByName(role);
-        
+
         // TODO: Kiểm tra điều kiện (ngày 9/5)
         // CheckInputNullorEmpty(username);
         // CheckInputNullorEmpty(password);
         // CheckInputNullorEmpty(warehouseName);
-        
+
         if (!NameWarehouseIsExist(warehouseName))
         {
             var warehouse = new Warehouse()
@@ -105,7 +105,7 @@ public class UserManagementViewModel
             };
             _userManagermentService.AddWarehouse(warehouse);
         }
-        
+
         var user = new User()
         {
             Username = username,

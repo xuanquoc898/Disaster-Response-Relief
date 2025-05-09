@@ -102,6 +102,6 @@ namespace D2R.Services
             }
             _synclogitemRepository.SaveChanges();
         }
-        
+
     }
 }

@@ -21,8 +21,9 @@ namespace D2R.Repositories
             _context.SyncLogs.Add(entity);
             _context.SaveChanges();
         }
-        public List<SyncLog> GetHistoryByWarehouse ( int warehouseId)
-        {  return _context.SyncLogs
+        public List<SyncLog> GetHistoryByWarehouse(int warehouseId)
+        {
+            return _context.SyncLogs
                 .Where(log => log.WarehouseId == warehouseId)
                 .OrderByDescending(log => log.SyncDate)
                 .ToList();

@@ -15,7 +15,7 @@ namespace D2R.Repositories
         {
             return _context.DisasterLevels.ToList();
         }
-        public List<DisasterLevel> GetDisasterLevelsByType (int disasterTypeId)
+        public List<DisasterLevel> GetDisasterLevelsByType(int disasterTypeId)
         {
             return _context.DisasterLevels
                 .Where(dl => dl.DisasterTypeId == disasterTypeId)

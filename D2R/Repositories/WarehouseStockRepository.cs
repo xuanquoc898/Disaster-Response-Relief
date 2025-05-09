@@ -1,7 +1,6 @@
 using D2R.Models;
 using D2R.ViewModels;
 using Microsoft.EntityFrameworkCore;
-using static MaterialDesignThemes.Wpf.Theme.ToolBar;
 
 namespace D2R.Repositories
 {

@@ -1,8 +1,8 @@
 ﻿using D2R.Models;
 using D2R.ViewModels;
+using D2R.Views.UserControls;
 using System.Windows;
 using System.Windows.Controls;
-using D2R.Views.UserControls;
 
 namespace D2R.Views.Admin;
 
@@ -17,7 +17,7 @@ public partial class UserManagermentView : UserControl
         DataGridUsers.ItemsSource = _viewModel.Users;
         CbbWarehouseName.ItemsSource = _viewModel.Warehouses;
     }
-    
+
     private void CbbWarehouseName_Loaded(object sender, RoutedEventArgs e)
     {
         var textBox = (TextBox)CbbWarehouseName.Template.FindName("PART_EditableTextBox", CbbWarehouseName);
@@ -26,7 +26,7 @@ public partial class UserManagermentView : UserControl
             textBox.TextChanged += TextBox_TextChanged;
         }
     }
-    
+
     private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
     {
         if (sender is TextBox textBox && !string.IsNullOrWhiteSpace(textBox.Text) && !_viewModel.NameWarehouseIsExist(CbbWarehouseName.Text))
@@ -54,7 +54,7 @@ public partial class UserManagermentView : UserControl
         area.Province = TxtProvinceLocation.Text;
 
         string warehouseName = CbbWarehouseName.Text;
-        
+
         _viewModel.AddUser(
             TxtUsername.Text.Trim(),
             PwdPassword.Password,
@@ -66,11 +66,11 @@ public partial class UserManagermentView : UserControl
         ShowNotificationFromUserManagement("Thông báo", "Đã thêm người dùng thành công!", 10);
         BtnClearForm_Click(sender, e);
     }
-    
+
     private void ShowNotificationFromUserManagement(string title, string message, int seconds = 5)
     {
         var menuView = Helpers.FindAncestor.FindParent<MenuView>(this);
-        
+
         if (menuView != null)
         {
             menuView.Noti.VerticalAlignment = VerticalAlignment.Bottom;
