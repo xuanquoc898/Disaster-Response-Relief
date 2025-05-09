@@ -37,8 +37,10 @@ namespace D2R.Services
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                var message = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
+                MessageBox.Show("Đã xảy ra lỗi: " + message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
         }
     }
 }
