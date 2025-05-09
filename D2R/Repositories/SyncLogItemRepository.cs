@@ -1,5 +1,4 @@
 using D2R.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace D2R.Repositories
 {

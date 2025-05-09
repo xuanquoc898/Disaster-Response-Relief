@@ -19,8 +19,8 @@ namespace D2R.ViewModels
         private readonly NotificationDetailService _notificationService;
 
         //private readonly CampaignItemService _campaignItemService = new();
-        
-       
+
+
         private readonly List<CampaignCategoryGroupControl> _groupControls = new();
         public int? DisasterLevelId { get; set; }
         public string? Note { get; set; }

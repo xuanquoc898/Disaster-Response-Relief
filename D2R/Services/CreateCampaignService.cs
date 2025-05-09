@@ -1,12 +1,5 @@
 ﻿using D2R.Models;
 using D2R.Repositories;
-using Microsoft.EntityFrameworkCore.Query.Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static MaterialDesignThemes.Wpf.Theme.ToolBar;
 
 namespace D2R.Services
 {

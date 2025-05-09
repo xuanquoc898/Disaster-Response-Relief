@@ -4,6 +4,7 @@ using D2R.Models;
 using D2R.Services;
 using System.ComponentModel;
 using System.Windows.Input;
+using MySqlConnector;
 
 namespace D2R.ViewModels;
 
@@ -75,18 +76,24 @@ public class LoginViewModel : INotifyPropertyChanged
         User auth_user = new User();
         auth_user.Username = Username;
         auth_user.Password = Password;
-        var user = _authService.Auth(auth_user);
-        if (user == null)
+        try
         {
-            ErrorMessage = "Invalid username or password!";
+            var user = _authService.Auth(auth_user);
+            if (user == null)
+            {
+                ErrorMessage = "Invalid username or password!";
+                return;
+            }
+            ErrorMessage = string.Empty;
+            IsLoggedIn = true;
+            LoginSession.CurrentUser = (User)user;
+            LoginSucceeded?.Invoke();
+        }
+        catch (MySqlException e)
+        {
+            ErrorMessage = "Connection Error!";
             return;
         }
-
-        ErrorMessage = string.Empty;
-        IsLoggedIn = true;
-        LoginSession.CurrentUser = (User)user;
-        LoginSucceeded?.Invoke();
-
     }
 
     private bool CanExecuteLogin(object? parameter)

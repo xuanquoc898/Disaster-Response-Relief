@@ -27,7 +27,7 @@ namespace D2R.Services
         }
         public void UpdateNotification(Campaign entity)
         {
-             _campaignRepository.Update(entity);
+            _campaignRepository.Update(entity);
         }
         public List<Notification> GetNotificationsByUserId(int userId)
         {
