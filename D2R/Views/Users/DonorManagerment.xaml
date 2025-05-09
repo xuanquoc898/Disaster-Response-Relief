@@ -138,6 +138,7 @@
             </DockPanel>
 
             <DataGrid Grid.Row="2"
+                      Name="DonorMgDataGrid"
                       AutoGenerateColumns="False"
                       CanUserAddRows="False"
                       HeadersVisibility="Column"

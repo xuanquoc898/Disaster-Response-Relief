@@ -8,7 +8,7 @@ namespace D2R.Views.UserControls
     {
         private readonly WarehouseLocalViewModel _viewModel;
 
-        public WarehouseLocalView(int warehouseId)
+        public WarehouseLocalView(int? warehouseId)
         {
             InitializeComponent();
             _viewModel = new WarehouseLocalViewModel(warehouseId);

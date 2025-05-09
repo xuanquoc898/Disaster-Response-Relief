@@ -1,4 +1,5 @@
-﻿using D2R.Models;
+﻿using System.Windows.Documents;
+using D2R.Models;
 using D2R.Services;
 namespace D2R.ViewModels
 {
@@ -6,17 +7,22 @@ namespace D2R.ViewModels
     {
         private DonorService _service = new();
 
-        public void AddDonor(string name, string Cccd, string phone, string email)
+        public void AddDonor(string name, string cccd, string phone, string email)
         {
             var donor = new Donor
             {
                 FullName = name,
-                Cccd = Cccd,
+                Cccd = cccd,
                 Phone = phone,
                 Email = email
             };
             _service.Add(donor);
             return;
+        }
+
+        public List<Donor> GetAllDonors()
+        {
+            return _service.GetAllDonors();
         }
     }
 }
