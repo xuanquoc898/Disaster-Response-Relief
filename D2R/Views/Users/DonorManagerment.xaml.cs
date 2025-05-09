@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using D2R.ViewModels;
 namespace D2R.Views.Users
 {
@@ -26,9 +27,9 @@ namespace D2R.Views.Users
             DonorMgDataGrid.ItemsSource = _donorVM.GetAllDonors();
         }
 
-        private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
+        private void SearchTextBoxBox_OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            
+            DonorMgDataGrid.ItemsSource = _donorVM.SearchDonorByName(SearchTextBoxBox.Text);
         }
     }
 }
