@@ -43,6 +43,7 @@ namespace D2R.Services
                 _synclogitemRepository.Add(logItem);
 
                 AddOrUpdateCentral((int)item.ItemId, (int)item.Quantity);
+
             }
 
             foreach (var item in stockList)
