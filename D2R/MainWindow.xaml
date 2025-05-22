@@ -64,14 +64,14 @@
                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Button>
                                     
-                                    <Button Width="50" Height="40" Click="Close_Click"
+                                    <Button Name="CloseButton" Width="50" Height="40" Click="Close_Click"
                                             Background="Transparent" Foreground="White" BorderThickness="0"
                                             MouseEnter="CloseButton_MouseEnter" MouseLeave="CloseButton_MouseLeave">
                                         <Path Data="M 0,0 L 15,15 M 15,0 L 0,15" Stroke="White" StrokeThickness="1.5"
                                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                         <Button.Template>
                                             <ControlTemplate TargetType="Button">
-                                                <Border Background="{TemplateBinding Background}" 
+                                                <Border Name="CloseBorder" Background="{TemplateBinding Background}" 
                                                         CornerRadius="0,10,0,0"
                                                         Padding="0">
                                                     <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>

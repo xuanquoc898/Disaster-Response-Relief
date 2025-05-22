@@ -120,7 +120,7 @@ namespace D2R.Views.UserControls
 
         private void Statistics_Click(object sender, RoutedEventArgs e)
         {
-            int? warehouseId = LoginSession.CurrentUser.WarehouseId;
+            int? warehouseId = LoginSession.CurrentUser?.WarehouseId;
             MainContent.Content = new WarehouseLocalView(warehouseId);
         }
 

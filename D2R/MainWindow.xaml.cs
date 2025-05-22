@@ -62,6 +62,11 @@ namespace D2R
                 this.Height = lastHeight;
                 this.Left = lastLeft;
                 this.Top = lastTop;
+                TitleBar.CornerRadius = new CornerRadius(10, 10, 0, 0);
+                if (CloseButton.Template.FindName("CloseBorder", CloseButton) is Border border)
+                {
+                    border.CornerRadius = new CornerRadius(0, 10, 0, 0);
+                }
                 isMaximized = false;
             }
             else
@@ -73,7 +78,11 @@ namespace D2R
 
                 this.WindowState = WindowState.Normal;
 
-
+                TitleBar.CornerRadius = new CornerRadius(0, 0, 0, 0);
+                if (CloseButton.Template.FindName("CloseBorder", CloseButton) is Border border)
+                {
+                    border.CornerRadius = new CornerRadius(0, 0, 0, 0);
+                }
                 this.Width = SystemParameters.WorkArea.Width;
                 this.Height = SystemParameters.WorkArea.Height;
                 this.Left = SystemParameters.WorkArea.Left;
