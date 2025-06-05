@@ -15,7 +15,7 @@ namespace D2R.Services
         {
             // var stock = _repository.GetAll()
             //     .FirstOrDefault(s => s.ItemId == itemId && s.WarehouseId == 1);
-            var stock = _repository.GetByWarehouseIdItemId(null, itemId);
+            var stock = _repository.GetByWarehouseIdItemId(1, itemId);
             return stock?.Quantity ?? 0;
         }
 
