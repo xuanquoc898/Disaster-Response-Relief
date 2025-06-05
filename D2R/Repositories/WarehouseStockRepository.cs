@@ -44,7 +44,7 @@ namespace D2R.Repositories
 
         public WarehouseStock? GetCentralStockByItemId(int itemId)
         {
-            return _context.WarehouseStocks.FirstOrDefault(ws => ws.ItemId == itemId && ws.WarehouseId == null);
+            return _context.WarehouseStocks.FirstOrDefault(ws => ws.ItemId == itemId && ws.WarehouseId == 1);
         }
 
         public List<WarehouseStock> GetStockById(int warehouseId)

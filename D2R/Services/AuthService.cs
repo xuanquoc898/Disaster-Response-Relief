@@ -14,9 +14,9 @@ public class AuthService
         _userRepository = new UserRepository();
     }
 
-    public object? Auth(User curruser)
+    public async Task<object?> Auth(User curruser)
     {
-        var user = _userRepository.GetByUsername(curruser.Username);
+        var user = await Task.Run(() => _userRepository.GetByUsername(curruser.Username));
         if (user == null || !Verify(curruser.Password, user.Password, user.Salt) || user.Username != curruser.Username)
         {
             return null;

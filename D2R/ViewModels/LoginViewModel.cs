@@ -24,7 +24,7 @@ public class LoginViewModel : INotifyPropertyChanged
     public LoginViewModel()
     {
         _authService = new AuthService();
-        LoginCommand = new RelayCommand(Login, CanExecuteLogin);
+        LoginCommand = new RelayCommand(LoginAsync, CanExecuteLogin);
     }
 
     public string Username
@@ -67,7 +67,11 @@ public class LoginViewModel : INotifyPropertyChanged
         }
     }
 
-    private void Login(object? parameter)
+    private void LoginAsync(object? obj)
+    {
+        _ = Login(obj);
+    }
+    private async Task Login(object? parameter)
     {
         if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
         {
@@ -80,7 +84,7 @@ public class LoginViewModel : INotifyPropertyChanged
         auth_user.Password = Password;
         try
         {
-            var user = _authService.Auth(auth_user);
+            var user = await _authService.Auth(auth_user);
             if (user == null)
             {
                 ErrorMessage = "Invalid username or password!";
