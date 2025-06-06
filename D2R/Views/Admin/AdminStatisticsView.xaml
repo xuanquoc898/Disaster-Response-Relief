@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="D2R.Views.Admin.AdminStatisticsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:views="clr-namespace:D2R.Views.Admin"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="800">
+    <Grid Background="White" Margin="10">
+        <TabControl FontSize="16">
+
+            <!-- Biểu đồ chiến dịch -->
+            <TabItem Header="Chiến dịch">
+                <views:CampaignPieChartControl />
+            </TabItem>
+
+             <!--Biểu đồ đóng góp--> 
+            <TabItem Header="Tồn kho">
+                <views:WarehouseChartControl />
+            </TabItem>
+
+             <!--Biểu đồ hàng tồn kho--> 
+            <TabItem Header="MTQ">
+                <views:DonorChartControl />
+            </TabItem>
+
+            <!-- Biểu đồ nhu cầu --><!--
+            <TabItem Header="Nhu cầu cứu trợ">
+                <views:ReliefDemandChartControl />
+            </TabItem>-->
+
+        </TabControl>
+    </Grid>
+</UserControl>
