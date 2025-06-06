@@ -124,7 +124,7 @@
                 </Grid>
             </Border>
 
-            <TextBlock Text="Danh sách Mạnh Thường Quân"
+            <TextBlock Text="Danh sách Mạnh Thường Quân Mới Đăng ký Ủng hộ"
                        FontSize="22"
                        FontWeight="Bold"
                        Foreground="#391867"

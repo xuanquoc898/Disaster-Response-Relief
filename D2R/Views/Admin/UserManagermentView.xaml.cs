@@ -3,6 +3,7 @@ using D2R.ViewModels;
 using D2R.Views.UserControls;
 using System.Windows;
 using System.Windows.Controls;
+using D2R.Helpers;
 
 namespace D2R.Views.Admin;
 
@@ -127,6 +128,11 @@ public partial class UserManagermentView : UserControl
                 _viewModel.SelectUser(user);
                 if (_viewModel.DeleteUser())
                 {
+                    if (LoginSession.CurrentUser.Username.Equals(user.Username))
+                    {
+                        ShowNotificationFromUserManagement("Thông báo", "Bạn không được xóa tài khoản của bạn!");
+                        return;
+                    }
                     ShowNotificationFromUserManagement("Thông báo", $"Đã xóa người dùng {user.Username} thành công!");
                     DataGridUsers.ItemsSource = _viewModel.Users;
                 }

@@ -46,7 +46,6 @@ namespace D2R.Views.Users
         {
             _viewModel.DisasterLevelId = DisasterLevelComboBox.SelectedValue as int?;
             _viewModel.Note = NoteTextBox.Text;
-
             _viewModel.ClearGroups();
             foreach (var item in CategoryGroupsPanel.Items)
             {

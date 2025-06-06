@@ -40,7 +40,7 @@ namespace D2R.Views.UserControls
         {
             Noti.VerticalAlignment = VerticalAlignment.Top;
             Noti.HorizontalAlignment = HorizontalAlignment.Left;
-            Noti.ShowNotification($"Hello {LoginSession.CurrentUser?.Username}! Welcome Back", "Chúc bạn một ngày tốt lành.");
+            Noti.ShowNotification($"Xin chào {LoginSession.CurrentUser?.Username}!", "Chúc bạn một ngày tốt lành.");
         }
 
         private void CheckPermittedAccess()

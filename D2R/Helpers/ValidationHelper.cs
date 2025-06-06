@@ -61,6 +61,38 @@ namespace D2R.Helpers
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
         }
+        
+        public static bool CheckName(string hoTen, out string message)
+        {
+            message = "";
+
+            if (string.IsNullOrWhiteSpace(hoTen))
+            {
+                message = "Họ và tên không được để trống.";
+                return false;
+            }
+
+            hoTen = hoTen.Trim();
+
+            if (hoTen.Length < 2)
+            {
+                message = "Họ và tên quá ngắn.";
+                return false;
+            }
+
+            if (!Regex.IsMatch(hoTen, @"^[\p{L}\s]+$"))
+            {
+                message = "Họ và tên chỉ được chứa chữ cái và khoảng trắng.";
+                return false;
+            }
+
+            if (hoTen.Replace(" ", "").Length == 0)
+            {
+                message = "Họ và tên không hợp lệ (chỉ có khoảng trắng).";
+                return false;
+            }
+            return true;
+        }
 
     }
 }

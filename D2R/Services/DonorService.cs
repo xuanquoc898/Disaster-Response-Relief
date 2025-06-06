@@ -22,10 +22,15 @@ namespace D2R.Services
         {
             return _repository.GetAll();
         }
-        public void Add(Donor entity)
+        public void Add(Donor entity, List<Donor>? donors)
         {
             try
             {
+                String message = "";
+                if (ValidationHelper.CheckName(entity.FullName,  out message))
+                {
+                    throw new ArgumentException(message);
+                }
                 if (string.IsNullOrWhiteSpace(entity.FullName))
                     throw new ArgumentException("Tên không được để trống.");
                 if (!ValidationHelper.IsValidCanCuocCongDan(entity.Cccd))
@@ -35,6 +40,8 @@ namespace D2R.Services
                 if (!ValidationHelper.IsValidEmailAddress(entity.Email))
                     throw new ArgumentException("Sai định dạng Email");
                 _repository.Add(entity);
+                donors?.Add(entity);
+                MessageBox.Show("Đã thêm MTQ thành công!");
             }
             catch (ArgumentException ex)
             {

@@ -87,7 +87,7 @@ public class LoginViewModel : INotifyPropertyChanged
             var user = await _authService.Auth(auth_user);
             if (user == null)
             {
-                ErrorMessage = "Invalid username or password!";
+                ErrorMessage = "Sai tên đăng nhập hoặc mật khẩu!";
                 return;
             }
             ErrorMessage = string.Empty;
@@ -97,7 +97,7 @@ public class LoginViewModel : INotifyPropertyChanged
         }
         catch (MySqlException e)
         {
-            ErrorMessage = "Please connect your internet!";
+            ErrorMessage = "Vui lòng kết nối mạng!";
             return;
         }
     }

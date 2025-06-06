@@ -53,6 +53,7 @@ namespace D2R.Views.Admin
             if (_viewModel.CanDistribute())
             {
                 _viewModel.Distribute();
+                this.Visibility = Visibility.Collapsed; // Todo nên xem lại chỗ này
                 MessageBox.Show("Đã phê duyệt và phân phối thành công.");
             }
             else

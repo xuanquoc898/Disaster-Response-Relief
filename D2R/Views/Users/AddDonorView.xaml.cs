@@ -14,6 +14,7 @@ namespace D2R.Views.Users
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _addDonorVM.AddDonor(txtName.Text, txtCCCD.Text, txtPhone.Text, txtEmail.Text);
+            dgDonors.ItemsSource = _addDonorVM.Donors;
         }
     }
 }
