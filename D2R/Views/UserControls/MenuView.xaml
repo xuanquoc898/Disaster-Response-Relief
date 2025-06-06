@@ -133,14 +133,25 @@
                                            Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </StackPanel>
                         </Button>
-                        <Button Name="StaCampButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="Kiểm tra" Click="CheckAdmin_Click">
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <materialDesign:PackIcon Kind="CheckDecagram" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
-                                <TextBlock FontWeight="Bold" Text="Kiểm tra" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
-                                           Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
-                            </StackPanel>
-                        </Button>
-                        <Button Style="{StaticResource SidebarButtonStyle}" ToolTip="Đăng xuất" Click="Logout_Click">
+                            <Button Name="StaCampButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="Kiểm tra" Click="CheckAdmin_Click">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="CheckDecagram" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
+                                    <TextBlock FontWeight="Bold" Text="Kiểm tra" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
+                   Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                </StackPanel>
+                            </Button>
+
+
+                            <Button Name="StatisticCampButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="BÁO CÁO" Click="StatisticCampButton_Click">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                    <materialDesign:PackIcon Kind="ReportAreaspline" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
+                                    <TextBlock FontWeight="Bold" Text="BÁO CÁO" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
+                   Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
+                                </StackPanel>
+                            </Button>
+
+
+                            <Button Style="{StaticResource SidebarButtonStyle}" ToolTip="Đăng xuất" Click="Logout_Click">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <materialDesign:PackIcon Kind="Logout" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
                                 <TextBlock FontWeight="Bold" Text="Đăng xuất" Margin="15,0,80,0" FontSize="16" VerticalAlignment="Center"

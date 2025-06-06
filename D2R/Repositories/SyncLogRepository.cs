@@ -28,5 +28,13 @@ namespace D2R.Repositories
                 .OrderByDescending(log => log.SyncDate)
                 .ToList();
         }
+        public int GetTotalInboundUpToDate(DateTime date)
+        {
+            return _context.SyncLogs
+                .Where(x => x.SyncDate.HasValue && x.SyncDate.Value.Date <= date.Date)
+                .SelectMany(x => x.SyncLogItems)
+                .Sum(i => (int?)i.Quantity) ?? 0;
+        }
+
     }
 }

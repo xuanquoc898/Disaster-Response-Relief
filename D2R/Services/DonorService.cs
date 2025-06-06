@@ -2,6 +2,7 @@
 using D2R.Models;
 using D2R.Repositories;
 using System.Windows;
+using D2R.ViewModels;
 namespace D2R.Services
 {
     public class DonorService
@@ -53,6 +54,17 @@ namespace D2R.Services
                 MessageBox.Show("Đã xảy ra lỗi: " + message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+        }
+
+        public List<int> GetAvailableYears()
+        {
+            return _repository.GetAvailableYears();
+        }
+
+        // Lấy dữ liệu mạnh thường quân top theo năm và tiêu chí (số lần đóng góp hoặc tổng số lượng)
+        public List<DonorRankingModel> GetTopDonors(int year, string criteria)
+        {
+            return _repository.GetTopDonorsByYearAndCriteria(year, criteria);
         }
     }
 }

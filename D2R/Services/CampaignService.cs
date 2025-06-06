@@ -11,6 +11,8 @@ namespace D2R.Services
         {
             _repository = new CampaignRepository();
         }
+
+
         public Campaign GetById(int id)
         {
             return _repository.GetById(id);
@@ -20,5 +22,16 @@ namespace D2R.Services
         {
             return _repository.GetAllWithRelations();
         }
+        public Dictionary<string, int> GetCampaignStatusCount(int month, int year)
+        {
+            return _repository.GetCampaignStatusGrouped(month, year);
+        }
+
+        public int GetTotalCampaigns(int month, int year)
+        {
+            return _repository.GetTotalCampaignCount(month, year);
+        }
+
+
     }
 }

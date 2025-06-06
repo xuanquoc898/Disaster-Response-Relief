@@ -11,5 +11,12 @@ namespace D2R.Repositories
             _context.DistributionLogs.Add(entity);
             _context.SaveChanges();
         }
+        public int GetTotalOutboundUpToDate(DateTime date)
+        {
+            return _context.DistributionLogs
+                .Where(x => x.DistributionDate.HasValue && x.DistributionDate.Value.Date <= date.Date)
+                .Sum(x => (int?)x.Quantity) ?? 0;
+        }
+
     }
 }

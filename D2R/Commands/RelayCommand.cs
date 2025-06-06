@@ -18,7 +18,6 @@ namespace D2R.Commands
             add => CommandManager.RequerySuggested += value;
             remove => CommandManager.RequerySuggested -= value;
         }
-
         public bool CanExecute(object? parameter) => _canExecute == null || _canExecute(parameter!);
         public void Execute(object? parameter) => _execute(parameter!);
     }
