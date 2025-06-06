@@ -16,6 +16,42 @@ namespace D2R.ViewModels
         {
             return _inventoryService.GetStockByWarehouse(_warehouseId);
         }
+
+        public List<string> GetAllCategories()
+        {
+            return _inventoryService.GetItemCategories()
+                .Select(c => c.CategoryName!)
+                .Distinct()
+                .OrderBy(n => n)
+                .Prepend("Tất cả")
+                .ToList();
+        }
+
+        public List<string> GetItemNamesByCategory(string category)
+        {
+            var items = _inventoryService.GetWarehouseItems();
+            if (category == "Tất cả")
+                return items.Select(i => i.Name!).Distinct().OrderBy(n => n).Prepend("Tất cả").ToList();
+
+            return items
+                .Where(i => i.Category?.CategoryName == category)
+                .Select(i => i.Name!)
+                .Distinct()
+                .OrderBy(n => n)
+                .Prepend("Tất cả")
+                .ToList();
+        }
+
+        public List<WarehouseStockDisplay> GetFilteredStock(string category, string itemName)
+        {
+            return GetGroupedStock()
+                .Where(x =>
+                    (category == "Tất cả" || x.CategoryName == category) &&
+                    (itemName == "Tất cả" || x.ItemName == itemName))
+                .ToList();
+        }
+
+
     }
 
     public class WarehouseStockDisplay

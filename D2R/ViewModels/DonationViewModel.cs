@@ -24,9 +24,15 @@ namespace D2R.ViewModels
 
         public bool ConfirmDonation(List<DonationCategoryGroupControl> groups)
         {
-            if (SelectedDonor == null) return false;
+            if (SelectedDonor == null || groups == null || !groups.Any())
+                return false;
+
+            if (!HasValidDonation(groups))
+                return false;
+
             return _transactionService.ExecuteDonation(SelectedDonor, _warehouseId, groups);
         }
+
 
         public List<ItemCategory> GetCategories()
         {
@@ -42,6 +48,20 @@ namespace D2R.ViewModels
         {
             return _donorService.GetAllByKey(keyword);
         }
+
+        public bool HasValidDonation(List<DonationCategoryGroupControl> groups)
+        {
+            foreach (var group in groups)
+            {
+                foreach (var entry in group.GetDonationItems())
+                {
+                    if (entry == null || entry.Item == null || entry.Quantity <= 0)
+                        return false;
+                }
+            }
+            return true;
+        }
+
     }
 
     public class DonationItemEntry

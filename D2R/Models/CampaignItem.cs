@@ -8,8 +8,6 @@ public partial class CampaignItem
 
     public int? QuantityRequested { get; set; }
 
-    public int? QuantityApproved { get; set; }
-
     public virtual Campaign Campaign { get; set; } = null!;
 
     public virtual WarehouseItem Item { get; set; } = null!;

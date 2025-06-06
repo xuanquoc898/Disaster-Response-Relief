@@ -71,28 +71,29 @@ namespace D2R.ViewModels
                 _notificationService.CreateNotification(
                 userId: staff.UserId,
                 campaignId: Campaign.CampaignId,
-                content: "Chiến dịch \"{Campaign.Note}\" được duyệt."
+                content: $"Chiến dịch \"{Campaign.Title}\" đã được duyệt."
             );
 
             }
         }
-        public void Reject()
+        public void Reject(string reason)
         {
             Campaign.Status = "Rejected";
             Campaign.RejectedAt = DateTime.Now;
+            Campaign.Note = reason; 
             _approveCampaignService.UpdateCampaign(Campaign);
 
             var staffList = _userService.GetStaffsByAreaId(Campaign.AreaId);
-
             foreach (var staff in staffList)
             {
                 _notificationService.CreateNotification(
-                userId: staff.UserId,
-                campaignId: Campaign.CampaignId,
-                content: $"Chiến dịch \"{Campaign.Note}\" đã bị từ chối."
-            );
+                    userId: staff.UserId,
+                    campaignId: Campaign.CampaignId,
+                    content: $"Chiến dịch \"{Campaign.Title}\" đã bị từ chối."
+                );
             }
         }
+
         public class CategoryGroup
         {
             public string CategoryName { get; set; }

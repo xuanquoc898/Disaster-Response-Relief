@@ -18,12 +18,11 @@ namespace D2R.ViewModels
         private readonly UserService _userService;
         private readonly NotificationDetailService _notificationService;
 
-        //private readonly CampaignItemService _campaignItemService = new();
-
 
         private readonly List<CampaignCategoryGroupControl> _groupControls = new();
         public int? DisasterLevelId { get; set; }
-        public string? Note { get; set; }
+        public string? Title { get; set; } 
+
 
         public CreateCampaignViewModel()
         {
@@ -71,15 +70,15 @@ namespace D2R.ViewModels
             if (DisasterLevelId == null || allRequestedItems.Count == 0 ||
                 allRequestedItems.Any(x => x.ItemId == null || x.QuantityRequested == null || x.QuantityRequested <= 0))
                 return false;
-
             var campaign = new Campaign
             {
                 AreaId = LoginSession.CurrentUser.AreaId ?? 0,
                 DisasterLevelId = DisasterLevelId,
                 CreatedDate = DateTime.Now,
                 Status = "Planned",
-                Note = Note
+                Title = Title 
             };
+
 
             _createCampaignService.AddCampaign(campaign);
 
@@ -89,8 +88,7 @@ namespace D2R.ViewModels
                 {
                     CampaignId = campaign.CampaignId,
                     ItemId = request.ItemId ?? 0,
-                    QuantityRequested = request.QuantityRequested,
-                    QuantityApproved = null
+                    QuantityRequested = request.QuantityRequested
                 });
             }
 
@@ -102,7 +100,7 @@ namespace D2R.ViewModels
                 _notificationService.CreateNotification(
                     userId: admin.UserId,
                     campaignId: campaign.CampaignId,
-                    content: $"● Chiến dịch {campaign.Note} vừa được gửi yêu cầu duyệt."
+                    content: $"● Chiến dịch \"{campaign.Title}\" vừa gửi yêu cầu duyệt."
                 );
             }
             return true;

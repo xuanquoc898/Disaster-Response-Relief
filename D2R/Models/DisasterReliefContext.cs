@@ -87,7 +87,7 @@ public partial class DisasterReliefContext : DbContext
             entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("datetime");
-            entity.Property(e => e.Note).HasMaxLength(255);
+            entity.Property(e => e.Title).HasMaxLength(255);
             entity.Property(e => e.Status).HasMaxLength(50);
 
             entity.HasOne(d => d.Area).WithMany(p => p.Campaigns)
@@ -140,7 +140,6 @@ public partial class DisasterReliefContext : DbContext
 
             entity.ToTable("DisasterType");
 
-            entity.Property(e => e.Description).HasMaxLength(255);
             entity.Property(e => e.Name).HasMaxLength(100);
         });
 
@@ -291,7 +290,6 @@ public partial class DisasterReliefContext : DbContext
 
             entity.HasIndex(e => e.SyncId, "SyncId");
 
-            entity.Property(e => e.Unit).HasMaxLength(50);
 
             entity.HasOne(d => d.Item).WithMany(p => p.SyncLogItems)
                 .HasForeignKey(d => d.ItemId)

@@ -22,7 +22,7 @@ namespace D2R.Views.Admin
             _viewModel = new ApproveCampaignDetailViewModel();
             _viewModel.LoadGroupedByCategory(campaignId);
 
-            CampaignNoteText.Text = _viewModel.Campaign.Note;
+            CampaignNoteText.Text = _viewModel.Campaign.Title;
             DisasterTypeText.Text = _viewModel.Campaign.DisasterLevel?.DisasterType?.Name ?? "Không rõ";
             DisasterLevelText.Text = _viewModel.Campaign.DisasterLevel?.Level ?? "Không rõ";
 
@@ -54,19 +54,40 @@ namespace D2R.Views.Admin
             {
                 _viewModel.Distribute();
                 MessageBox.Show("Đã phê duyệt và phân phối thành công.");
-                this.Visibility = Visibility.Collapsed; // Todo nên xem lại chỗ này
+                HideButtons();
             }
             else
             {
                 MessageBox.Show("Không đủ hàng trong kho để phân phối.");
+                // Giữ lại nút để người dùng có thể chọn từ chối
             }
         }
 
         private void Reject_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.Reject();
-            MessageBox.Show("Chiến dịch đã bị từ chối.");
-            this.Visibility = Visibility.Collapsed;
+            RejectSection.Visibility = Visibility.Visible;
         }
+
+        private void ConfirmReject_Click(object sender, RoutedEventArgs e)
+        {
+            string reason = RejectReasonBox.Text.Trim();
+            if (string.IsNullOrWhiteSpace(reason))
+            {
+                MessageBox.Show("Vui lòng nhập lý do từ chối.");
+                return;
+            }
+
+            _viewModel.Reject(reason);
+            MessageBox.Show("Chiến dịch đã bị từ chối.");
+            HideButtons();
+        }
+
+        private void HideButtons()
+        {
+            ApproveButton.Visibility = Visibility.Collapsed;
+            RejectButton.Visibility = Visibility.Collapsed;
+            RejectSection.Visibility = Visibility.Collapsed;
+        }
+
     }
 }

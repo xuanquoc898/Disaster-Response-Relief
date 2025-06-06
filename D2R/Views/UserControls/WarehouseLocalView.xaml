@@ -10,17 +10,30 @@
 
     <Grid Margin="20" Background="White">
         <StackPanel>
+            <!-- Tiêu đề -->
             <TextBlock Text="📦 Tồn kho theo danh mục"
                        FontSize="24"
                        FontWeight="Bold"
                        Foreground="#391867"
                        Margin="0,0,0,20"/>
+
+            <!-- ComboBox lọc -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <ComboBox x:Name="CategoryComboBox"
+                          Width="200"
+                          Margin="0,0,10,0"
+                          SelectionChanged="CategoryComboBox_SelectionChanged"/>
+                <ComboBox x:Name="ItemComboBox"
+                          Width="200"
+                          SelectionChanged="ItemComboBox_SelectionChanged"/>
+            </StackPanel>
+
+            <!-- Danh sách -->
             <Border Background="#F9F9F9"
                     BorderBrush="#DDD"
                     BorderThickness="1"
                     CornerRadius="8"
                     Padding="10">
-
                 <ListView x:Name="StockListView"
                           Background="White"
                           BorderThickness="0">
@@ -34,6 +47,8 @@
                     </ListView.View>
                 </ListView>
             </Border>
+
+            <!-- Thông báo khi không có -->
             <TextBlock x:Name="NoItemsText"
                        Text="Không có vật phẩm trong kho."
                        FontStyle="Italic"

@@ -32,7 +32,7 @@
                           GridLinesVisibility="None"
                           BorderThickness="0">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="📄 Tên chiến dịch" Binding="{Binding Note}" Width="2*" />
+                        <DataGridTextColumn Header="📄 Tên chiến dịch" Binding="{Binding Title}" Width="2*" />
                         <DataGridTextColumn Header="📍 Khu vực" Binding="{Binding Area.Name}" Width="*" />
                         <DataGridTextColumn Header="📅 Ngày tạo" Binding="{Binding CreatedDate, StringFormat=d}" Width="*" />
 

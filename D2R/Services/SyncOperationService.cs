@@ -38,7 +38,6 @@ namespace D2R.Services
                     SyncId = syncId,
                     ItemId = item.ItemId,
                     Quantity = item.Quantity,
-                    Unit = ""
                 };
                 _synclogitemRepository.Add(logItem);
 
@@ -102,6 +101,12 @@ namespace D2R.Services
                 }
             }
             _synclogitemRepository.SaveChanges();
+        }
+        public List<SyncLog> GetAllSyncLogs()
+        {
+            return _synclogRepository.GetAll()
+                .OrderByDescending(log => log.SyncDate)
+                .ToList();
         }
 
     }

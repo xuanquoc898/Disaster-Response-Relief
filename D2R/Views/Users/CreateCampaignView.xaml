@@ -13,12 +13,12 @@
             BorderBrush="#DDD" BorderThickness="2">
         <ScrollViewer VerticalScrollBarVisibility="Auto">
             <StackPanel >
-
+                
                 <TextBlock Text="🆘 Tạo Yêu Cầu Cứu Trợ"
                            FontSize="24" FontWeight="Bold"
                            Foreground="#391867"
                            Margin="0 0 0 20"/>
-
+                
                 <StackPanel>
                     <TextBlock Text="Loại thiên tai" FontSize="14" FontWeight="SemiBold" Margin="0 0 0 5"/>
                     <ComboBox x:Name="DisasterTypeComboBox"
@@ -45,10 +45,10 @@
                 </StackPanel>
 
                 <StackPanel>
-                    <TextBlock Text="Ghi chú" FontSize="14" FontWeight="SemiBold" Margin="0 0 0 5"/>
-                    <TextBox x:Name="NoteTextBox"
+                    <TextBlock Text="Tiêu đề" FontSize="14" FontWeight="SemiBold" Margin="0 0 0 5"/>
+                    <TextBox x:Name="TitleTextBox"
                              Width="Auto"
-                             Height="100"
+                             Height="50"
                              TextWrapping="Wrap"
                              AcceptsReturn="True"
                              Padding="10"

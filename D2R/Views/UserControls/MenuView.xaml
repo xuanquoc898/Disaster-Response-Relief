@@ -98,10 +98,10 @@
                                            Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </StackPanel>
                         </Button>
-                        <Button Name="WareHouseButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="Quản lý kho" Click="ManageWarehouse_Click">
+                        <Button Name="DonationButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="Quản lý quyên góp" Click="ManageDonation_Click">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <materialDesign:PackIcon Kind="Warehouse" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
-                                <TextBlock FontWeight="Bold" Text="Quản lý kho" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
+                                <materialDesign:PackIcon Kind="Donate" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
+                                <TextBlock FontWeight="Bold" Text="Quyên góp" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
                                            Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </StackPanel>
                         </Button>
@@ -112,10 +112,10 @@
                                            Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </StackPanel>
                         </Button>
-                        <Button Style="{StaticResource SidebarButtonStyle}" ToolTip="Thống kê" Click="Statistics_Click">
+                            <Button Style="{StaticResource SidebarButtonStyle}" ToolTip="Quản lý kho" Click="ManageWarehouse_Click">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <materialDesign:PackIcon Kind="ChartBar" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
-                                <TextBlock FontWeight="Bold" Text="Thống kê" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
+                                <materialDesign:PackIcon Kind="Warehouse" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
+                                <TextBlock FontWeight="Bold" Text="Quản lý kho" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
                                            Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </StackPanel>
                         </Button>
@@ -128,24 +128,24 @@
                         </Button>
                         <Button Name="DisButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="Phân phối" Click="DistributionAdmin_Click">
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <materialDesign:PackIcon Kind="DistributeVerticalCenter" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
+                                <materialDesign:PackIcon Kind="ShareCircle" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
                                 <TextBlock FontWeight="Bold" Text="Phân phối" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
                                            Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                             </StackPanel>
                         </Button>
-                            <Button Name="StaCampButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="Kiểm tra" Click="CheckAdmin_Click">
+                            <Button Name="StaCampButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="Chiến dịch" Click="CheckAdmin_Click">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <materialDesign:PackIcon Kind="CheckDecagram" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
-                                    <TextBlock FontWeight="Bold" Text="Kiểm tra" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
+                                    <materialDesign:PackIcon Kind="FlagCheckered" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
+                                    <TextBlock FontWeight="Bold" Text="Chiến dịch" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
                    Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                                 </StackPanel>
                             </Button>
 
 
-                            <Button Name="StatisticCampButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="BÁO CÁO" Click="StatisticCampButton_Click">
+                            <Button Name="StatisticCampButton" Style="{StaticResource SidebarButtonStyle}" ToolTip="Báo cáo" Click="StatisticCampButton_Click">
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                     <materialDesign:PackIcon Kind="ReportAreaspline" Margin="12,0,0,0" Foreground="Black" Width="28" Height="28" />
-                                    <TextBlock FontWeight="Bold" Text="BÁO CÁO" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
+                                    <TextBlock FontWeight="Bold" Text="Thống kê - Báo cáo" Margin="15,0,0,0" FontSize="16" VerticalAlignment="Center"
                    Visibility="{Binding IsSidebarExpanded, Converter={StaticResource BoolToVisibilityConverter}}" />
                                 </StackPanel>
                             </Button>
@@ -213,8 +213,9 @@
                             <TextBlock Text="Thông báo" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
                             <ListBox x:Name="NotificationList"
                                      BorderThickness="0"
-                                     SelectionChanged="NotificationList_SelectionChanged">
-                            </ListBox>
+                                     MaxHeight="300"
+                                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                     SelectionChanged="NotificationList_SelectionChanged"/> 
                         </StackPanel>
                     </Border>
                 </Popup>

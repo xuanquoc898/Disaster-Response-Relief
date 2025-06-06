@@ -4,70 +4,82 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:conv="clr-namespace:D2R.Converters"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <conv:EmptyToVisibilityConverter x:Key="EmptyToVisibilityConverter"/>
+        <conv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </UserControl.Resources>
 
     <Border Background="White" CornerRadius="8" Padding="15" Margin="0 0 0 20"
             BorderBrush="#DDD" BorderThickness="1"
             Effect="{DynamicResource ShadowEffect}">
 
         <StackPanel>
+            <!-- Danh mục ComboBox -->
             <ComboBox x:Name="CategoryComboBox"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      materialDesign:HintAssist.Hint="Danh mục"
                       Width="300"
-                      Height="35"
-                      Padding="8"
                       Margin="0 0 0 10"
-                      Background="#F5F5F5"
-                      BorderBrush="#CCC"
-                      BorderThickness="1"
-                      FontSize="14"
                       DisplayMemberPath="CategoryName"
                       SelectionChanged="CategoryComboBox_SelectionChanged"/>
 
-            <ItemsControl x:Name="ItemEntryPanel" Margin="0 0 0 10">
+            <!-- Danh sách vật phẩm -->
+            <ItemsControl x:Name="ItemEntryPanel" ItemsSource="{Binding ItemEntries, RelativeSource={RelativeSource AncestorType=UserControl}}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="0,5,0,0">
+                        <Grid Margin="0,5,0,0" VerticalAlignment="Center">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="200"/>
-                                <ColumnDefinition Width="80"/>
-                                <ColumnDefinition Width="40"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
 
+                            <!-- ComboBox Vật phẩm -->
                             <ComboBox Grid.Column="0"
+                                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                      materialDesign:HintAssist.Hint="Vật phẩm"
+                                     ItemsSource="{Binding DataContext.Items, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                       DisplayMemberPath="Name"
-                                      ItemsSource="{Binding DataContext._items, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                      FontSize="14"
-                                      Height="30"
+                                      SelectedItem="{Binding Item}"
                                       Padding="5"
-                                      Background="#F9F9F9"
-                                      BorderBrush="#CCC"
-                                      BorderThickness="1"/>
+                                      Margin="0,0,10,0"/>
 
+                            <!-- TextBox Số lượng -->
                             <TextBox Grid.Column="1"
-                                     Margin="5,0,0,0"
-                                     FontSize="14"
-                                     Height="30"
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                     materialDesign:HintAssist.Hint="Số lượng"
+                                     Text="{Binding Quantity, Mode=TwoWay}"
                                      Padding="5"
-                                     Background="#F9F9F9"
-                                     BorderBrush="#CCC"
-                                     BorderThickness="1"/>
+                                     Margin="0,0,10,0"/>
 
-                            <Button Grid.Column="2"
-                                    Width="30"
-                                    Height="30"
-                                    Margin="5,0,0,0"
-                                    ToolTip="Xoá dòng này"
+                            <!-- Đơn vị -->
+                            <TextBlock Grid.Column="2"
+                                       Text="{Binding Item.Unit}"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,10,0"
+                                       Foreground="Gray"
+                                       FontStyle="Italic"/>
+
+                            <!-- Nút xoá -->
+                            <Button Grid.Column="3"
+                                    Content="❌"
                                     Click="DeleteItemEntry_Click"
+                                    Margin="0"
                                     Background="Transparent"
-                                    BorderBrush="Transparent"
-                                    Cursor="Hand">
-                                <materialDesign:PackIcon Kind="Delete" Foreground="Red" Width="20" Height="20"/>
-                            </Button>
+                                    Foreground="Red"
+                                    BorderThickness="0"
+                                    Cursor="Hand"
+                                    VerticalAlignment="Center"/>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
+            <!-- Nút thêm vật phẩm -->
             <Button Content="+ Thêm vật phẩm"
                     Width="170"
                     Height="35"
@@ -76,7 +88,8 @@
                     FontWeight="Bold"
                     BorderThickness="0"
                     Cursor="Hand"
-                    Click="AddItemEntry_Click">
+                    Click="AddItemEntry_Click"
+                    Margin="0,10,0,0">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Template">

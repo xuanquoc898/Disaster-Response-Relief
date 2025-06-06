@@ -45,31 +45,39 @@ namespace D2R.Views.UserControls
             Noti.HorizontalAlignment = HorizontalAlignment.Left;
             Noti.ShowNotification($"Xin chào {LoginSession.CurrentUser?.Username}!", "Chúc bạn một ngày tốt lành.");
         }
-
         private void CheckPermittedAccess()
         {
-            if (IsCurrentUserStaff())
-            {
-                UmButton.Visibility = Visibility.Collapsed;
-                DisButton.Visibility = Visibility.Collapsed;
-                StaCampButton.Visibility = Visibility.Collapsed;
-                StatisticCampButton.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                DonnorButton.Visibility = Visibility.Collapsed;
-                CvButton.Visibility = Visibility.Collapsed;
-                WareHouseButton.Visibility = Visibility.Collapsed;
-                SyncButton.Visibility = Visibility.Collapsed;
-            }
+            bool isAdmin = IsCurrentUserAdmin();
+            bool isStaff = IsCurrentUserStaff();
 
-            if (!IsCurrentUserAdmin())
+            UmButton.Visibility = isStaff ? Visibility.Collapsed : Visibility.Visible;
+            DonnorButton.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
+            CvButton.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
+            DonationButton.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
+            
+
+            DisButton.Visibility = isAdmin ? Visibility.Visible : Visibility.Collapsed;
+            StaCampButton.Visibility = isAdmin ? Visibility.Visible : Visibility.Collapsed;
+            StatisticCampButton.Visibility = isAdmin ? Visibility.Visible : Visibility.Collapsed;
+        }
+        private void LoadNotifications()
+        {
+            var service = new NotificationDetailService();
+            var notifications = service.GetNotificationsByUserId(LoginSession.CurrentUser.UserId);
+
+            NotificationList.Items.Clear();
+            foreach (var noti in notifications)
             {
-                DisButton.Visibility = Visibility.Collapsed;
-                StaCampButton.Visibility = Visibility.Collapsed;
-                StatisticCampButton.Visibility = Visibility.Collapsed;
+                var item = new ListBoxItem
+                {
+                    Content = noti.Content,
+                    FontWeight = noti.IsRead.GetValueOrDefault() ? FontWeights.Normal : FontWeights.Bold,
+                    Tag = noti
+                };
+                NotificationList.Items.Add(item);
             }
         }
+
 
         private void AnimateSidebar(double from, double to)
         {
@@ -106,7 +114,7 @@ namespace D2R.Views.UserControls
         private void ManageDonors_Click(object sender, RoutedEventArgs e)
             => MainContent.Content = new DonorManagerment();
 
-        private void ManageWarehouse_Click(object sender, RoutedEventArgs e)
+        private void ManageDonation_Click(object sender, RoutedEventArgs e)
         {
             int warehouseId = LoginSession.CurrentUser?.WarehouseId ?? 0;
             MainContent.Content = new DonationView(warehouseId);
@@ -115,7 +123,7 @@ namespace D2R.Views.UserControls
         private void RequestSupport_Click(object sender, RoutedEventArgs e)
             => MainContent.Content = new CreateCampaignView();
 
-        private void Statistics_Click(object sender, RoutedEventArgs e)
+        private void ManageWarehouse_Click(object sender, RoutedEventArgs e)
         {
             int? warehouseId = LoginSession.CurrentUser?.WarehouseId;
             MainContent.Content = new WarehouseLocalView(warehouseId);
@@ -123,9 +131,19 @@ namespace D2R.Views.UserControls
 
         private void Sync_Click(object sender, RoutedEventArgs e)
         {
-            int warehouseId = LoginSession.CurrentUser?.WarehouseId ?? 0;
-            MainContent.Content = new SyncView(warehouseId);
+            var user = LoginSession.CurrentUser;
+
+            if (user.Role.RoleName == "Admin")
+            {
+                MainContent.Content = new AdminSyncView(); 
+            }
+            else
+            {
+                int warehouseId = user.WarehouseId ?? 0;
+                MainContent.Content = new SyncView(warehouseId); 
+            }
         }
+
 
         private void DistributionAdmin_Click(object sender, RoutedEventArgs e)
         {
@@ -144,21 +162,7 @@ namespace D2R.Views.UserControls
 
         private void NotificationButton_Click(object sender, RoutedEventArgs e)
         {
-            var service = new NotificationDetailService();
-            var notifications = service.GetNotificationsByUserId(LoginSession.CurrentUser.UserId);
-
-            NotificationList.Items.Clear();
-            foreach (var noti in notifications)
-            {
-                var item = new ListBoxItem
-                {
-                    Content = noti.Content,
-                    FontWeight = noti.IsRead.GetValueOrDefault() ? FontWeights.Normal : FontWeights.Bold,
-                    Tag = noti
-                };
-                NotificationList.Items.Add(item);
-            }
-
+            LoadNotifications();
             NotificationPopup.IsOpen = true;
         }
 

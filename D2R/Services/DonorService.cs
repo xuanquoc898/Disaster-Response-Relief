@@ -27,19 +27,20 @@ namespace D2R.Services
         {
             try
             {
-                String message = "";
-                if (ValidationHelper.CheckName(entity.FullName,  out message))
-                {
+                string message = "";
+
+                if (!ValidationHelper.CheckName(entity.FullName, out message))
                     throw new ArgumentException(message);
-                }
-                if (string.IsNullOrWhiteSpace(entity.FullName))
-                    throw new ArgumentException("Tên không được để trống.");
+
                 if (!ValidationHelper.IsValidCanCuocCongDan(entity.Cccd))
                     throw new ArgumentException("Sai kiểu mẫu của căn cước công dân");
+
                 if (!ValidationHelper.IsValidPhoneNumber(entity.Phone))
                     throw new ArgumentException("Sai kiểu mẫu của số điện thoại");
+
                 if (!ValidationHelper.IsValidEmailAddress(entity.Email))
                     throw new ArgumentException("Sai định dạng Email");
+
                 _repository.Add(entity);
                 donors?.Add(entity);
                 MessageBox.Show("Đã thêm MTQ thành công!");
@@ -53,7 +54,6 @@ namespace D2R.Services
                 var message = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
                 MessageBox.Show("Đã xảy ra lỗi: " + message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
         }
 
         public List<int> GetAvailableYears()

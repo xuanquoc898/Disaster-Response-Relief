@@ -1,4 +1,5 @@
-﻿using D2R.Repositories;
+﻿using D2R.Models;
+using D2R.Repositories;
 using D2R.ViewModels;
 
 namespace D2R.Services
@@ -6,6 +7,7 @@ namespace D2R.Services
     public class WarehouseInventoryService
     {
         private readonly WarehouseStockRepository _stockrepository;
+
         public WarehouseInventoryService()
         {
             _stockrepository = new WarehouseStockRepository();
@@ -29,7 +31,17 @@ namespace D2R.Services
                                       .ToList();
 
             return stockDisplays;
+        }
 
+        public List<WarehouseItem> GetWarehouseItems()
+        {
+            return _stockrepository.GetWarehouseItems();
+        }
+
+        public List<ItemCategory> GetItemCategories()
+        {
+            return _stockrepository.GetItemCategories();
         }
     }
+
 }
