@@ -28,7 +28,7 @@ namespace D2R.Services
             try
             {
                 String message = "";
-                if (ValidationHelper.CheckName(entity.FullName,  out message))
+                if (!ValidationHelper.CheckName(entity.FullName,  out message))
                 {
                     throw new ArgumentException(message);
                 }
@@ -41,7 +41,7 @@ namespace D2R.Services
                 if (!ValidationHelper.IsValidEmailAddress(entity.Email))
                     throw new ArgumentException("Sai định dạng Email");
                 _repository.Add(entity);
-                donors?.Add(entity);
+                // donors?.Add(entity);
                 MessageBox.Show("Đã thêm MTQ thành công!");
             }
             catch (ArgumentException ex)
