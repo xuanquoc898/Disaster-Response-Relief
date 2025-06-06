@@ -64,7 +64,7 @@ namespace D2R.Views.Users
             }
             else
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin hoặc Kiểm tra dữ liệu đã nhập!");
             }
         }
     }

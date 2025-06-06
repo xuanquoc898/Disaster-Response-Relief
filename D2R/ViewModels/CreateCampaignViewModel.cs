@@ -69,7 +69,7 @@ namespace D2R.ViewModels
             var allRequestedItems = _groupControls.SelectMany(g => g.GetRequestedItems()).ToList();
 
             if (DisasterLevelId == null || allRequestedItems.Count == 0 ||
-                allRequestedItems.Any(x => x.ItemId == null || x.QuantityRequested == null))
+                allRequestedItems.Any(x => x.ItemId == null || x.QuantityRequested == null || x.QuantityRequested <= 0))
                 return false;
 
             var campaign = new Campaign
@@ -102,7 +102,7 @@ namespace D2R.ViewModels
                 _notificationService.CreateNotification(
                     userId: admin.UserId,
                     campaignId: campaign.CampaignId,
-                    content: $"● Chiến dịch \"{campaign.Note}\" vừa được gửi yêu cầu duyệt."
+                    content: $"● Chiến dịch {campaign.Note} vừa được gửi yêu cầu duyệt."
                 );
             }
             return true;
