@@ -1,5 +1,6 @@
 ﻿using D2R.Models;
 using D2R.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace D2R.Repositories
 {
@@ -21,6 +22,13 @@ namespace D2R.Repositories
         }
         public void Add(Donor entity)
         {
+            var tracked = _context.ChangeTracker.Entries<Donor>()
+                .FirstOrDefault(e => e.Entity.DonorId == entity.DonorId);
+
+            if (tracked != null)
+            {
+                _context.Entry(tracked.Entity).State = EntityState.Detached;
+            }
             _context.Donors.Add(entity);
             _context.SaveChanges();
         }
@@ -97,7 +105,6 @@ namespace D2R.Repositories
 
             return grouped.ToList();
         }
-
 
 
 
