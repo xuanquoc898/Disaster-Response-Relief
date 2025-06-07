@@ -36,16 +36,19 @@
         <!-- Top 10 bảng thống kê -->
         <Border Grid.Row="2" BorderThickness="1" BorderBrush="#ccc" Padding="5" Margin="0,10,0,0">
             <DataGrid x:Name="DonorListView" AutoGenerateColumns="False" HeadersVisibility="Column"
-                      CanUserResizeColumns="True" CanUserSortColumns="True" IsReadOnly="True"
-                      SelectionMode="Single" SelectionUnit="FullRow"
-                      HorizontalScrollBarVisibility="Auto">
+          CanUserResizeColumns="True" CanUserSortColumns="True" IsReadOnly="True"
+          SelectionMode="Single" SelectionUnit="FullRow"
+          HorizontalScrollBarVisibility="Auto">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Họ tên" Binding="{Binding FullName}" Width="*" MinWidth="150"/>
                     <DataGridTextColumn Header="CCCD" Binding="{Binding CCCD}" Width="150"/>
-                    <DataGridTextColumn Header="Số lần quyên góp" Binding="{Binding TotalDonations}" Width="150"/>
-                    <DataGridTextColumn Header="Tổng số lượng" Binding="{Binding TotalQuantity}" Width="150"/>
+                    <DataGridTextColumn x:Name="DynamicValueColumn"
+                            Header="Số lần quyên góp"
+                            Binding="{Binding TotalDonations}"
+                            Width="150"/>
                 </DataGrid.Columns>
             </DataGrid>
+
         </Border>
     </Grid>
 </UserControl>

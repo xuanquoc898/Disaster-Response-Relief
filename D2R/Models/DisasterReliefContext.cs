@@ -87,7 +87,7 @@ public partial class DisasterReliefContext : DbContext
             entity.Property(e => e.CreatedDate)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("datetime");
-            entity.Property(e => e.Note).HasMaxLength(255);
+            entity.Property(e => e.Title).HasMaxLength(255);
             entity.Property(e => e.Status).HasMaxLength(50);
 
             entity.HasOne(d => d.Area).WithMany(p => p.Campaigns)
