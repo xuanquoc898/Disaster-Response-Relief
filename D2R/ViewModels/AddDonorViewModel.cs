@@ -1,4 +1,5 @@
-﻿using D2R.Models;
+﻿using System.Globalization;
+using D2R.Models;
 using D2R.Services;
 namespace D2R.ViewModels
 {
@@ -6,14 +7,21 @@ namespace D2R.ViewModels
     {
         private DonorService _service = new();
         private List<Donor> _donors = new();
-        private List<Donor> _newDonors = new();
+        private static List<Donor> _newDonors = new();
         public IEnumerable<Donor> Donors => _donors;
         public IEnumerable<Donor> NewDonors => _newDonors;
+
+        public void SetNewDonorsNull()
+        {
+            _newDonors.Clear();
+        }
 
         public bool AddDonorSuccess { get; set; }
 
         public void AddDonor(string name, string cccd, string phone, string email)
         {
+            TextInfo textInfo = new CultureInfo("vi-VN", false).TextInfo;
+            name = textInfo.ToTitleCase(name.ToLower());
             var donor = new Donor
             {
                 FullName = name,
