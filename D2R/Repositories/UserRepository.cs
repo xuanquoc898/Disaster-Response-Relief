@@ -19,10 +19,10 @@ namespace D2R.Repositories
                 .ThenInclude(w => w.Area)
                 .ToList();
         }
-        public User? GetByUsername(string username)
+        public async Task<User?> GetByUsername(string username)
         {
-            return _context.Users.Include(u => u.Role)
-                .FirstOrDefault(u => u.Username == username);
+            return await _context.Users.Include(u => u.Role)
+                .FirstOrDefaultAsync(u => u.Username == username);
         }
 
         public void Add(User? entity)
