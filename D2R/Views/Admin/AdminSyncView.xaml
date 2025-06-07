@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="D2R.Views.Admin.AdminSyncView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             Background="White">
+
+    <StackPanel Margin="20">
+        <TextBlock Text="📄 Lịch sử đồng bộ tại kho trung tâm"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="#391867"
+                   Margin="0,0,0,20"/>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Lọc theo kho:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <ComboBox x:Name="WarehouseFilterComboBox"
+                      Width="200"
+                      SelectionChanged="WarehouseFilterComboBox_SelectionChanged"/>
+        </StackPanel>
+
+        <DataGrid x:Name="SyncLogDataGrid"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  HeadersVisibility="Column"
+                  CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="📦 Kho" Binding="{Binding Warehouse.Name}" Width="*"/>
+                <DataGridTextColumn Header="🕒 Ngày đồng bộ" Binding="{Binding SyncDate}" Width="*"/>
+                <DataGridTextColumn Header="⚙️ Trạng thái" Binding="{Binding Status}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
+</UserControl>

@@ -34,30 +34,37 @@ namespace D2R.Services
             if (donor == null || groups == null || !groups.Any())
                 return false;
 
+            var allEntries = groups
+                .SelectMany(group => group.GetDonationItems())
+                .Where(entry => entry.Item != null && entry.Quantity > 0)
+                .ToList();
+
+            if (!allEntries.Any())
+                return false; 
+
             var donation = new Donation
             {
                 DonorId = donor.DonorId,
-                AreaId = 1
+                AreaId = 1,
+                Date = DateTime.Now
             };
 
             _donationRepository.Add(donation);
 
-            foreach (var group in groups)
+            foreach (var entry in allEntries)
             {
-                foreach (var entry in group.GetDonationItems())
+                var item = new DonationItem
                 {
-                    var item = new DonationItem
-                    {
-                        DonationId = donation.DonationId,
-                        ItemId = entry.Item.ItemId,
-                        Quantity = entry.Quantity,
-                        Unit = entry.Item.Unit
-                    };
+                    DonationId = donation.DonationId,
+                    ItemId = entry.Item.ItemId,
+                    Quantity = entry.Quantity,
+                    Unit = entry.Item.Unit
+                };
 
-                    _donationitemRepository.Add(item);
-                    AddOrUpdateStock(warehouseId, entry.Item.ItemId, entry.Quantity);
-                }
+                _donationitemRepository.Add(item);
+                AddOrUpdateStock(warehouseId, entry.Item.ItemId, entry.Quantity);
             }
+
             return true;
         }
 

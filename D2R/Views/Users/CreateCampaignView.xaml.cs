@@ -45,7 +45,12 @@ namespace D2R.Views.Users
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             _viewModel.DisasterLevelId = DisasterLevelComboBox.SelectedValue as int?;
-            _viewModel.Note = NoteTextBox.Text;
+            if (string.IsNullOrWhiteSpace(TitleTextBox.Text))
+            {
+                MessageBox.Show("Vui lòng nhập tên chiến dịch.");
+                return;
+            }
+            _viewModel.Title = TitleTextBox.Text;
             _viewModel.ClearGroups();
             foreach (var item in CategoryGroupsPanel.Items)
             {
@@ -58,7 +63,7 @@ namespace D2R.Views.Users
                 MessageBox.Show("Chiến dịch đã được gửi thành công!");
                 CategoryGroupsPanel.Items.Clear();
                 AddCategoryGroup();
-                NoteTextBox.Text = "";
+                TitleTextBox.Text = "";
                 DisasterTypeComboBox.ItemsSource = null;
                 DisasterLevelComboBox.ItemsSource = null;
             }

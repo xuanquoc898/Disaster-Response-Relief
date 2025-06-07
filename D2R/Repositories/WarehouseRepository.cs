@@ -25,5 +25,10 @@ namespace D2R.Repositories
         {
             return _context.Warehouses.Select(w => w.Name).Distinct().ToList();
         }
+        public List<Warehouse> GetAllWarehouses()
+        {
+            return _context.Warehouses.ToList();
+        }
+
     }
 }

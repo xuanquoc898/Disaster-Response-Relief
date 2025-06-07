@@ -1,4 +1,0 @@
-khi admin xác nhận duyệt phân phối, vào noti của admin click vào thông báo thì xuất hiện nút xác nhận nhận hang của staff ( cần fix)
-
-khi dồng bộ từ staff lên admin thì những vật phẩm trùng nhau không cộng dồn mà tạo ra bản ghi với số lượng mới
-

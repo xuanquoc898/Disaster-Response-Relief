@@ -5,17 +5,13 @@ namespace D2R.Services
 {
     public class UserService
     {
-        private readonly UserRepository _repository;
+        private readonly UserRepository _repository = new();
 
-        public UserService()
-        {
-            _repository = new UserRepository();
-        }
-        public List<User> GetStaffsByAreaId(int areaId)
+        public List<User?> GetStaffsByAreaId(int areaId)
         {
             return _repository.GetStaffsByAreaId(areaId);
         }
-        public List<User> GetAdmins()
+        public List<User?> GetAdmins()
         {
             return _repository.GetAdmins();
         }

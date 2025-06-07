@@ -22,15 +22,9 @@ namespace D2R.Views.Admin
 
             foreach (var c in campaigns)
             {
-                CampaignList.Items.Add(new
-                {
-                    c.CampaignId,
-                    c.Note,
-                    AreaName = c.Area?.Name ?? "Không rõ",
-                    CreatedDate = c.CreatedDate?.ToString("dd/MM/yyyy") ?? "",
-                    Status = c.Status
-                });
+                CampaignList.Items.Add(c);
             }
+
         }
         private void StatusFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

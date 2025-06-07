@@ -10,8 +10,6 @@ public partial class SyncLogItem
 
     public int? Quantity { get; set; }
 
-    public string? Unit { get; set; }
-
     public virtual WarehouseItem? Item { get; set; }
 
     public virtual SyncLog? Sync { get; set; }

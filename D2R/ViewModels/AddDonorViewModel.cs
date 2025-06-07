@@ -6,7 +6,11 @@ namespace D2R.ViewModels
     {
         private DonorService _service = new();
         private List<Donor> _donors = new();
+        private List<Donor> _newDonors = new();
         public IEnumerable<Donor> Donors => _donors;
+        public IEnumerable<Donor> NewDonors => _newDonors;
+
+        public bool AddDonorSuccess { get; set; }
 
         public void AddDonor(string name, string cccd, string phone, string email)
         {
@@ -17,7 +21,8 @@ namespace D2R.ViewModels
                 Phone = phone,
                 Email = email
             };
-            _service.Add(donor, _donors);
+            _service.Add(donor, _newDonors);
+            AddDonorSuccess = _service.AddDonorSuccess;
         }
 
         public List<Donor> GetAllDonors()

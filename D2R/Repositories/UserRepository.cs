@@ -1,6 +1,5 @@
 using D2R.Models;
 using Microsoft.EntityFrameworkCore;
-using MySqlConnector;
 
 namespace D2R.Repositories
 {
@@ -20,13 +19,13 @@ namespace D2R.Repositories
                 .ThenInclude(w => w.Area)
                 .ToList();
         }
-        public User GetByUsername(string username)
+        public User? GetByUsername(string username)
         {
             return _context.Users.Include(u => u.Role)
                 .FirstOrDefault(u => u.Username == username);
         }
 
-        public void Add(User entity)
+        public void Add(User? entity)
         {
             _context.Users.Add(entity);
             _context.SaveChanges();

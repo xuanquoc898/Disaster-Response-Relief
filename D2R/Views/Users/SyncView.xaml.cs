@@ -18,9 +18,17 @@ namespace D2R.Views.Users
 
         private void BtnSync_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.Sync();
-            MessageBox.Show("Đồng bộ thành công!");
-            LoadHistory();
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đồng bộ? Tất cả hàng trong kho này sẽ chuyển về kho trung tâm.",
+                                          "Xác nhận đồng bộ",
+                                          MessageBoxButton.YesNo,
+                                          MessageBoxImage.Warning);
+
+            if (confirm == MessageBoxResult.Yes)
+            {
+                _viewModel.Sync();
+                MessageBox.Show("Đồng bộ thành công!");
+                LoadHistory();
+            }
         }
 
         private void LoadHistory()

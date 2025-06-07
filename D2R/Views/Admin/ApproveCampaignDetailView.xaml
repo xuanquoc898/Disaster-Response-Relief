@@ -42,35 +42,68 @@
             <StackPanel x:Name="CategoryPanel" />
         </ScrollViewer>
 
-        <StackPanel Orientation="Horizontal" 
-                    HorizontalAlignment="Right" 
-                    Grid.Row="2"
-                    Margin="0 20 0 0">
+        <!-- Footer: Hành động xử lý -->
+        <Border Grid.Row="2" Padding="15" Background="#FAFAFA" CornerRadius="6" BorderBrush="#DDD" BorderThickness="1">
+            <StackPanel>
 
-            <Button Content="✅ Phân phối" 
+                <!-- Nút phân phối và từ chối -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" x:Name="ButtonPanel">
+                    <Button x:Name="ApproveButton"
+                    Content="✅ Phân phối" 
                     Click="Approve_Click" 
                     Background="#4CAF50" 
                     Foreground="White"
                     Padding="10 5"
-                    Width="110"
+                    Width="120"
                     Margin="5"
                     BorderThickness="0"
                     Cursor="Hand"
-                    FontWeight="SemiBold"
-                    />
+                    FontWeight="SemiBold"/>
 
-            <Button Content="❌ Từ chối" 
+                    <Button x:Name="RejectButton"
+                    Content="❌ Từ chối" 
                     Click="Reject_Click" 
                     Background="#F44336" 
                     Foreground="White"
                     Padding="10 5"
-                    Width="100"
+                    Width="120"
                     Margin="5"
                     BorderThickness="0"
                     Cursor="Hand"
-                    FontWeight="SemiBold"
-                    />
+                    FontWeight="SemiBold"/>
+                </StackPanel>
 
-        </StackPanel>
+                <!-- Lý do từ chối -->
+                <StackPanel x:Name="RejectSection" Visibility="Collapsed" Margin="0,15,0,0">
+                    <TextBlock Text="📝 Nhập lý do từ chối:" 
+                       FontWeight="SemiBold" 
+                       Foreground="#D32F2F"
+                       Margin="0,0,0,5"/>
+                    <TextBox x:Name="RejectReasonBox"
+                     Height="80"
+                     TextWrapping="Wrap"
+                     AcceptsReturn="True"
+                     BorderBrush="Gray" 
+                     BorderThickness="1"
+                     Padding="8"
+                     FontSize="14"/>
+
+                    <Button x:Name="ConfirmRejectButton"
+                    Content="Xác nhận từ chối"
+                    HorizontalAlignment="Right"
+                    Margin="0,10,0,0"
+                    Padding="8,4"
+                    Click="ConfirmReject_Click"
+                    Background="#D32F2F"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Width="150"
+                    FontWeight="Bold"
+                    Cursor="Hand"/>
+                </StackPanel>
+
+            </StackPanel>
+        </Border>
+
     </Grid>
 </UserControl>

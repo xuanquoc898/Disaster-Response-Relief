@@ -11,10 +11,22 @@ namespace D2R.Views.Users
             InitializeComponent();
         }
 
+        private void ClearForm()
+        {
+            txtName.Text = string.Empty;
+            txtCCCD.Text = string.Empty;
+            txtPhone.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _addDonorVM.AddDonor(txtName.Text, txtCCCD.Text, txtPhone.Text, txtEmail.Text);
-            dgDonors.ItemsSource = _addDonorVM.Donors;
+            if (_addDonorVM.AddDonorSuccess)
+            {
+                ClearForm();
+            }
+            dgDonors.ItemsSource = _addDonorVM.NewDonors;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using D2R.ViewModels;
+﻿using D2R.Helpers;
+using D2R.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -24,24 +25,27 @@ namespace D2R.Views.UserControls
             {
                 CampaignDetailPanel.Visibility = Visibility.Visible;
 
-                CampaignNoteText.Text = _viewModel.Campaign.Note;
+                CampaignNoteText.Text = _viewModel.Campaign.Title;
                 CampaignStatusText.Text = _viewModel.Campaign.Status;
 
-                if (_viewModel.Campaign.Status == "Approved")
+                string status = _viewModel.Campaign.Status;
+                string dateDisplay = status switch
                 {
-                    CampaignApprovedOrRejectedAtText.Text = _viewModel.Campaign.ApprovedAt?.ToString("dd/MM/yyyy") ?? "Không rõ";
-                    ConfirmButton.Visibility = Visibility.Visible;
-                }
-                else if (_viewModel.Campaign.Status == "Rejected")
+                    "Approved" => _viewModel.Campaign.ApprovedAt?.ToString("dd/MM/yyyy"),
+                    "Rejected" => _viewModel.Campaign.RejectedAt?.ToString("dd/MM/yyyy"),
+                    "Completed" => _viewModel.Campaign.CompletedAt?.ToString("dd/MM/yyyy"),
+                    _ => null
+                } ?? "Không rõ";
+
+                CampaignApprovedOrRejectedAtText.Text = dateDisplay;
+                if (status == "Rejected" && !string.IsNullOrWhiteSpace(_viewModel.Campaign.Note))
                 {
-                    CampaignApprovedOrRejectedAtText.Text = _viewModel.Campaign.RejectedAt?.ToString("dd/MM/yyyy") ?? "Không rõ";
-                    ConfirmButton.Visibility = Visibility.Collapsed;
+                    NotePanel.Visibility = Visibility.Visible;
+                    CampaignNoteReasonText.Text = _viewModel.Campaign.Note;
                 }
-                else if (_viewModel.Campaign.Status == "Completed")
-                {
-                    CampaignApprovedOrRejectedAtText.Text = _viewModel.Campaign.CompletedAt?.ToString("dd/MM/yyyy") ?? "Không rõ";
-                    ConfirmButton.Visibility = Visibility.Collapsed;
-                }
+
+                bool isStaff = LoginSession.CurrentUser?.Role.RoleName == "Staff";
+                ConfirmButton.Visibility = (status == "Approved" && isStaff) ? Visibility.Visible : Visibility.Collapsed;
             }
 
             _viewModel.MarkNotificationAsRead();
@@ -57,7 +61,7 @@ namespace D2R.Views.UserControls
 
             _viewModel.ConfirmReceived();
 
-            MessageBox.Show("Xác nhận thành công. Hàng hóa đã được cộng vào kho của bạn.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("✅ Xác nhận thành công! Hàng hóa đã được cộng vào kho của bạn.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
 
             ConfirmButton.IsEnabled = false;
             ConfirmButton.Content = "Đã xác nhận";

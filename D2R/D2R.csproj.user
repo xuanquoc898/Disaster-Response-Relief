@@ -5,6 +5,9 @@
     <Compile Update="Views\Admin\AdminStatisticsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\Admin\AdminSyncView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\Admin\CampaignDetailView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

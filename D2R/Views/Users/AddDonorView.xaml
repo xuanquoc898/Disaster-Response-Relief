@@ -147,7 +147,7 @@
                           RowHeight="40">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Họ tên" Binding="{Binding FullName}" Width="3*"/>
-                        <DataGridTextColumn Header="CCCD" Binding="{Binding CCCD}" Width="3*"/>
+                        <DataGridTextColumn Header="CCCD" Binding="{Binding Cccd}" Width="3*"/>
                         <DataGridTextColumn Header="Số điện thoại" Binding="{Binding Phone}" Width="2*"/>
                         <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="3*"/>
                     </DataGrid.Columns>

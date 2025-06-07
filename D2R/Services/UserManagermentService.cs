@@ -19,7 +19,7 @@ namespace D2R.Services
         {
             _userRepository.Update(entity);
         }
-        public void Add(User entity)
+        public void Add(User? entity)
         {
             _userRepository.Add(entity);
         }

@@ -1,4 +1,5 @@
 using D2R.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace D2R.Repositories
 {
@@ -13,7 +14,10 @@ namespace D2R.Repositories
 
         public List<SyncLog> GetAll()
         {
-            return _context.SyncLogs.ToList();
+            return _context.SyncLogs
+                .Include(s => s.Warehouse)
+                .OrderByDescending(s => s.SyncDate)
+                .ToList();
         }
 
         public void Add(SyncLog entity)
@@ -24,17 +28,10 @@ namespace D2R.Repositories
         public List<SyncLog> GetHistoryByWarehouse(int warehouseId)
         {
             return _context.SyncLogs
+                .Include(s => s.Warehouse)
                 .Where(log => log.WarehouseId == warehouseId)
                 .OrderByDescending(log => log.SyncDate)
                 .ToList();
         }
-        public int GetTotalInboundUpToDate(DateTime date)
-        {
-            return _context.SyncLogs
-                .Where(x => x.SyncDate.HasValue && x.SyncDate.Value.Date <= date.Date)
-                .SelectMany(x => x.SyncLogItems)
-                .Sum(i => (int?)i.Quantity) ?? 0;
-        }
-
     }
 }

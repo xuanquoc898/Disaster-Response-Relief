@@ -49,7 +49,7 @@
             <ListView x:Name="CampaignList" Background="White" BorderThickness="0">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Tên chiến dịch" Width="200" DisplayMemberBinding="{Binding Note}"/>
+                        <GridViewColumn Header="Tên chiến dịch" Width="200" DisplayMemberBinding="{Binding Title}"/>
                         <GridViewColumn Header="Khu vực" Width="150" DisplayMemberBinding="{Binding AreaName}"/>
                         <GridViewColumn Header="Ngày tạo" Width="120" DisplayMemberBinding="{Binding CreatedDate}"/>
                         <GridViewColumn Header="Trạng thái" Width="125" DisplayMemberBinding="{Binding Status}"/>

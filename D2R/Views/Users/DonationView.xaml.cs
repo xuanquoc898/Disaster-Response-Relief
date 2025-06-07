@@ -2,6 +2,7 @@
 using D2R.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace D2R.Views.Users
 {
@@ -24,8 +25,40 @@ namespace D2R.Views.Users
         private void AddCategoryGroup()
         {
             var group = new DonationCategoryGroupControl(_viewModel);
-            CategoryGroupsPanel.Items.Add(group);
+
+            var wrapper = new StackPanel();
+
+            // Nút xoá danh mục
+            var deleteButton = new Button
+            {
+                Content = "❌",
+                Margin = new Thickness(0, 0, 0, 5),
+                Foreground = Brushes.Red,
+                Background = Brushes.Transparent,
+                BorderThickness = new Thickness(0),
+                HorizontalAlignment = HorizontalAlignment.Right
+            };
+
+            //k xóa danh mục đầu tiên
+            deleteButton.Click += (s, e) =>
+            {
+                if (CategoryGroupsPanel.Items.Count <= 1)
+                {
+                    MessageBox.Show("Không thể xoá danh mục cuối cùng.");
+                    return;
+                }
+
+                // Xoá chính `wrapper` này khỏi danh sách
+                CategoryGroupsPanel.Items.Remove(wrapper);
+            };
+
+            wrapper.Children.Add(deleteButton);
+            wrapper.Children.Add(group);
+
+            CategoryGroupsPanel.Items.Add(wrapper);
         }
+
+
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
@@ -35,9 +68,21 @@ namespace D2R.Views.Users
                 return;
             }
 
-            var groups = new List<DonationCategoryGroupControl>();
-            foreach (var item in CategoryGroupsPanel.Items)
-                if (item is DonationCategoryGroupControl g) groups.Add(g);
+            var groups = CategoryGroupsPanel.Items
+                          .OfType<StackPanel>()
+                          .Select(sp => sp.Children
+                              .OfType<DonationCategoryGroupControl>()
+                              .FirstOrDefault())
+                          .Where(g => g != null)
+                          .ToList();
+
+
+            // check tất cả các dòng trong tất cả nhóm phải hợp lệ
+            if (groups.Count == 0 || !groups.All(g => g.IsValid()))
+            {
+                MessageBox.Show("Tất cả các mặt hàng nhập phải hợp lệ (đã chọn và số lượng > 0).");
+                return;
+            }
 
             var success = _viewModel.ConfirmDonation(groups);
             if (success)
@@ -47,7 +92,6 @@ namespace D2R.Views.Users
                 AddCategoryGroup();
             }
         }
-
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var keyword = SearchBox.Text.Trim();

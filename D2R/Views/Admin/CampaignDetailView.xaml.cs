@@ -17,7 +17,7 @@ namespace D2R.Views.Admin
         private void LoadCampaignDetailView(int campaignId)
         {
             var campaign = _campaignService.GetById(campaignId);
-            NoteText.Text = campaign.Note;
+            NoteText.Text = campaign.Title;
             AreaText.Text = campaign.Area?.Name ?? "Không rõ";
             DisasterTypeText.Text = campaign.DisasterLevel?.DisasterType?.Name ?? "Không rõ";
             DisasterLevelText.Text = campaign.DisasterLevel?.Level ?? "Không rõ";

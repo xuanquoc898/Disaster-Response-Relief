@@ -1,8 +1,8 @@
-﻿
-using D2R.Models;
+﻿using D2R.Models;
 using D2R.ViewModels;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace D2R.Views.Users
 {
@@ -52,21 +52,65 @@ namespace D2R.Views.Users
                 Margin = new Thickness(0, 0, 5, 0)
             };
 
+            var unitText = new TextBlock
+            {
+                Margin = new Thickness(5, 0, 5, 0),
+                VerticalAlignment = VerticalAlignment.Center,
+                Text = "",
+                Width = 50
+            };
+
+            itemBox.SelectionChanged += (s, e) =>
+            {
+                if (itemBox.SelectedItem is WarehouseItem selectedItem)
+                {
+                    unitText.Text = selectedItem.Unit ?? "";
+                }
+                else
+                {
+                    unitText.Text = "";
+                }
+            };
+
+            var deleteButton = new Button
+            {
+                Content = "❌",
+                Margin = new Thickness(5, 0, 0, 0),
+                Background = Brushes.Transparent,
+                Foreground = Brushes.Red,
+                BorderThickness = new Thickness(0),
+                Tag = panel
+            };
+
+            deleteButton.Click += DeleteItemEntry_Click;
+
             panel.Children.Add(itemBox);
             panel.Children.Add(qtyBox);
+            panel.Children.Add(unitText);
+            panel.Children.Add(deleteButton);
+
             ItemEntryPanel.Items.Add(panel);
+        }
+
+        private void DeleteItemEntry_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is StackPanel panel)
+            {
+                ItemEntryPanel.Items.Remove(panel);
+            }
         }
 
         public List<CampaignItemRequestModel> GetRequestedItems()
         {
             var result = new List<CampaignItemRequestModel>();
 
-            foreach (StackPanel panel in ItemEntryPanel.Items)
+            foreach (var element in ItemEntryPanel.Items)
             {
-                var itemBox = panel.Children[0] as ComboBox;
-                var qtyBox = panel.Children[1] as TextBox;
-
-                if (itemBox?.SelectedItem is WarehouseItem item && int.TryParse(qtyBox?.Text, out int quantity))
+                if (element is StackPanel panel &&
+                    panel.Children[0] is ComboBox itemBox &&
+                    panel.Children[1] is TextBox qtyBox &&
+                    itemBox.SelectedItem is WarehouseItem item &&
+                    int.TryParse(qtyBox.Text, out int quantity))
                 {
                     result.Add(new CampaignItemRequestModel
                     {
