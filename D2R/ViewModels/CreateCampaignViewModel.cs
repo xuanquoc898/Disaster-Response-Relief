@@ -82,7 +82,17 @@ namespace D2R.ViewModels
 
             _createCampaignService.AddCampaign(campaign);
 
-            foreach (var request in allRequestedItems)
+            var mergedItems = allRequestedItems
+                .Where(x => x.ItemId != null)
+                .GroupBy(x => x.ItemId)
+                .Select(g => new CampaignItemRequestModel
+                {
+                    ItemId = g.Key,
+                    QuantityRequested = g.Sum(x => x.QuantityRequested ?? 0)
+                })
+                .ToList();
+
+            foreach (var request in mergedItems)
             {
                 _createCampaignService.AddCampaignItem(new CampaignItem
                 {
@@ -91,6 +101,7 @@ namespace D2R.ViewModels
                     QuantityRequested = request.QuantityRequested
                 });
             }
+
 
 
             var admins = _userService.GetAdmins();
