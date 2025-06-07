@@ -45,41 +45,59 @@ namespace D2R.Repositories
         /// </summary>
         public List<DonorRankingModel> GetTopDonorsByYearAndCriteria(int year, string criteria)
         {
-            // Lấy danh sách donation cùng item, lọc theo năm
             var query = from donor in _context.Donors
                         join donation in _context.Donations on donor.DonorId equals donation.DonorId
                         where donation.Date.HasValue && donation.Date.Value.Year == year
-                        join item in _context.DonationItems on donation.DonationId equals item.DonationId into itemsGroup
+                        join item in _context.DonationItems on donation.DonationId equals item.DonationId
+                        join warehouseItem in _context.WarehouseItems on item.ItemId equals warehouseItem.ItemId
+                        join category in _context.ItemCategories on warehouseItem.CategoryId equals category.CategoryId
                         select new
                         {
                             donor.FullName,
                             donor.Cccd,
-                            DonationId = donation.DonationId, // sửa ở đây
-                            QuantitySum = itemsGroup.Sum(i => (int?)i.Quantity) ?? 0,
-                            DonationDate = donation.Date
+                            donation.DonationId,
+                            donation.Date,
+                            item.Quantity,
+                            ItemName = warehouseItem.Name,
+                            CategoryName = category.CategoryName
                         };
 
+            IEnumerable<DonorRankingModel> grouped;
 
-            // Group theo donor để tổng hợp số lần và tổng lượng
-            var grouped = query.AsEnumerable()
-                .GroupBy(x => new { x.FullName, x.Cccd })
-                .Select(g => new DonorRankingModel
-                {
-                    FullName = g.Key.FullName,
-                    CCCD = g.Key.Cccd,
-                    TotalDonations = g.Select(x => x.DonationId).Distinct().Count(), // số lần đóng góp
-                    TotalQuantity = g.Sum(x => x.QuantitySum)                      // tổng số lượng
-                });
+            if (criteria == "Tổng tiền mặt")
+            {
+                grouped = query
+                    .Where(x => x.ItemName == "Tiền mặt" && x.CategoryName == "Khác")
+                    .GroupBy(x => new { x.FullName, x.Cccd })
+                    .Select(g => new DonorRankingModel
+                    {
+                        FullName = g.Key.FullName,
+                        CCCD = g.Key.Cccd,
+                        TotalDonations = g.Select(x => x.DonationId).Distinct().Count(),
+                        TotalQuantity = g.Sum(x => x.Quantity ?? 0)
+                    })
+                    .OrderByDescending(d => d.TotalQuantity);
+            }
+            else
+            {
+                var generalQuery = query.GroupBy(x => new { x.FullName, x.Cccd })
+                    .Select(g => new DonorRankingModel
+                    {
+                        FullName = g.Key.FullName,
+                        CCCD = g.Key.Cccd,
+                        TotalDonations = g.Select(x => x.DonationId).Distinct().Count(),
+                        TotalQuantity = g.Sum(x => x.Quantity ?? 0)
+                    });
 
-            // Sắp xếp theo tiêu chí
-            List<DonorRankingModel> result;
-            if (criteria == "Số lần đóng góp")
-                result = grouped.OrderByDescending(d => d.TotalDonations).ToList();
-            else // "Tổng số lượng"
-                result = grouped.OrderByDescending(d => d.TotalQuantity).ToList();
+                grouped = criteria == "Số lần đóng góp"
+                    ? generalQuery.OrderByDescending(d => d.TotalDonations)
+                    : generalQuery.OrderByDescending(d => d.TotalQuantity);
+            }
 
-            return result;
+
+            return grouped.ToList();
         }
+
 
 
 
