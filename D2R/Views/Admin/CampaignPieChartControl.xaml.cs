@@ -1,11 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using System.Collections.Generic;
-using System.Windows.Media;
-using D2R.ViewModels;
+﻿using D2R.ViewModels;
 using LiveCharts.Wpf;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace D2R.Views.Admin
 {

@@ -1,6 +1,6 @@
-﻿using System.Globalization;
-using D2R.Models;
+﻿using D2R.Models;
 using D2R.Services;
+using System.Globalization;
 namespace D2R.ViewModels
 {
     public class AddDonorViewModel
@@ -51,6 +51,6 @@ namespace D2R.ViewModels
             }
             return donorsTmp;
         }
-        
+
     }
 }

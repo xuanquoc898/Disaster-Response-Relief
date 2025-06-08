@@ -1,7 +1,6 @@
 ﻿using D2R.Models;
-using D2R.Services;
 using D2R.Repositories;
-using System.Collections.Generic;
+using D2R.Services;
 
 namespace D2R.ViewModels
 {
@@ -23,7 +22,7 @@ namespace D2R.ViewModels
                 : _syncService.GetAllSyncLogs();
 
             return logs
-                .Where(log => log.WarehouseId != 1) 
+                .Where(log => log.WarehouseId != 1)
                 .ToList();
         }
         public List<Warehouse> GetAllWarehouses()

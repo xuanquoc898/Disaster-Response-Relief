@@ -10,11 +10,6 @@ namespace D2R.Repositories
         {
             _context = new DisasterReliefContext();
         }
-
-        public List<DisasterLevel> GetAll()
-        {
-            return _context.DisasterLevels.ToList();
-        }
         public List<DisasterLevel> GetDisasterLevelsByType(int disasterTypeId)
         {
             return _context.DisasterLevels

@@ -2,11 +2,9 @@
 using D2R.Helpers;
 using D2R.Models;
 using D2R.Services;
-using System.ComponentModel;
-using System.Runtime.Serialization;
-using System.Windows.Input;
-using D2R.Views.UserControls;
 using MySqlConnector;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace D2R.ViewModels;
 

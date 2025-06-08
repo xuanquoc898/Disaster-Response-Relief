@@ -54,7 +54,7 @@ namespace D2R.Views.UserControls
             DonnorButton.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
             CvButton.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
             DonationButton.Visibility = isAdmin ? Visibility.Collapsed : Visibility.Visible;
-            
+
 
             DisButton.Visibility = isAdmin ? Visibility.Visible : Visibility.Collapsed;
             StaCampButton.Visibility = isAdmin ? Visibility.Visible : Visibility.Collapsed;
@@ -135,12 +135,12 @@ namespace D2R.Views.UserControls
 
             if (user.Role.RoleName == "Admin")
             {
-                MainContent.Content = new AdminSyncView(); 
+                MainContent.Content = new AdminSyncView();
             }
             else
             {
                 int warehouseId = user.WarehouseId ?? 0;
-                MainContent.Content = new SyncView(warehouseId); 
+                MainContent.Content = new SyncView(warehouseId);
             }
         }
 

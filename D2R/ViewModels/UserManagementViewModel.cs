@@ -31,10 +31,6 @@ public class UserManagementViewModel
         // _areas = _userManagermentService.GetAllArea().ToList();
     }
 
-    public bool CheckInputNullorEmpty(string? input)
-    {
-        return false;
-    }
 
     public bool NameWarehouseIsExist(string nameitem)
     {

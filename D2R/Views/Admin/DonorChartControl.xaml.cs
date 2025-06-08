@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
+﻿using D2R.ViewModels;
 using LiveCharts;
 using LiveCharts.Wpf;
-using D2R.ViewModels;
+using System.Windows.Controls;
 namespace D2R.Views.Admin
 {
     public partial class DonorChartControl : UserControl
@@ -32,7 +28,7 @@ namespace D2R.Views.Admin
             CriteriaComboBox.SelectedItem = "Số lần đóng góp";
         }
 
-     
+
         private void LoadChartData()
         {
             if (YearComboBox.SelectedItem is int year && CriteriaComboBox.SelectedItem is string criteria)

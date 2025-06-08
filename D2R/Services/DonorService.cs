@@ -1,11 +1,11 @@
-﻿using System.Text.RegularExpressions;
-using D2R.Helpers;
+﻿using D2R.Helpers;
 using D2R.Models;
 using D2R.Repositories;
-using System.Windows;
 using D2R.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
+using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace D2R.Services
 {
@@ -47,7 +47,7 @@ namespace D2R.Services
                     throw new ArgumentException("Sai định dạng Email");
 
                 _repository.Add(entity);
-                AddDonorSuccess  = true;
+                AddDonorSuccess = true;
                 donors.Add(entity);
                 MessageBox.Show("Đã thêm MTQ thành công!");
             }
@@ -56,7 +56,7 @@ namespace D2R.Services
                 AddDonorSuccess = false;
                 MessageBox.Show(ex.Message, "Dữ liệu không hợp lệ", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-            catch (DbUpdateException  dbEx)
+            catch (DbUpdateException dbEx)
             {
                 AddDonorSuccess = false;
                 if (dbEx.InnerException is MySqlException mysqlEx && mysqlEx.Number == 1062)

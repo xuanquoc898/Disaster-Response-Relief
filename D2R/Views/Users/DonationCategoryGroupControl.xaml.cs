@@ -56,7 +56,7 @@ namespace D2R.Views.Users
             {
                 Margin = new Thickness(5, 0, 5, 0),
                 VerticalAlignment = VerticalAlignment.Center,
-                Text = "", 
+                Text = "",
                 Width = 50
             };
 

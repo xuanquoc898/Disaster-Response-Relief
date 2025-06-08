@@ -1,7 +1,6 @@
-﻿using System.Windows;
+﻿using D2R.ViewModels;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using D2R.ViewModels;
 namespace D2R.Views.Users
 {
     /// <summary>
@@ -10,7 +9,7 @@ namespace D2R.Views.Users
     public partial class DonorManagerment : UserControl
     {
         private readonly AddDonorViewModel _donorVM;
-        
+
         public DonorManagerment()
         {
             InitializeComponent();

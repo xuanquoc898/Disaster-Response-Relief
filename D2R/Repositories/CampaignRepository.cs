@@ -1,8 +1,5 @@
 ﻿using D2R.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 namespace D2R.Repositories
 {
     public class CampaignRepository
@@ -33,7 +30,7 @@ namespace D2R.Repositories
             _context.Entry(campaign).State = EntityState.Modified;
             _context.SaveChanges();
         }
-   
+
 
         // Trả về tổng số chiến dịch theo tháng, năm
         public int GetTotalCampaignCount(int month, int year)

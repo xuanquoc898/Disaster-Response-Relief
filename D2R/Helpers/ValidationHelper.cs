@@ -61,7 +61,7 @@ namespace D2R.Helpers
             string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
             return Regex.IsMatch(email, pattern);
         }
-        
+
         public static bool CheckName(string hoTen, out string message)
         {
             message = "";

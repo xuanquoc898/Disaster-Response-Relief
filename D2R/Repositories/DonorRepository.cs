@@ -105,11 +105,5 @@ namespace D2R.Repositories
 
             return grouped.ToList();
         }
-
-
-
-
-
-
     }
 }

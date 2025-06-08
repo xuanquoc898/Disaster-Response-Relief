@@ -1,8 +1,6 @@
-﻿using System;
+﻿using D2R.Services;
 using LiveCharts;
 using LiveCharts.Wpf;
-using System.Collections.Generic;
-using D2R.Services;
 
 namespace D2R.ViewModels
 {
@@ -44,6 +42,6 @@ namespace D2R.ViewModels
         {
             return _service.GetCampaignStatusCount(month, year);
         }
-  
+
     }
 }

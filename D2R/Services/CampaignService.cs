@@ -26,12 +26,5 @@ namespace D2R.Services
         {
             return _repository.GetCampaignStatusGrouped(month, year);
         }
-
-        public int GetTotalCampaigns(int month, int year)
-        {
-            return _repository.GetTotalCampaignCount(month, year);
-        }
-
-
     }
 }

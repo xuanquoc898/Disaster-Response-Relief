@@ -40,9 +40,9 @@ namespace D2R.Views.Admin
                 foreach (var item in group.Items)
                 {
                     var row = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(0, 2, 0, 2) };
-                    row.Children.Add(new TextBlock { Text = item.ItemName, Width = 250, FontSize = 16});
-                    row.Children.Add(new TextBlock { Text = $"Yêu cầu: {item.QuantityRequested}", Width = 150, FontSize = 16});
-                    row.Children.Add(new TextBlock { Text = $"Kho: {item.QuantityAvailable}", Width = 150, FontSize = 16});
+                    row.Children.Add(new TextBlock { Text = item.ItemName, Width = 250, FontSize = 16 });
+                    row.Children.Add(new TextBlock { Text = $"Yêu cầu: {item.QuantityRequested}", Width = 150, FontSize = 16 });
+                    row.Children.Add(new TextBlock { Text = $"Kho: {item.QuantityAvailable}", Width = 150, FontSize = 16 });
                     CategoryPanel.Children.Add(row);
                 }
             }

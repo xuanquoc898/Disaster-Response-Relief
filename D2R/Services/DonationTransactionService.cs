@@ -40,7 +40,7 @@ namespace D2R.Services
                 .ToList();
 
             if (!allEntries.Any())
-                return false; 
+                return false;
 
             var donation = new Donation
             {

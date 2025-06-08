@@ -25,23 +25,6 @@ namespace D2R.Repositories
                                      (!itemId.HasValue || s.ItemId == itemId));
         }
 
-        public List<WarehouseStockDisplay> GetStockByWarehouse(int warehouseId)
-        {
-            var stocks = _context.WarehouseStocks
-                .Where(s => s.WarehouseId == warehouseId)
-                .Join(_context.WarehouseItems, s => s.ItemId, i => i.ItemId, (s, i) => new { s, i })
-                .Join(_context.ItemCategories, si => si.i.CategoryId, c => c.CategoryId, (si, c) => new WarehouseStockDisplay
-                {
-                    CategoryName = c.CategoryName,
-                    ItemName = si.i.Name,
-                    Quantity = si.s.Quantity ?? 0,
-                    Unit = si.i.Unit
-                })
-                .OrderBy(r => r.CategoryName)
-                .ToList();
-            return stocks;
-        }
-
         public WarehouseStock? GetCentralStockByItemId(int itemId)
         {
             return _context.WarehouseStocks.FirstOrDefault(ws => ws.ItemId == itemId && ws.WarehouseId == 1);

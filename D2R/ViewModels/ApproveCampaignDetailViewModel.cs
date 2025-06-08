@@ -80,7 +80,7 @@ namespace D2R.ViewModels
         {
             Campaign.Status = "Rejected";
             Campaign.RejectedAt = DateTime.Now;
-            Campaign.Note = reason; 
+            Campaign.Note = reason;
             _approveCampaignService.UpdateCampaign(Campaign);
 
             var staffList = _userService.GetStaffsByAreaId(Campaign.AreaId);

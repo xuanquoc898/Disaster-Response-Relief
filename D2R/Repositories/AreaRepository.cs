@@ -10,10 +10,5 @@ namespace D2R.Repositories
         {
             _context = new DisasterReliefContext();
         }
-
-        public List<Area> GetAll()
-        {
-            return _context.Areas.ToList();
-        }
     }
 }

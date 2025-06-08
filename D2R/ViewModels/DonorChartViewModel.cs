@@ -1,5 +1,4 @@
 ﻿using D2R.Services;
-using System.Collections.Generic;
 
 namespace D2R.ViewModels
 {

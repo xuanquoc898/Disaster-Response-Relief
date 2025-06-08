@@ -21,7 +21,7 @@ namespace D2R.ViewModels
 
         private readonly List<CampaignCategoryGroupControl> _groupControls = new();
         public int? DisasterLevelId { get; set; }
-        public string? Title { get; set; } 
+        public string? Title { get; set; }
 
 
         public CreateCampaignViewModel()
@@ -76,7 +76,7 @@ namespace D2R.ViewModels
                 DisasterLevelId = DisasterLevelId,
                 CreatedDate = DateTime.Now,
                 Status = "Planned",
-                Title = Title 
+                Title = Title
             };
 
 
