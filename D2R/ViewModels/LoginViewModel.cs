@@ -95,7 +95,7 @@ public class LoginViewModel : INotifyPropertyChanged
             LoginSession.CurrentUser = (User)user;
             LoginSucceeded?.Invoke();
         }
-        catch (MySqlException e)
+        catch (MySqlException)
         {
             ErrorMessage = "Vui lòng kết nối mạng!";
             return;

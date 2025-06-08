@@ -44,13 +44,6 @@ namespace D2R.ViewModels
         {
             return _service.GetCampaignStatusCount(month, year);
         }
-
-        /// <summary>
-        /// Trả về tổng số chiến dịch theo tháng/năm
-        /// </summary>
-        public int GetTotalCampaignCount(int month, int year)
-        {
-            return _service.GetTotalCampaigns(month, year);
-        }
+  
     }
 }

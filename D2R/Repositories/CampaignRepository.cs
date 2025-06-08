@@ -9,13 +9,10 @@ namespace D2R.Repositories
     {
         private readonly DisasterReliefContext _context = new();
 
-        public Campaign GetById(int id)
-        {
-            return _context.Campaigns.Include(c => c.Area)
+        public Campaign GetById(int id) => _context.Campaigns.Include(c => c.Area)
                 .Include(c => c.DisasterLevel)
                 .ThenInclude(dl => dl.DisasterType)
                 .FirstOrDefault(c => c.CampaignId == id);
-        }
 
         public List<Campaign> GetAllWithRelations()
         {
@@ -36,16 +33,7 @@ namespace D2R.Repositories
             _context.Entry(campaign).State = EntityState.Modified;
             _context.SaveChanges();
         }
-
-        // Trả về danh sách chiến dịch trong một tháng và năm
-        public List<Campaign> GetCampaignsByMonthYear(int month, int year)
-        {
-            return _context.Campaigns
-                .Where(c => c.CreatedDate.HasValue &&
-                            c.CreatedDate.Value.Month == month &&
-                            c.CreatedDate.Value.Year == year)
-                .ToList();
-        }
+   
 
         // Trả về tổng số chiến dịch theo tháng, năm
         public int GetTotalCampaignCount(int month, int year)

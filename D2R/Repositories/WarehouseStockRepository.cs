@@ -104,11 +104,11 @@ namespace D2R.Repositories
 
             // Lấy data nhập trong tháng
             var syncs = _context.SyncLogs
-    .Where(x => x.SyncDate.HasValue && x.SyncDate.Value.Year == year && x.SyncDate.Value.Month == month)
-    .Include(x => x.SyncLogItems)
-        .ThenInclude(i => i.Item)
-            .ThenInclude(it => it.Category)
-    .ToList();
+                                .Where(x => x.SyncDate.HasValue && x.SyncDate.Value.Year == year && x.SyncDate.Value.Month == month)
+                                .Include(x => x.SyncLogItems)
+                                    .ThenInclude(i => i.Item)
+                                        .ThenInclude(it => it.Category)
+                                .ToList();
 
             foreach (var log in syncs)
             {

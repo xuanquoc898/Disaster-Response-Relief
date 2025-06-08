@@ -16,9 +16,6 @@ namespace D2R.Repositories
             return _context.ItemCategories.ToList();
         }
 
-        public ItemCategory GetById(int id)
-        {
-            return _context.ItemCategories.Find(id);
-        }
+        public ItemCategory GetById(int id) => _context.ItemCategories.Find(id);
     }
 }

@@ -10,14 +10,8 @@ namespace D2R.Repositories
         {
             _context = new DisasterReliefContext();
         }
-        public Role GetByName(string? Name)
-        {
-            return _context.Roles.FirstOrDefault(role => role.RoleName == Name);
-        }
+        public Role GetByName(string? Name) => _context.Roles.FirstOrDefault(role => role.RoleName == Name);
 
-        public Role GetById(int id)
-        {
-            return _context.Roles.Find(id);
-        }
+        public Role GetById(int id) => _context.Roles.Find(id);
     }
 }

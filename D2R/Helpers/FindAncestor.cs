@@ -4,7 +4,7 @@ namespace D2R.Helpers;
 
 public class FindAncestor
 {
-    public static T FindParent<T>(DependencyObject child) where T : DependencyObject
+    public static T? FindParent<T>(DependencyObject child) where T : DependencyObject
     {
         DependencyObject parentObject = VisualTreeHelper.GetParent(child);
 
