@@ -53,10 +53,12 @@ namespace D2R.Services
             }
             catch (ArgumentException ex)
             {
+                AddDonorSuccess = false;
                 MessageBox.Show(ex.Message, "Dữ liệu không hợp lệ", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
             catch (DbUpdateException  dbEx)
             {
+                AddDonorSuccess = false;
                 if (dbEx.InnerException is MySqlException mysqlEx && mysqlEx.Number == 1062)
                 {
                     string duplicatedField = "Không xác định";
@@ -78,6 +80,7 @@ namespace D2R.Services
             }
             catch (Exception ex)
             {
+                AddDonorSuccess = false;
                 var message = ex.InnerException != null ? ex.InnerException.Message : ex.Message;
                 MessageBox.Show("Đã xảy ra lỗi: " + message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
             }
