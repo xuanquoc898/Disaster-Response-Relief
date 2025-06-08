@@ -164,10 +164,18 @@ namespace D2R.Repositories
             int totalInbound = _context.SyncLogs
                 .Where(x => x.SyncDate.HasValue && x.SyncDate.Value.Date <= date.Date)
                 .SelectMany(x => x.SyncLogItems)
+                .Where(i =>
+                    i.Item != null &&
+                    i.Item.Name != "Tiền mặt" &&
+                    (i.Item.Category == null || i.Item.Category.CategoryName != "Khác"))
                 .Sum(i => (int?)i.Quantity) ?? 0;
 
             int totalOutbound = _context.DistributionLogs
                 .Where(x => x.DistributionDate.HasValue && x.DistributionDate.Value.Date <= date.Date)
+                .Where(x =>
+                    x.Item != null &&
+                    x.Item.Name != "Tiền mặt" &&
+                    (x.Item.Category == null || x.Item.Category.CategoryName != "Khác"))
                 .Sum(x => (int?)x.Quantity) ?? 0;
 
             return totalInbound - totalOutbound;
