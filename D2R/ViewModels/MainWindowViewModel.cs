@@ -10,8 +10,8 @@ namespace D2R.ViewModels
         public MainWindowViewModel()
         {
             var loginVm = new LoginViewModel();
-            loginVm.LoginSucceeded += OnLoginSucceeded;
-            CurrentView = loginVm;
+            loginVm.LoginSucceeded += OnLoginSucceeded; // thêm phương thức xử lí sự kiện khi đăng nhập thành công
+            CurrentView = loginVm; // currentView đang chứa LoginViewModel => ContentControl.Content đang bind đến LoginViewModel
         }
 
         public object CurrentView

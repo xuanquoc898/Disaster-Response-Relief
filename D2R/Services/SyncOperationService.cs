@@ -50,18 +50,19 @@ namespace D2R.Services
                 _stockRepository.Delete(item.StockId);
             }
         }
-
+        // quyết định là add hay update
         private void AddOrUpdateCentral(int itemId, int quantity)
         {
-            var centralStock = _stockRepository.GetCentralStockByItemId(itemId);
-
+            var centralStock = _stockRepository.GetCentralStockByItemId(itemId); // lấy tồn kho kho trun tâm thông qua ItemId dc truyen vao
+            
             if (centralStock != null)
             {
-                centralStock.Quantity += quantity;
+                centralStock.Quantity += quantity; //tang quantity
                 _stockRepository.Update(centralStock);
             }
             else
             {
+                //neu chua ton tai vat pham thi tao mot vat pham moi va gan quantity
                 _stockRepository.Add(new WarehouseStock
                 {
                     WarehouseId = 1,
@@ -76,7 +77,8 @@ namespace D2R.Services
         {
             return _synclogRepository.GetHistoryByWarehouse(warehouseId);
         }
-
+        
+        // dong  bo nguoc tu central ve local, data đc lấy tu distributionlog
         public void SyncWarehouseFromDistribution(int campaignId, int warehouseId)
         {
             var distributions = _synclogitemRepository.GetDistributionsByCampaign(campaignId);
@@ -102,6 +104,8 @@ namespace D2R.Services
             }
             _synclogitemRepository.SaveChanges();
         }
+        
+        // lay all synclog tu db
         public List<SyncLog> GetAllSyncLogs()
         {
             return _synclogRepository.GetAll()

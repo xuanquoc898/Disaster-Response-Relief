@@ -5,21 +5,12 @@ namespace D2R.Services
 {
     public class CreateCampaignService
     {
-        private readonly DisasterTypeRepository _disastertypeRepository;
-        private readonly DisasterLevelRepository _disasterlevelRepository;
-        private readonly ItemCategoryRepository _itemcategoryRepository;
-        private readonly WarehouseItemRepository _warehouseitemRepository;
-        private readonly CampaignRepository _campaignRepository;
-        private readonly CampaignItemRepository _campaignItemRepository;
-        public CreateCampaignService()
-        {
-            _disastertypeRepository = new DisasterTypeRepository();
-            _disasterlevelRepository = new DisasterLevelRepository();
-            _itemcategoryRepository = new ItemCategoryRepository();
-            _warehouseitemRepository = new WarehouseItemRepository();
-            _campaignRepository = new CampaignRepository();
-            _campaignItemRepository = new CampaignItemRepository();
-        }
+        private readonly DisasterTypeRepository _disastertypeRepository = new();
+        private readonly DisasterLevelRepository _disasterlevelRepository = new();
+        private readonly ItemCategoryRepository _itemcategoryRepository = new();
+        private readonly WarehouseItemRepository _warehouseitemRepository = new();
+        private readonly CampaignRepository _campaignRepository = new();
+        private readonly CampaignItemRepository _campaignItemRepository = new();
 
         public List<DisasterType> GetAllDisasterType()
         {
@@ -51,6 +42,11 @@ namespace D2R.Services
         public void AddCampaign(Campaign campaign)
         {
             _campaignRepository.Add(campaign);
+        }
+
+        public void AddCampaignItems(List<CampaignItem> campaignItems)
+        {
+            _campaignItemRepository.AddCampaignItems(campaignItems);
         }
 
         public void AddCampaignItem(CampaignItem campaignItem)

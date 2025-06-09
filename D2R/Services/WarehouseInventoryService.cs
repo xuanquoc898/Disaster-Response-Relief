@@ -12,7 +12,8 @@ namespace D2R.Services
         {
             _stockrepository = new WarehouseStockRepository();
         }
-
+        
+        // chuyen stock cua warehouse stock thanh WarehouseStockDisplay để hiển thị.
         public List<WarehouseStockDisplay> GetStockByWarehouse(int? warehouseId)
         {
             var stocks = _stockrepository.GetStocksByWarehouse(warehouseId);
@@ -21,7 +22,9 @@ namespace D2R.Services
 
             var stockDisplays = stocks.Join(items, s => s.ItemId, i => i.ItemId, (s, i) => new { s, i })
                                       .Join(categories, si => si.i.CategoryId, c => c.CategoryId, (si, c) => new WarehouseStockDisplay
+                                      // thực hiện join 2 lần, join1:  Item thong qua itemId, -> join2: Category thông qua ItemCategory
                                       {
+                                          //tao doi tuong moi WarehouseDisplay
                                           CategoryName = c.CategoryName,
                                           ItemName = si.i.Name,
                                           Quantity = si.s.Quantity ?? 0,

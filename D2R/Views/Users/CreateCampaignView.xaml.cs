@@ -51,7 +51,7 @@ namespace D2R.Views.Users
                 return;
             }
             _viewModel.Title = TitleTextBox.Text;
-            _viewModel.ClearGroups();
+            _viewModel.ClearGroups(); // xóa danh sách campaign category cũ
             foreach (var item in CategoryGroupsPanel.Items)
             {
                 if (item is CampaignCategoryGroupControl g)

@@ -22,7 +22,8 @@ namespace D2R.Services
             var stock = _repository.GetByWarehouseIdItemId(1, itemId);
             return stock?.Quantity ?? 0;
         }
-
+        
+        // giam stock trong kho trung tam
         public void Decrease(int itemId, int quantity)
         {
             var stock = _repository.GetAll()

@@ -19,7 +19,7 @@ namespace D2R
         {
             InitializeComponent();
             var Mw = new MainWindowViewModel();
-            DataContext = Mw;
+            DataContext = Mw;  // DataContext chỉ định nguồn dữ liệu mặc định cho data binding
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

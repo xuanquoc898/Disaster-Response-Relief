@@ -65,6 +65,7 @@ namespace D2R.ViewModels
 
         public bool SubmitCampaign()
         {
+            // duyệt qua tất cả các g trong _groupControls, gọi hàm GetRequestedItems(), gộp thành một list duy nhất , lưu vào biến allRequestedItems.
             var allRequestedItems = _groupControls.SelectMany(g => g.GetRequestedItems()).ToList();
 
             if (DisasterLevelId == null || allRequestedItems.Count == 0 ||
@@ -79,7 +80,7 @@ namespace D2R.ViewModels
                 Title = Title
             };
 
-
+            // thêm vào Campaign
             _createCampaignService.AddCampaign(campaign);
 
             var mergedItems = allRequestedItems
@@ -91,19 +92,32 @@ namespace D2R.ViewModels
                     QuantityRequested = g.Sum(x => x.QuantityRequested ?? 0)
                 })
                 .ToList();
+            
+            //tạo một list merge theo itemId
 
-            foreach (var request in mergedItems)
+            // foreach (var request in mergedItems)
+            // {
+            //     _createCampaignService.AddCampaignItem(new CampaignItem
+            //     {
+            //         CampaignId = campaign.CampaignId,
+            //         ItemId = request.ItemId ?? 0,
+            //         QuantityRequested = request.QuantityRequested
+            //     });
+            // }
+            
+            //thêm vào CampaignItem
+            
+            var campaignItems = mergedItems.Select(request => new CampaignItem
             {
-                _createCampaignService.AddCampaignItem(new CampaignItem
-                {
-                    CampaignId = campaign.CampaignId,
-                    ItemId = request.ItemId ?? 0,
-                    QuantityRequested = request.QuantityRequested
-                });
-            }
+                CampaignId = campaign.CampaignId,
+                ItemId = request.ItemId ?? 0,
+                QuantityRequested = request.QuantityRequested
+            }).ToList();
+            
+            _createCampaignService.AddCampaignItems(campaignItems);
 
 
-
+            //gửi thông báo tới all admin
             var admins = _userService.GetAdmins();
 
             foreach (var admin in admins)

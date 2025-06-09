@@ -5,12 +5,7 @@ namespace D2R.Services
 {
     public class CampaignService
     {
-        private readonly CampaignRepository _repository;
-
-        public CampaignService()
-        {
-            _repository = new CampaignRepository();
-        }
+        private readonly CampaignRepository _repository = new();
 
 
         public Campaign GetById(int id)

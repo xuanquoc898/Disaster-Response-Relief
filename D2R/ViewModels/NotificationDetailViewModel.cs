@@ -35,7 +35,8 @@ namespace D2R.ViewModels
         {
             return Campaign != null && Campaign.Status == "Approved";
         }
-
+        
+        // xac nhan nhan hang cua staff sau khi da duoc phan phoi
         public void ConfirmReceived()
         {
             if (Campaign == null) return;

@@ -12,6 +12,12 @@ namespace D2R.Repositories
             _context = new DisasterReliefContext();
         }
 
+        public void AddCampaignItems(List<CampaignItem> campaignItems)
+        {
+            _context.CampaignItems.AddRange(campaignItems);
+            _context.SaveChanges();
+        }
+
         public void Add(CampaignItem entity)
         {
             _context.CampaignItems.Add(entity);

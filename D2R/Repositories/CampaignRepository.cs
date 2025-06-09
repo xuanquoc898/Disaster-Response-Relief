@@ -15,7 +15,8 @@ namespace D2R.Repositories
         {
             return _context.Campaigns
                 .Include(c => c.Area)
-                .Include(c => c.DisasterLevel).ThenInclude(dl => dl.DisasterType)
+                .Include(c => c.DisasterLevel)
+                .ThenInclude(dl => dl.DisasterType)
                 .ToList();
         }
 

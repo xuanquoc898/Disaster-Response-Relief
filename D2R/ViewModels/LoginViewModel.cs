@@ -55,21 +55,12 @@ public class LoginViewModel : INotifyPropertyChanged
         }
     }
 
-    public bool IsLoggedIn
-    {
-        get => _isLoggedIn;
-        set
-        {
-            _isLoggedIn = value;
-            OnPropertyChanged(nameof(IsLoggedIn));
-        }
-    }
-
     private void LoginAsync(object? obj)
     {
-        _ = Login(obj);
+        _ = Login();
+        // Login()
     }
-    private async Task Login(object? parameter)
+    private async Task Login()
     {
         if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
         {
@@ -77,21 +68,19 @@ public class LoginViewModel : INotifyPropertyChanged
             return;
         }
 
-        User auth_user = new User();
-        auth_user.Username = Username;
-        auth_user.Password = Password;
+        User auth_user = new User() {Username = Username, Password = Password};
         try
         {
-            var user = await _authService.Auth(auth_user);
-            if (user == null)
+            var user = await Task.Run(() => _authService.Auth(auth_user)); // Tạo luồng mới để thực thi xác thực tài khoản và đợi => trả về đối tượng đc xác thực
+            if (user == null) // nếu thất bại
             {
                 ErrorMessage = "Sai tên đăng nhập hoặc mật khẩu!";
                 return;
             }
+            // Nếu xác thực thành công (có đối tượng trong csdl)
             ErrorMessage = string.Empty;
-            IsLoggedIn = true;
             LoginSession.CurrentUser = (User)user;
-            LoginSucceeded?.Invoke();
+            LoginSucceeded?.Invoke(); // => gọi OnLoginSucceeded trong MainWindowViewModel để thay đổi View hiện tại là LoginView thành MenuView
         }
         catch (MySqlException)
         {
@@ -100,9 +89,10 @@ public class LoginViewModel : INotifyPropertyChanged
         }
     }
 
-    private bool CanExecuteLogin(object? parameter)
+    private bool CanExecuteLogin(object? parameter) // kiểm tra điều kiện xem LoginButton có được phép click
     {
         return !string.IsNullOrWhiteSpace(Username) && !string.IsNullOrWhiteSpace(Password);
+        // return true;
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;

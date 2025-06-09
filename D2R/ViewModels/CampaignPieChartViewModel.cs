@@ -12,10 +12,8 @@ namespace D2R.ViewModels
         {
             _service = new CampaignService();
         }
-
-        /// <summary>
+        
         /// Trả về dữ liệu biểu đồ Pie theo tháng/năm
-        /// </summary>
         public SeriesCollection GetPieSeries(int month, int year)
         {
             var data = _service.GetCampaignStatusCount(month, year);
@@ -34,10 +32,8 @@ namespace D2R.ViewModels
 
             return series;
         }
-
-        /// <summary>
+        
         /// Trả về Dictionary trạng thái và số lượng
-        /// </summary>
         public Dictionary<string, int> GetCampaignStatusCount(int month, int year)
         {
             return _service.GetCampaignStatusCount(month, year);

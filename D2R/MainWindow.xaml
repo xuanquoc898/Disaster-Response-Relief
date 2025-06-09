@@ -90,9 +90,11 @@
                     
                     <ContentControl Grid.Row="1" Content="{Binding CurrentView}">
                         <ContentControl.Resources>
+                            <!-- Nếu ContentControl.Content trả về LoginViewModel thì tự sinh ra View là LoginView theo DataTemplate-->
                             <DataTemplate DataType="{x:Type vm:LoginViewModel}">
                                 <views:LoginView/>
                             </DataTemplate>
+                            <!-- Nếu ContentControl.Content trả về MenuView thì sinh ra View là MenuView -->
                             <DataTemplate DataType="{x:Type views:MenuView}">
                                 <views:MenuView/>
                             </DataTemplate>

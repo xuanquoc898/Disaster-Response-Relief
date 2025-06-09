@@ -11,13 +11,8 @@ namespace D2R.Services
 {
     public class DonorService
     {
-        private readonly DonorRepository _repository;
+        private readonly DonorRepository _repository = new();
         public bool AddDonorSuccess = false;
-
-        public DonorService()
-        {
-            _repository = new DonorRepository();
-        }
 
         public List<Donor> GetAllByKey(string keyword)
         {
@@ -28,7 +23,7 @@ namespace D2R.Services
         {
             return _repository.GetAll();
         }
-        public void Add(Donor entity, List<Donor> donors)
+        public void Add(Donor entity)
         {
             try
             {
@@ -48,7 +43,6 @@ namespace D2R.Services
 
                 _repository.Add(entity);
                 AddDonorSuccess = true;
-                donors.Add(entity);
                 MessageBox.Show("Đã thêm MTQ thành công!");
             }
             catch (ArgumentException ex)

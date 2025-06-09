@@ -124,13 +124,14 @@
                 </Grid>
             </Border>
 
+            <!--
             <TextBlock Text="Danh sách Mạnh Thường Quân Mới Đăng ký Ủng hộ"
                        FontSize="22"
                        FontWeight="Bold"
                        Foreground="#391867"
                        Margin="0 0 0 10"/>
 
-            <Border Background="White" CornerRadius="10" Padding="10" BorderBrush="#DDD" BorderThickness="1"
+             <Border Background="White" CornerRadius="10" Padding="10" BorderBrush="#DDD" BorderThickness="1"
                     Effect="{DynamicResource ShadowEffect}">
                 <DataGrid x:Name="dgDonors"
                           AutoGenerateColumns="False"
@@ -152,7 +153,8 @@
                         <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="3*"/>
                     </DataGrid.Columns>
                 </DataGrid>
-            </Border>
+            </Border> 
+            -->
 
         </StackPanel>
     </ScrollViewer>

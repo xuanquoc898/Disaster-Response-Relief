@@ -5,11 +5,10 @@ namespace D2R.Views.Users
 {
     public partial class AddDonorView : UserControl
     {
-        AddDonorViewModel _addDonorVM = new();
+        private readonly AddDonorViewModel _addDonorVm = new();
         public AddDonorView()
         {
             InitializeComponent();
-            _addDonorVM.SetNewDonorsNull();
         }
 
         private void ClearForm()
@@ -22,13 +21,12 @@ namespace D2R.Views.Users
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            _addDonorVM.AddDonor(txtName.Text, txtCCCD.Text, txtPhone.Text, txtEmail.Text);
-            if (_addDonorVM.AddDonorSuccess)
+            _addDonorVm.AddDonor(txtName.Text, txtCCCD.Text, txtPhone.Text, txtEmail.Text);
+            if (_addDonorVm.AddDonorSuccess)
             {
-                _addDonorVM.AddDonorSuccess = false;
+                _addDonorVm.AddDonorSuccess = false;
                 ClearForm();
             }
-            dgDonors.ItemsSource = _addDonorVM.NewDonors;
         }
     }
 }

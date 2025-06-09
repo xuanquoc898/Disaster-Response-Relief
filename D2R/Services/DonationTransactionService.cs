@@ -6,20 +6,12 @@ namespace D2R.Services
 {
     public class DonationTransactionService
     {
-        private readonly WarehouseItemRepository _warehouseitemRepository;
-        private readonly ItemCategoryRepository _itemcategoryRepository;
-        private readonly DonationRepository _donationRepository;
-        private readonly DonationItemRepository _donationitemRepository;
-        private readonly WarehouseStockRepository _warehousestockRepository;
+        private readonly WarehouseItemRepository _warehouseitemRepository = new();
+        private readonly ItemCategoryRepository _itemcategoryRepository = new();
+        private readonly DonationRepository _donationRepository = new();
+        private readonly DonationItemRepository _donationitemRepository = new();
+        private readonly WarehouseStockRepository _warehousestockRepository = new();
 
-        public DonationTransactionService()
-        {
-            _warehouseitemRepository = new WarehouseItemRepository();
-            _itemcategoryRepository = new ItemCategoryRepository();
-            _donationRepository = new DonationRepository();
-            _donationitemRepository = new DonationItemRepository();
-            _warehousestockRepository = new WarehouseStockRepository();
-        }
         public List<ItemCategory> GetCategories()
         {
             return _itemcategoryRepository.GetAll();
@@ -28,9 +20,11 @@ namespace D2R.Services
         {
             return _warehouseitemRepository.GetById(categoryId);
         }
-
+        
+        // xu li donation 
         public bool ExecuteDonation(Donor donor, int warehouseId, List<DonationCategoryGroupControl> groups)
         {
+            // .Any return true nếu có ít nhất 1 bản ghi data
             if (donor == null || groups == null || !groups.Any())
                 return false;
 
@@ -45,7 +39,7 @@ namespace D2R.Services
             var donation = new Donation
             {
                 DonorId = donor.DonorId,
-                AreaId = 1,
+                AreaId = 1, // bug
                 Date = DateTime.Now
             };
 
@@ -67,7 +61,8 @@ namespace D2R.Services
 
             return true;
         }
-
+        
+        // quyêt  dinh add hay update ton kho LOCAL 
         public void AddOrUpdateStock(int? warehouseId, int itemId, int quantity)
         {
             var existing = _warehousestockRepository.GetByWarehouseIdItemId(warehouseId, itemId);

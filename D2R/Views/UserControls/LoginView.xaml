@@ -167,6 +167,7 @@
                                                         VerticalAlignment="Center"
                                                         Margin="10,10,10,20"
                                                         Command="{Binding LoginCommand}">
+                                                    <!-- Gọi LoginAsync khi button đc Click -->
                                                     <Button.Template>
                                                         <ControlTemplate TargetType="Button">
                                                             <Border CornerRadius="20" Background="#D78B0000" Padding="10">

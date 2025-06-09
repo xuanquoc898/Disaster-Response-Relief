@@ -46,8 +46,9 @@ namespace D2R.Views.Admin
                     CategoryName = ci.Item?.Category?.CategoryName ?? "Không rõ"
                 });
 
-            foreach (var item in items)
-                ItemListView.Items.Add(item);
+            // foreach (var item in items)
+            //     ItemListView.Items.Add(item);
+            ItemListView.ItemsSource = items;
         }
     }
 }

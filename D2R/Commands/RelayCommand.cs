@@ -4,8 +4,8 @@ namespace D2R.Commands
 {
     public class RelayCommand : ICommand
     {
-        private readonly Action<object> _execute;
-        private readonly Predicate<object>? _canExecute;
+        private readonly Action<object> _execute; // Logic chính
+        private readonly Predicate<object>? _canExecute; // điều kiện thực thi
 
         public RelayCommand(Action<object> execute, Predicate<object>? canExecute = null)
         {

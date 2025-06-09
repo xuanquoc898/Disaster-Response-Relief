@@ -43,6 +43,9 @@ namespace D2R.ViewModels
             return GroupedItems
                 .SelectMany(g => g.Items)
                 .All(i => i.QuantityAvailable >= i.QuantityRequested);
+            
+            // Gộp để trảve một list item duy nhất (select many)
+            // all ( kiểm tra dkien )
         }
 
         public void Distribute()
@@ -50,7 +53,8 @@ namespace D2R.ViewModels
             foreach (var item in GroupedItems.SelectMany(g => g.Items))
             {
                 _warehouseStockService.Decrease(item.ItemId, item.QuantityRequested);
-
+                
+                // thêm log bao gồm một list
                 _approveCampaignService.AddDistributionLog(new DistributionLog
                 {
                     CampaignId = Campaign.CampaignId,
@@ -59,11 +63,12 @@ namespace D2R.ViewModels
                     AreaId = Campaign.AreaId
                 });
             }
-
+            // udate trang thai chien dich thanh approve/ call UpdateCampaign trong repo
             Campaign.Status = "Approved";
             Campaign.ApprovedAt = DateTime.Now;
             _approveCampaignService.UpdateCampaign(Campaign);
 
+            //Lay list staff gui thong bao den tung staff
             var staffList = _userService.GetStaffsByAreaId(Campaign.AreaId);
 
             foreach (var staff in staffList)
@@ -78,6 +83,7 @@ namespace D2R.ViewModels
         }
         public void Reject(string reason)
         {
+            // cap nhat trang thai chien dich thanh Rejected
             Campaign.Status = "Rejected";
             Campaign.RejectedAt = DateTime.Now;
             Campaign.Note = reason;

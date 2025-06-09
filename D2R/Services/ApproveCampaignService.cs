@@ -5,17 +5,11 @@ namespace D2R.Services
 {
     public class ApproveCampaignService
     {
-        private readonly CampaignRepository _campaignRepository;
-        private readonly CampaignItemRepository _campaignitemRepository;
-        private readonly ItemCategoryRepository _itemcategoryRepository;
-        private readonly DistributionLogRepository _distributionRepository;
-        public ApproveCampaignService()
-        {
-            _campaignRepository = new CampaignRepository();
-            _campaignitemRepository = new CampaignItemRepository();
-            _itemcategoryRepository = new ItemCategoryRepository();
-            _distributionRepository = new DistributionLogRepository();
-        }
+        private readonly CampaignRepository _campaignRepository = new();
+        private readonly CampaignItemRepository _campaignitemRepository = new();
+        private readonly ItemCategoryRepository _itemcategoryRepository = new();
+        private readonly DistributionLogRepository _distributionRepository = new();
+
         public Campaign GetCampaignById(int id)
         {
             return _campaignRepository.GetById(id);
