@@ -11,7 +11,7 @@ using System.Windows.Media.Animation;
 
 namespace D2R.Views.UserControls
 {
-    public partial class MenuView : UserControl, INotifyPropertyChanged
+    public partial class MenuView : UserControl, INotifyPropertyChanged // interface dùng để thông báo thay đổi dữ liệu trong ViewModel đến View
     {
         private bool _isSidebarExpanded = true;
         private bool _isAdminExpanded = true;
@@ -19,7 +19,8 @@ namespace D2R.Views.UserControls
         public bool IsSidebarExpanded
         {
             get => _isSidebarExpanded;
-            set { _isSidebarExpanded = value; OnPropertyChanged(); }
+            set { _isSidebarExpanded = value; OnPropertyChanged(); // sự kiện gọi khi có sự thay đổi giá trị của biến
+            }
         }
 
         public bool IsAdminExpanded

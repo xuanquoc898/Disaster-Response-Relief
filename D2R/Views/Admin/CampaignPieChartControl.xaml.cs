@@ -1,4 +1,5 @@
 ﻿using D2R.ViewModels;
+using LiveCharts;
 using LiveCharts.Wpf;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -28,6 +29,11 @@ namespace D2R.Views.Admin
             YearComboBox.SelectedItem = currentYear;
         }
 
+
+        //Gọi GetCampaignStatusCount(...) để lấy Dictionary<string, int>
+        //Mỗi cặp(status, count) tạo một PieSeries
+        //DataLabels = true để hiển thị nhãn
+        //chartPoint.Participation để tính tỷ lệ phần trăm(%)
         private void LoadPieChart(int month, int year)
         {
             // Lấy dữ liệu PieChart
@@ -76,7 +82,7 @@ namespace D2R.Views.Admin
             }
         }
     }
-
+//tạo một danh sách LegendItem để hiển thị danh sách trạng thái bên cạnh biểu đồ, giúp người dùng dễ hiểu và dễ phân biệt màu sắc.
     public class LegendItem
     {
         public string Label { get; set; }

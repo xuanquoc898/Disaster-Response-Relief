@@ -2,7 +2,7 @@
 
 namespace D2R.Commands
 {
-    public class RelayCommand : ICommand
+    public class RelayCommand : ICommand //interface xử lí các lệnh giúp tách biệt logic và giao diện người dùng trong MVVM
     {
         private readonly Action<object> _execute; // Logic chính
         private readonly Predicate<object>? _canExecute; // điều kiện thực thi

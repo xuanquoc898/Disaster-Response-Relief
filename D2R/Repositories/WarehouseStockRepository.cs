@@ -78,7 +78,7 @@ namespace D2R.Repositories
             var inbound = new int[daysInMonth];
             var outbound = new int[daysInMonth];
             var total = new int[daysInMonth];
-
+            //Xác định ngày đầu và cuối tháng trước
             DateTime firstDayOfMonth = new DateTime(year, month, 1);
             DateTime lastDayPrevMonth = firstDayOfMonth.AddDays(-1);
 
@@ -104,6 +104,8 @@ namespace D2R.Repositories
                         (i.Item.Category == null || i.Item.Category.CategoryName != "Khác"))
                     .Sum(i => i.Quantity ?? 0);
             }
+            //Tăng inbound[ngày] lên bằng tổng số lượng hợp lệ nhập vào ngày đó.
+
 
 
             // Lấy data xuất trong tháng
@@ -130,6 +132,7 @@ namespace D2R.Repositories
             for (int i = 0; i < daysInMonth; i++)
             {
                 runningTotal += inbound[i] - outbound[i];
+                //Mỗi ngày: tồn kho = tồn hôm trước +nhập - xuất
                 total[i] = runningTotal;
             }
 
@@ -142,6 +145,11 @@ namespace D2R.Repositories
             };
         }
 
+
+
+//Duyệt tất cả bản ghi nhập kho đến ngày date
+//Lọc ra các mặt hàng không phải tiền mặt và không nằm trong danh mục "Khác"
+//Tính tổng số lượng
         public int GetStockAtDate(DateTime date)
         {
             int totalInbound = _context.SyncLogs
@@ -162,6 +170,7 @@ namespace D2R.Repositories
                 .Sum(x => (int?)x.Quantity) ?? 0;
 
             return totalInbound - totalOutbound;
+            //trả kết quả tồn kho 
         }
     }
 }

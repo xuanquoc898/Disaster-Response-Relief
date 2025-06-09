@@ -59,6 +59,7 @@ namespace D2R.Repositories
                         join item in _context.DonationItems on donation.DonationId equals item.DonationId
                         join warehouseItem in _context.WarehouseItems on item.ItemId equals warehouseItem.ItemId
                         join category in _context.ItemCategories on warehouseItem.CategoryId equals category.CategoryId
+                        //join các table có liên quan
                         select new
                         {
                             donor.FullName,
@@ -69,9 +70,15 @@ namespace D2R.Repositories
                             ItemName = warehouseItem.Name,
                             CategoryName = category.CategoryName
                         };
-
+                       //get ra các trường cần thiết
             IEnumerable<DonorRankingModel> grouped;
 
+            //IEnumerable<T> là một interface,
+            //dùng để đại diện cho một tập hợp các phần tử có thể duyệt tuần tự (enumerable collection),
+            //có thể sử dụng vòng lặp foreach để duyệt qua các phần tử trong đó.
+
+
+            //nếu tổng tiền mặt thì lọc ra tiền mặt, lấy ra tên và cccd, lấy tổng theo quantity, totalQuantity
             if (criteria == "Tổng tiền mặt")
             {
                 grouped = query
@@ -86,7 +93,7 @@ namespace D2R.Repositories
                     })
                     .OrderByDescending(d => d.TotalQuantity);
             }
-            else
+            else // nếu là "Số lần đóng góp" thì lấy ra tất cả các mạnh thường quân, lấy tổng theo số lần đóng góp TotalDonations
             {
                 var generalQuery = query.GroupBy(x => new { x.FullName, x.Cccd })
                     .Select(g => new DonorRankingModel

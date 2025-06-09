@@ -32,16 +32,6 @@ namespace D2R.Repositories
             _context.SaveChanges();
         }
 
-
-        // Trả về tổng số chiến dịch theo tháng, năm
-        public int GetTotalCampaignCount(int month, int year)
-        {
-            return _context.Campaigns
-                .Count(c => c.CreatedDate.HasValue &&
-                            c.CreatedDate.Value.Month == month &&
-                            c.CreatedDate.Value.Year == year);
-        }
-
         // Trả về số lượng chiến dịch theo trạng thái trong tháng/năm
         public Dictionary<string, int> GetCampaignStatusGrouped(int month, int year)
         {
