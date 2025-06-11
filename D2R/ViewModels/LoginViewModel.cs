@@ -71,7 +71,7 @@ public class LoginViewModel : INotifyPropertyChanged
         User auth_user = new User() {Username = Username, Password = Password};
         try
         {
-            var user = await Task.Run(() => _authService.Auth(auth_user)); // Tạo luồng mới để thực thi xác thực tài khoản và đợi => trả về đối tượng đc xác thực
+            var user = await Task.Run(() => _authService.Auth(auth_user)); // Tạo luồng mới để thực thi xác thực tài khoản => trả về đối tượng đc xác thực
             if (user == null) // nếu thất bại
             {
                 ErrorMessage = "Sai tên đăng nhập hoặc mật khẩu!";
@@ -79,7 +79,7 @@ public class LoginViewModel : INotifyPropertyChanged
             }
             // Nếu xác thực thành công (có đối tượng trong csdl)
             ErrorMessage = string.Empty;
-            LoginSession.CurrentUser = (User)user;
+            LoginSession.CurrentUser = (User)user; // Lưu thông tin người dùng
             LoginSucceeded?.Invoke(); // => gọi OnLoginSucceeded trong MainWindowViewModel để thay đổi View hiện tại là LoginView thành MenuView
         }
         catch (MySqlException)
